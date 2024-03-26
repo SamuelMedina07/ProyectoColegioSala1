@@ -112,10 +112,11 @@ public class ConsultaUsuarios extends Conexion {
 
     public boolean eliminarUsuario(Usuario usuario) {
         Connection con = getConnection();
-        sentenciaSQL = "DELETE FROM tbl_usuarios WHERE usuario_codigo=?";
+        sentenciaSQL = "UPDATE tbl_usuarios SET usuario_estado =?  WHERE usuario_codigo=?";
         try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setInt(1, usuario.getCodigo());
+            ps.setString(1, "Inactivo");
+            ps.setInt(2, usuario.getCodigo());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente");
             return true;
