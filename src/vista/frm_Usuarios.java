@@ -253,6 +253,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
         jLabel9.setText("CODIGO");
         jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
+        txtCodigo.setEditable(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);

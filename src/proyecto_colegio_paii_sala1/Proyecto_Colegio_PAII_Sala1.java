@@ -10,6 +10,7 @@ import controlador.PrincipalControlador;
 import controlador.usuarioControlador;
 import modelo.ConsultaUsuarios;
 import modelo.Usuario;
+import vista.frm_Consulta_Usuarios;
 import vista.frm_Inicio;
 import vista.frm_Principal;
 import vista.frm_Usuarios;
@@ -40,8 +41,9 @@ public class Proyecto_Colegio_PAII_Sala1 {
         //USUARIO MVC
         Usuario usuario2 = new Usuario();
         frm_Usuarios formUsuarios = new frm_Usuarios(frm_pri, true, "");
+        frm_Consulta_Usuarios formConsUsuario = new frm_Consulta_Usuarios(formUsuarios, true);
         ConsultaUsuarios consUsuario2 = new ConsultaUsuarios();
-        usuarioControlador contUsuario = new usuarioControlador(usuario2, formUsuarios, consUsuario2);
+        usuarioControlador contUsuario = new usuarioControlador(usuario2, formUsuarios, consUsuario2,formConsUsuario);
         
         
         //PRINCIPAL
