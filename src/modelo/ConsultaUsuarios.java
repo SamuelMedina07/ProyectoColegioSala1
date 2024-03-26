@@ -25,14 +25,13 @@ public class ConsultaUsuarios extends Conexion {
 
     public boolean crearUsuario(Usuario usuario) {
         Connection con = getConnection();
-        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_codigo, usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado) VALUES (?, ?, ?, ?, ?)";
+        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado) VALUES (?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setInt(1, usuario.getCodigo());
-            ps.setString(2, usuario.getNombre());
-            ps.setString(3, usuario.getContrasena());
-            ps.setString(4, usuario.getRol());
-            ps.setString(5, usuario.getEstado());
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getContrasena());
+            ps.setString(3, usuario.getRol());
+            ps.setString(4, usuario.getEstado());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
             return true;
@@ -47,7 +46,7 @@ public class ConsultaUsuarios extends Conexion {
     public ArrayList<Usuario> leerTodosUsuarios() {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         Connection con = getConnection();
-        sentenciaSQL = "SELECT * FROM tbl_usuarios";
+        sentenciaSQL = "SELECT * FROM tbl_usuarios WHERE usuario_estado = 'Activo'";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             rs = ps.executeQuery();
@@ -93,14 +92,13 @@ public class ConsultaUsuarios extends Conexion {
 
     public boolean modificarUsuario(Usuario usuario) {
         Connection con = getConnection();
-        sentenciaSQL = "UPDATE tbl_usuarios SET usuario_nombre=?, usuario_contrasena=?, usuario_rol=?, usuario_estado=? WHERE usuario_codigo=?";
+        sentenciaSQL = "UPDATE tbl_usuarios SET usuario_nombre=?, usuario_contrasena=?, usuario_rol=? WHERE usuario_codigo=? AND usuario_estado = 'Activo'";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getContrasena());
             ps.setString(3, usuario.getRol());
-            ps.setString(4, usuario.getEstado());
-            ps.setInt(5, usuario.getCodigo());
+            ps.setInt(4, usuario.getCodigo());
             ps.execute();
             JOptionPane.showMessageDialog(null, "Usuario actualizado correctamente");
             return true;

@@ -44,10 +44,11 @@ public class frm_Principal extends javax.swing.JFrame {
         btnProveedores = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
-        btnReportes = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        btnReportes1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,17 +137,17 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnVentas);
         btnVentas.setBounds(10, 230, 160, 50);
 
-        btnReportes.setBackground(new java.awt.Color(255, 255, 255));
-        btnReportes.setText("        REPORTES");
-        btnReportes.setBorder(null);
-        btnReportes.setBorderPainted(false);
-        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuarios.setBackground(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setText("USUARIOS'=");
+        btnUsuarios.setBorder(null);
+        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportesActionPerformed(evt);
+                btnUsuariosActionPerformed(evt);
             }
         });
-        jPanel2.add(btnReportes);
-        btnReportes.setBounds(10, 280, 160, 50);
+        jPanel2.add(btnUsuarios);
+        btnUsuarios.setBounds(200, 290, 160, 50);
 
         btnClientes.setBackground(new java.awt.Color(255, 255, 255));
         btnClientes.setText("          CLIENTES");
@@ -185,6 +186,18 @@ public class frm_Principal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(190, 30, 490, 70);
+
+        btnReportes1.setBackground(new java.awt.Color(255, 255, 255));
+        btnReportes1.setText("        REPORTES");
+        btnReportes1.setBorder(null);
+        btnReportes1.setBorderPainted(false);
+        btnReportes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportes1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnReportes1);
+        btnReportes1.setBounds(10, 280, 160, 50);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -235,13 +248,17 @@ public class frm_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentasActionPerformed
 
-    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportesActionPerformed
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnReportes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportes1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,8 +302,9 @@ public class frm_Principal extends javax.swing.JFrame {
     public javax.swing.JButton btnClientes;
     public javax.swing.JButton btnProductos;
     public javax.swing.JButton btnProveedores;
-    public javax.swing.JButton btnReportes;
+    public javax.swing.JButton btnReportes1;
     public javax.swing.JButton btnSalir;
+    public javax.swing.JButton btnUsuarios;
     public javax.swing.JButton btnVentas;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

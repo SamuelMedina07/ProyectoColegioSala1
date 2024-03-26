@@ -6,10 +6,13 @@
 package proyecto_colegio_paii_sala1;
 
 import controlador.LoginControlador;
+import controlador.PrincipalControlador;
+import controlador.usuarioControlador;
 import modelo.ConsultaUsuarios;
 import modelo.Usuario;
 import vista.frm_Inicio;
 import vista.frm_Principal;
+import vista.frm_Usuarios;
 import vista.frm_login;
 
 /**
@@ -35,6 +38,16 @@ public class Proyecto_Colegio_PAII_Sala1 {
         formInicio.setVisible(true);
         
         //USUARIO MVC
+        Usuario usuario2 = new Usuario();
+        frm_Usuarios formUsuarios = new frm_Usuarios(frm_pri, true, "");
+        ConsultaUsuarios consUsuario2 = new ConsultaUsuarios();
+        usuarioControlador contUsuario = new usuarioControlador(usuario2, formUsuarios, consUsuario2);
+        
+        
+        //PRINCIPAL
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios);
+        contPrincipal.inciar();
+       
     }
     
 }
