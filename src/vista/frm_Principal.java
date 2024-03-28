@@ -45,10 +45,11 @@ public class frm_Principal extends javax.swing.JFrame {
         btnProductos = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
         btnUsuarios = new javax.swing.JButton();
-        btnClientes = new javax.swing.JButton();
+        btnPadres = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         btnReportes1 = new javax.swing.JButton();
+        btnClientes1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,17 +150,17 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnUsuarios);
         btnUsuarios.setBounds(200, 290, 160, 50);
 
-        btnClientes.setBackground(new java.awt.Color(255, 255, 255));
-        btnClientes.setText("          CLIENTES");
-        btnClientes.setBorder(null);
-        btnClientes.setBorderPainted(false);
-        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+        btnPadres.setBackground(new java.awt.Color(255, 255, 255));
+        btnPadres.setText("PADRES");
+        btnPadres.setBorder(null);
+        btnPadres.setBorderPainted(false);
+        btnPadres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientesActionPerformed(evt);
+                btnPadresActionPerformed(evt);
             }
         });
-        jPanel2.add(btnClientes);
-        btnClientes.setBounds(10, 80, 160, 50);
+        jPanel2.add(btnPadres);
+        btnPadres.setBounds(210, 210, 160, 50);
 
         jPanel3.setBackground(new java.awt.Color(204, 0, 0));
 
@@ -198,6 +199,18 @@ public class frm_Principal extends javax.swing.JFrame {
         });
         jPanel2.add(btnReportes1);
         btnReportes1.setBounds(10, 280, 160, 50);
+
+        btnClientes1.setBackground(new java.awt.Color(255, 255, 255));
+        btnClientes1.setText("          CLIENTES");
+        btnClientes1.setBorder(null);
+        btnClientes1.setBorderPainted(false);
+        btnClientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientes1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnClientes1);
+        btnClientes1.setBounds(10, 80, 160, 50);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -252,13 +265,17 @@ public class frm_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
-    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+    private void btnPadresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPadresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClientesActionPerformed
+    }//GEN-LAST:event_btnPadresActionPerformed
 
     private void btnReportes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportes1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReportes1ActionPerformed
+
+    private void btnClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClientes1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,7 +316,8 @@ public class frm_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnClientes;
+    public javax.swing.JButton btnClientes1;
+    public javax.swing.JButton btnPadres;
     public javax.swing.JButton btnProductos;
     public javax.swing.JButton btnProveedores;
     public javax.swing.JButton btnReportes1;

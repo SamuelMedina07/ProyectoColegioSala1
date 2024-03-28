@@ -43,7 +43,7 @@ public class frm_Padres extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbl_usuarios = new javax.swing.JTable();
+        tbl_padres = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         btnCrear = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -81,7 +81,7 @@ public class frm_Padres extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)), "Padres", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(204, 0, 0))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbl_usuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_padres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -89,7 +89,7 @@ public class frm_Padres extends javax.swing.JDialog {
                 "CODIGO", "NOMBRE COMPLETO", "GENERO", "IDENTIDAD", "TELEFONO", "DIRECCION", "ESTADO"
             }
         ));
-        jScrollPane2.setViewportView(tbl_usuarios);
+        jScrollPane2.setViewportView(tbl_padres);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 320));
 
@@ -251,6 +251,11 @@ public class frm_Padres extends javax.swing.JDialog {
 
         txtDireccion.setColumns(20);
         txtDireccion.setRows(5);
+        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDireccionMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtDireccion);
 
         jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 190, 90));
@@ -264,6 +269,11 @@ public class frm_Padres extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelefonoMouseClicked(evt);
+            }
+        });
         jPanel6.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 190, 30));
 
         txtNombres1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -382,6 +392,7 @@ public class frm_Padres extends javax.swing.JDialog {
 
     private void txtNombres1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombres1MouseClicked
         // TODO add your handling code here:
+        AsignarColorCampo(txtNombres1);
     }//GEN-LAST:event_txtNombres1MouseClicked
 
     private void txtNombres1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombres1ActionPerformed
@@ -390,11 +401,22 @@ public class frm_Padres extends javax.swing.JDialog {
 
     private void txtApellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidosMouseClicked
         // TODO add your handling code here:
+        AsignarColorCampo(txtApellidos);
     }//GEN-LAST:event_txtApellidosMouseClicked
 
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosActionPerformed
+
+    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+        // TODO add your handling code here:
+        txtDireccion.setBackground(Color.white);
+    }//GEN-LAST:event_txtDireccionMouseClicked
+
+    private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
+        // TODO add your handling code here:
+        AsignarColorCampo(txtTelefono);
+    }//GEN-LAST:event_txtTelefonoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -471,7 +493,7 @@ public class frm_Padres extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel lblUsuario;
-    public javax.swing.JTable tbl_usuarios;
+    public javax.swing.JTable tbl_padres;
     public javax.swing.JTextField txtApellidos;
     public javax.swing.JTextField txtCodigo;
     public javax.swing.JTextArea txtDireccion;

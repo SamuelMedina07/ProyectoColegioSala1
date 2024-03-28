@@ -28,7 +28,7 @@ public class padreControlador implements ActionListener {
     private frm_Padres form;
     private ConsultaPadres consPadres;
     private frm_Consulta_Padres formConsPadres;
-    private Object datos[] = new Object[4];
+    private Object datos[] = new Object[10];
     DefaultTableModel modelo;
 
     public padreControlador(Padre padre, frm_Padres form, ConsultaPadres consPadres, frm_Consulta_Padres formConsPadres) {
@@ -60,25 +60,27 @@ public class padreControlador implements ActionListener {
 
     private void inicializarBotonBuscar() {
         formConsPadres.btn_buscarPor.addActionListener(this);
-        formConsPadres.tbl_usuarios.getSelectionModel().addListSelectionListener(e -> {
+        formConsPadres.tbl_consulta.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
-                manejarEventoTablaUsuarios();
+                manejarEventoTablaPadres();
             }
         });
     }
 
-    private void manejarEventoTablaUsuarios() {
-        int filaSeleccionada = formConsPadres.tbl_usuarios.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) formConsPadres.tbl_usuarios.getModel();
+    private void manejarEventoTablaPadres() {
+        int filaSeleccionada = formConsPadres.tbl_consulta.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) formConsPadres.tbl_consulta.getModel();
         if (filaSeleccionada >= 0) {
-            String idUsuario = String.valueOf(model.getValueAt(filaSeleccionada, 0));
-            Usuario usuarioSeleccionado = consPadres.obtenerUusuarioSegunIdUsuario(Integer.parseInt(idUsuario));
+            String idPadre = String.valueOf(model.getValueAt(filaSeleccionada, 0));
+            Padre padreSeleccionado = consPadres.obtenerPadreSegunId(Integer.parseInt(idPadre));
 
-            form.txtCodigo.setText(String.valueOf(usuarioSeleccionado.getCodigo()));
-            form.txtNombre1.setText(String.valueOf(usuarioSeleccionado.getNombre()));
-            form.txtContra1.setText(String.valueOf(usuarioSeleccionado.getContrasena()));
-            form.txtIdentidad.setText(String.valueOf(usuarioSeleccionado.getContrasena()));
-            form.cbGenero.setSelectedItem(usuarioSeleccionado.getRol());
+            form.txtCodigo.setText(String.valueOf(padreSeleccionado.getId()));
+            form.txtNombres1.setText(String.valueOf(padreSeleccionado.getNombre()));
+            form.txtApellidos.setText(String.valueOf(padreSeleccionado.getApellidos()));
+            form.txtIdentidad.setText(String.valueOf(padreSeleccionado.getCedula()));
+            form.cbGenero.setSelectedItem(padreSeleccionado.getGenero());
+            form.txtTelefono.setText(String.valueOf(padreSeleccionado.getTelefono()));
+            form.txtDireccion.setText(String.valueOf(padreSeleccionado.getDireccion()));
             model.setRowCount(0);
             formConsPadres.dispose();
         }
@@ -100,7 +102,7 @@ public class padreControlador implements ActionListener {
 
         //BOTON CREAR
         if (e.getSource() == form.btnCrear) {
-            guardarUsuario();
+            guardarPadre();
         }
         //BOTON LEER TODOS
         if (e.getSource() == form.btnLeer) {
@@ -117,11 +119,11 @@ public class padreControlador implements ActionListener {
         }
         //BOTON MODIFICAR
         if (e.getSource() == form.btnModificar) {
-            modificarUsuario();
+            modificarPadre();
         }
         //boton eliminar
         if (e.getSource() == form.btnEliminar) {
-            eliminarUsuario();
+            eliminarPadre();
         }
         //BOTON LIMPIAR
         if (e.getSource() == form.btnLimpiar) {
@@ -135,7 +137,7 @@ public class padreControlador implements ActionListener {
 
     //METODOS CRUD *************************************************************************
     //GUARDAR
-    public void guardarUsuario() {
+    public void guardarPadre() {
         if (validarYVerificarPadre()) {
             if (consPadres.crearPadre(padre)) {
                 limpiar();
@@ -145,7 +147,7 @@ public class padreControlador implements ActionListener {
     }
 
     //MODIFICAR
-    public void modificarUsuario() {
+    public void modificarPadre() {
         if (validarYVerificarPadre()) {
             if (consPadres.modificarPadre(padre)) {
                 limpiar();
@@ -154,7 +156,7 @@ public class padreControlador implements ActionListener {
     }
 
     //ELIMINAR
-    public void eliminarUsuario() {
+    public void eliminarPadre() {
         if (!form.txtCodigo.getText().isEmpty()) {
             padre.setId(Integer.parseInt(form.txtCodigo.getText()));
             if (consPadres.eliminarPadre(padre)) {
@@ -165,7 +167,7 @@ public class padreControlador implements ActionListener {
 
     //LEER
     public void llenarTabla() {
-        modelo = (DefaultTableModel) form.tbl_usuarios.getModel();
+        modelo = (DefaultTableModel) form.tbl_padres.getModel();
         modelo.setRowCount(0);
         ArrayList<Padre> listaPadres = consPadres.leerTodosPadres();
         int registros = listaPadres.size();
@@ -182,7 +184,7 @@ public class padreControlador implements ActionListener {
 
             modelo.addRow(datos);
         }
-        form.tbl_usuarios.setModel(modelo);
+        form.tbl_padres.setModel(modelo);
     }
 
     //LEER POR FILTRADO
@@ -193,39 +195,42 @@ public class padreControlador implements ActionListener {
         switch (campoSeleccionado) {
             case "ID":
                 try {
-                    int idUsuario = Integer.parseInt(campoBuscar);
-                    Usuario usuarioEncontrado = consPadres.obtenerUusuarioSegunIdUsuario(idUsuario);
-                    if (usuarioEncontrado != null) {
-                        ArrayList<Usuario> listaUsuariosId = new ArrayList<>();
-                        listaUsuariosId.add(usuarioEncontrado);
-                        llenarTablaConsulta(listaUsuariosId);
+                    int idPadre = Integer.parseInt(campoBuscar);
+                    Padre padreEncontrado = consPadres.obtenerPadreSegunId(idPadre);
+                    if (padreEncontrado != null) {
+                        ArrayList<Padre> listaPadre = new ArrayList<>();
+                        listaPadre.add(padreEncontrado);
+                        llenarTablaConsulta(listaPadre);
                     } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "No se encontró ningún padre con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
-            case "USUARIO":
-                manejarResultadoConsulta(consPadres.buscarUsuariosPorNombre(campoBuscar), "No se encontró ningún usuario con el nombre especificado.");
+            case "NOMBRE":
+                manejarResultadoConsulta(consPadres.buscarPadresPorNombre(campoBuscar), "No se encontró ningún padre con el nombre especificado.");
                 break;
-            case "ROL":
-                manejarResultadoConsulta(consPadres.buscarUsuariosPorRol(campoBuscar), "No se encontró ningún usuario con el rol especificado.");
+            case "IDENTIDAD":
+                manejarResultadoConsulta(consPadres.buscarPadresPorCedula(campoBuscar), "No se encontró ningún padre con la identidad especificada.");
+                break;
+            case "GENERO":
+                manejarResultadoConsulta(consPadres.buscarPadresPorGenero(campoBuscar), "No se encontró ningún usuario con el genero especificado.");
                 break;
             case "ACTIVOS":
-                manejarResultadoConsulta(consPadres.buscarUsuariosActivos(), "No se encontró ningún usuario activo.");
+                manejarResultadoConsulta(consPadres.buscarPadresActivos(), "No se encontró ningún padre activo.");
                 break;
             case "INACTIVOS":
-                manejarResultadoConsulta(consPadres.buscarUsuariosInactivos(), "No se encontró ningún usuario inactivo.");
+                manejarResultadoConsulta(consPadres.buscarPadresInactivos(), "No se encontró ningún padre inactivo.");
                 break;
         }
 
     }
 
     //METODO AUXILIAR PARA LEER POR FILTRADO
-    private void manejarResultadoConsulta(ArrayList<Usuario> usuariosEncontrados, String mensajeError) {
-        if (!usuariosEncontrados.isEmpty()) {
-            llenarTablaConsulta(usuariosEncontrados);
+    private void manejarResultadoConsulta(ArrayList<Padre> padresEncontrados, String mensajeError) {
+        if (!padresEncontrados.isEmpty()) {
+            llenarTablaConsulta(padresEncontrados);
         } else {
             JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -239,13 +244,13 @@ public class padreControlador implements ActionListener {
             String nombreCompleto = form.txtNombres1.getText() + " " + form.txtApellidos.getText();
 
             // Verificar que no exista otro padre con la misma cédula
-            if (consPadres.existePadreConCedula(cedula)) {
+            if (consPadres.existePadreConCedula(cedula, Integer.parseInt(form.txtCodigo.getText()))) {
                 JOptionPane.showMessageDialog(null, "Ya existe un padre registrado con la misma cédula.", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
 
             // Verificar que no exista otro padre con el mismo nombre completo
-            if (consPadres.existePadreConNombreCompleto(nombreCompleto)) {
+            if (consPadres.existePadreConNombreCompleto(nombreCompleto, Integer.parseInt(form.txtCodigo.getText()))) {
                 JOptionPane.showMessageDialog(null, "Ya existe un padre registrado con el mismo nombre completo.", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
@@ -302,13 +307,13 @@ public class padreControlador implements ActionListener {
     //LIMPIAR
     public void limpiar() {
         form.txtCodigo.setText("");
-        form.txtIdentidad.setText("");
+        form.txtNombres1.setText("");
         form.txtApellidos.setText("");
         form.txtTelefono.setText(null);
         form.txtIdentidad.setText("");
         form.txtDireccion.setText("");
         form.cbGenero.setSelectedIndex(0);
-        modelo = (DefaultTableModel) form.tbl_usuarios.getModel();
+        modelo = (DefaultTableModel) form.tbl_padres.getModel();
         modelo.setRowCount(0);
     }
 
@@ -358,20 +363,24 @@ public class padreControlador implements ActionListener {
     }
 
     //LENNAR TABLA DEL FORMULARIO DE CONSULTAS:
-    public void llenarTablaConsulta(ArrayList<Usuario> listaUsuarios) {
-        modelo = (DefaultTableModel) formConsPadres.tbl_usuarios.getModel();
+    public void llenarTablaConsulta(ArrayList<Padre> listaPadres) {
+        modelo = (DefaultTableModel) formConsPadres.tbl_consulta.getModel();
         modelo.setRowCount(0);
-        int registros = listaUsuarios.size();
+        int registros = listaPadres.size();
         for (int i = 0; i < registros; i++) {
-            Usuario usuarioTemporal = listaUsuarios.get(i);
+            Padre padreTemporal = listaPadres.get(i);
 
-            datos[0] = usuarioTemporal.getCodigo();
-            datos[1] = usuarioTemporal.getNombre();
-            datos[2] = usuarioTemporal.getRol();
-            datos[3] = usuarioTemporal.getEstado();
+            datos[0] = padreTemporal.getId();
+            datos[1] = padreTemporal.getNombreCompleto();
+            datos[2] = padreTemporal.getGenero();
+            datos[3] = padreTemporal.getCedula();
+            datos[4] = padreTemporal.getTelefono();
+            datos[5] = padreTemporal.getDireccion();
+            datos[6] = padreTemporal.getEstado();
+            
             modelo.addRow(datos);
         }
-        formConsPadres.tbl_usuarios.setModel(modelo);
+        formConsPadres.tbl_consulta.setModel(modelo);
     }
 
     

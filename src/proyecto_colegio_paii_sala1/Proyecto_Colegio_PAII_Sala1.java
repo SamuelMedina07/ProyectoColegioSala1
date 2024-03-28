@@ -7,11 +7,16 @@ package proyecto_colegio_paii_sala1;
 
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
+import controlador.padreControlador;
 import controlador.usuarioControlador;
+import modelo.ConsultaPadres;
 import modelo.ConsultaUsuarios;
+import modelo.Padre;
 import modelo.Usuario;
+import vista.frm_Consulta_Padres;
 import vista.frm_Consulta_Usuarios;
 import vista.frm_Inicio;
+import vista.frm_Padres;
 import vista.frm_Principal;
 import vista.frm_Usuarios;
 import vista.frm_login;
@@ -45,9 +50,15 @@ public class Proyecto_Colegio_PAII_Sala1 {
         ConsultaUsuarios consUsuario2 = new ConsultaUsuarios();
         usuarioControlador contUsuario = new usuarioControlador(usuario2, formUsuarios, consUsuario2,formConsUsuario);
         
+        //PADRES MVC
+        Padre padre = new Padre();
+        frm_Padres formPadre = new frm_Padres(frm_pri, true, "");
+        ConsultaPadres consPadres = new ConsultaPadres();
+        frm_Consulta_Padres formConsPadres = new frm_Consulta_Padres(formPadre, true);
+        padreControlador contPadre = new padreControlador(padre, formPadre, consPadres, formConsPadres);
         
         //PRINCIPAL
-        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios);
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios,formPadre);
         contPrincipal.inciar();
        
     }

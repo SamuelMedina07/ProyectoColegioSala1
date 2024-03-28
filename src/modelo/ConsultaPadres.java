@@ -149,42 +149,248 @@ public class ConsultaPadres extends Conexion {
     }
 
     //**********************************************************************************************
-    public boolean existePadreConCedula(String cedula) {
+    public boolean existePadreConCedula(String cedula, int idPadre) {
         Connection con = getConnection();
-        sentenciaSQL = "SELECT COUNT(*) FROM tbl_padres WHERE padres_cedula = ?";
+        sentenciaSQL = "SELECT COUNT(*) AS num_padres FROM tbl_padres WHERE padres_cedula = ? AND padres_id <> ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, cedula);
+            ps.setInt(2, idPadre);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int numPadres = rs.getInt("num_padres");
+                return numPadres > 0;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al verificar cédula: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return false;
+    }
+
+    public boolean existePadreConNombreCompleto(String nombreCompleto, int idPadre) {
+        Connection con = getConnection();
+         sentenciaSQL = "SELECT COUNT(*) AS num_padres FROM tbl_padres WHERE padres_nombreCompleto = ? AND padres_id <> ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, nombreCompleto);
+            ps.setInt(2, idPadre);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int numPadres = rs.getInt("num_padres");
+                return numPadres > 0; // Si hay algún padre con el mismo nombre completo, devuelve true
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al verificar nombre completo: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return false; // Si no se puede realizar la verificación, devuelve false
+    }
+
+    //***********************************************************
+    public int obtenerSiguienteCodigo() {
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT MAX(padres_id) AS max_codigo FROM tbl_padres";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int ultimoCodigo = rs.getInt("max_codigo");
+                return ultimoCodigo + 1; // Devuelve el siguiente código disponible
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener el siguiente código: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return 1; // Si no se puede obtener el siguiente código, devuelve 1 como valor predeterminado
+    }
+
+    public Padre obtenerPadreSegunId(int id) {
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_padres WHERE padres_id=?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                padre = new Padre();
+                padre.setId(rs.getInt("padres_id"));
+                padre.setNombreCompleto(rs.getString("padres_nombreCompleto"));
+                padre.setGenero(rs.getString("padres_genero"));
+                padre.setCedula(rs.getString("padres_cedula"));
+                padre.setTelefono(rs.getString("padres_telefono"));
+                padre.setDireccion(rs.getString("padres_direccion"));
+                padre.setEstado(rs.getString("padres_estado"));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener padre según ID: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return padre;
+    }
+
+    public ArrayList<Padre> buscarPadresPorNombre(String nombre) {
+        ArrayList<Padre> padresEncontrados = new ArrayList<>();
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_padres WHERE padres_nombreCompleto LIKE ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, "%" + nombre + "%");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                padre = new Padre();
+                padre.setId(rs.getInt("padres_id"));
+                padre.setNombreCompleto(rs.getString("padres_nombreCompleto"));
+                padre.setGenero(rs.getString("padres_genero"));
+                padre.setCedula(rs.getString("padres_cedula"));
+                padre.setTelefono(rs.getString("padres_telefono"));
+                padre.setDireccion(rs.getString("padres_direccion"));
+                padre.setEstado(rs.getString("padres_estado"));
+                padresEncontrados.add(padre);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar padres por nombre: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return padresEncontrados;
+    }
+
+    public ArrayList<Padre> buscarPadresPorCedula(String cedula) {
+        ArrayList<Padre> padresEncontrados = new ArrayList<>();
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_padres WHERE padres_cedula = ?";
+
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, cedula);
             rs = ps.executeQuery();
-            if (rs.next()) {
-                int count = rs.getInt(1);
-                return count > 0; // Devuelve true si hay al menos un padre con la misma cédula
+
+            while (rs.next()) {
+                padre = new Padre();
+                padre.setId(rs.getInt("padres_id"));
+                padre.setNombreCompleto(rs.getString("padres_nombreCompleto"));
+                padre.setGenero(rs.getString("padres_genero"));
+                padre.setCedula(rs.getString("padres_cedula"));
+                padre.setTelefono(rs.getString("padres_telefono"));
+                padre.setDireccion(rs.getString("padres_direccion"));
+                padre.setEstado(rs.getString("padres_estado"));
+                padresEncontrados.add(padre);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al verificar la cédula del padre: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al buscar padres por cédula: " + ex.getMessage());
         } finally {
             closeConnection(con);
         }
-        return false; // Retorna false si no se pudo realizar la consulta correctamente
+
+        return padresEncontrados;
     }
 
-    public boolean existePadreConNombreCompleto(String nombreCompleto) {
+    public ArrayList<Padre> buscarPadresPorGenero(String genero) {
+        ArrayList<Padre> padresEncontrados = new ArrayList<>();
         Connection con = getConnection();
-        sentenciaSQL = "SELECT COUNT(*) FROM tbl_padres WHERE padres_nombreCompleto = ?";
+        sentenciaSQL = "SELECT * FROM tbl_padres WHERE padres_genero LIKE ?";
+
         try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setString(1, nombreCompleto);
+            ps.setString(1, "%" + genero + "%");
             rs = ps.executeQuery();
-            if (rs.next()) {
-                int count = rs.getInt(1);
-                return count > 0; // Devuelve true si hay al menos un padre con el mismo nombre completo
+
+            while (rs.next()) {
+                padre = new Padre();
+                padre.setId(rs.getInt("padres_id"));
+                padre.setNombreCompleto(rs.getString("padres_nombreCompleto"));
+                padre.setGenero(rs.getString("padres_genero"));
+                padre.setCedula(rs.getString("padres_cedula"));
+                padre.setTelefono(rs.getString("padres_telefono"));
+                padre.setDireccion(rs.getString("padres_direccion"));
+                padre.setEstado(rs.getString("padres_estado"));
+                padresEncontrados.add(padre);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al verificar el nombre completo del padre: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al buscar padres por género: " + ex.getMessage());
         } finally {
             closeConnection(con);
         }
-        return false; // Retorna false si no se pudo realizar la consulta correctamente
+
+        return padresEncontrados;
+    }
+
+    public ArrayList<Padre> buscarPadresActivos() {
+        ArrayList<Padre> padresActivos = new ArrayList<>();
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_padres WHERE padres_estado = 'Activo'";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                padre = new Padre();
+                padre.setId(rs.getInt("padres_id"));
+                padre.setNombreCompleto(rs.getString("padres_nombreCompleto"));
+                padre.setGenero(rs.getString("padres_genero"));
+                padre.setCedula(rs.getString("padres_cedula"));
+                padre.setTelefono(rs.getString("padres_telefono"));
+                padre.setDireccion(rs.getString("padres_direccion"));
+                padre.setEstado(rs.getString("padres_estado"));
+                padresActivos.add(padre);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar padres activos: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return padresActivos;
+    }
+
+    public ArrayList<Padre> buscarPadresInactivos() {
+        ArrayList<Padre> padresInactivos = new ArrayList<>();
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_padres WHERE padres_estado = 'Inactivo'";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                padre = new Padre();
+                padre.setId(rs.getInt("padres_id"));
+                padre.setNombreCompleto(rs.getString("padres_nombreCompleto"));
+                padre.setGenero(rs.getString("padres_genero"));
+                padre.setCedula(rs.getString("padres_cedula"));
+                padre.setTelefono(rs.getString("padres_telefono"));
+                padre.setDireccion(rs.getString("padres_direccion"));
+                padre.setEstado(rs.getString("padres_estado"));
+                padresInactivos.add(padre);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar padres inactivos: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return padresInactivos;
     }
 
 }

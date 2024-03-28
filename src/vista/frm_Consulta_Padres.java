@@ -33,7 +33,7 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_usuarios = new javax.swing.JTable();
+        tbl_consulta = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -68,7 +68,7 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "USUARIOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        tbl_usuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_consulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -76,7 +76,7 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
                 "CODIGO", "NOMBRE COMPLETO", "GENERO", "IDENTIDAD", "TELEFONO", "DIRECCION", "ESTADO"
             }
         ));
-        jScrollPane1.setViewportView(tbl_usuarios);
+        jScrollPane1.setViewportView(tbl_consulta);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,7 +97,7 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("POR:");
 
-        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "USUARIO", "ROL", "ACTIVOS", "INACTIVOS" }));
+        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NOMBRE", "IDENTIDAD", "GENERO", "ACTIVOS", "INACTIVOS" }));
 
         btn_buscarPor.setText("B");
         btn_buscarPor.setBorder(null);
@@ -223,7 +223,7 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tbl_usuarios;
+    public javax.swing.JTable tbl_consulta;
     public javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
