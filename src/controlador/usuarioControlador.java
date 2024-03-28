@@ -159,6 +159,8 @@ public class usuarioControlador implements ActionListener {
             if (consUsuario.eliminarUsuario(usuario)) {
                 limpiar();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN USUARIO.", "Informacioin", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -231,7 +233,7 @@ public class usuarioControlador implements ActionListener {
     private boolean validarYVerificarUsuario() {
         if (validarCamposNoVacios() && verificarContras()) {
             String nombreUsuario = form.txtNombre1.getText();
-            if (consUsuario.existeUsuario(nombreUsuario)) {
+            if (consUsuario.existeUsuario(nombreUsuario, Integer.parseInt(form.txtCodigo.getText()))) {
                 JOptionPane.showMessageDialog(null, "El nombre de usuario ya está en uso. Por favor, elija otro.", "Error", JOptionPane.ERROR_MESSAGE);
                 return false; // No se puede guardar o modificar porque el nombre de usuario ya existe
             } else {

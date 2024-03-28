@@ -143,7 +143,7 @@ public class ConsultaUsuarios extends Conexion {
         }
     }
 
-    //**********************************
+    //**********************************VERIFICACIONES
     public boolean verificarCredenciales(String nombreUsuario, String contrasena) {
         Connection con = getConnection();
         sentenciaSQL = "SELECT * FROM tbl_usuarios WHERE usuario_nombre = ? AND usuario_contrasena = ? AND usuario_estado = 'Activo' ";
@@ -162,25 +162,27 @@ public class ConsultaUsuarios extends Conexion {
         }
     }
 
-    public boolean existeUsuario(String nombreUsuario) {
-        Connection con = getConnection();
-        sentenciaSQL = "SELECT COUNT(*) FROM tbl_usuarios WHERE usuario_nombre = ?";
-        try {
-            ps = con.prepareStatement(sentenciaSQL);
-            ps.setString(1, nombreUsuario);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                int count = rs.getInt(1);
-                return count > 0;//devolvera true si la condicion es verdadera
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al verificar usuario: " + ex.getMessage());
-        } finally {
-            closeConnection(con);
+    public boolean existeUsuario(String nombreUsuario, int codigoUsuario) {
+    Connection con = getConnection();
+    sentenciaSQL = "SELECT COUNT(*) FROM tbl_usuarios WHERE usuario_nombre = ? AND usuario_codigo != ?";
+    try {
+        ps = con.prepareStatement(sentenciaSQL);
+        ps.setString(1, nombreUsuario);
+        ps.setInt(2, codigoUsuario);
+        rs = ps.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0; // Devolverá true si la condición es verdadera
         }
-        return false;
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al verificar usuario: " + ex.getMessage());
+    } finally {
+        closeConnection(con);
     }
+    return false;
+}
 
+    //***********************************BUSQUEDAS
     public int obtenerSiguienteCodigo() {
         Connection con = getConnection();
         sentenciaSQL = "SELECT MAX(usuario_codigo) AS max_codigo FROM tbl_usuarios";

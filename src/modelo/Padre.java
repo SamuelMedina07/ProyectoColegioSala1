@@ -10,7 +10,8 @@ package modelo;
  * @author ammcp
  */
 public class Padre {
-     private int id;
+
+    private int id;
     private String nombreCompleto;
     private String genero;
     private String cedula;
@@ -18,9 +19,10 @@ public class Padre {
     private String direccion;
     private String estado;
 
-    public Padre(){
-        
+    public Padre() {
+
     }
+
     // Constructor
     public Padre(int id, String nombreCompleto, String genero, String cedula, String telefono, String direccion, String estado) {
         this.id = id;
@@ -48,29 +50,36 @@ public class Padre {
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
-    
-     // Método para obtener el nombre
+
+    // Método para obtener el nombre
     public String getNombre() {
-        String[] partesNombre = nombreCompleto.split("\\s+");
-        if (partesNombre.length > 0) {
-            return partesNombre[0]; // Devuelve el primer elemento (nombre)
+        // Dividir el nombre completo en partes usando el espacio como delimitador
+        String[] partesNombre = nombreCompleto.split(" ");
+
+        // Devolver el primer y segundo nombre, si están disponibles
+        if (partesNombre.length >= 2) {
+            return partesNombre[0] + " " + partesNombre[1];
+        } else if (partesNombre.length == 1) {
+            return partesNombre[0]; // Devolver solo el primer nombre si no hay segundo nombre
         } else {
-            return ""; // Si no hay nombres, devuelve una cadena vacía
+            return ""; // Devolver cadena vacía si no hay nombres
         }
     }
-    
+
     // Método para obtener los apellidos
     public String getApellidos() {
-        String[] partesNombre = nombreCompleto.split("\\s+");
-        if (partesNombre.length > 1) {
-            // Concatenamos los elementos desde el segundo hasta el último (apellidos)
+        // Dividir el nombre completo en partes usando el espacio como delimitador
+        String[] partesNombre = nombreCompleto.split(" ");
+
+        // Concatenar los apellidos si hay más de dos partes
+        if (partesNombre.length > 2) {
             StringBuilder apellidos = new StringBuilder();
-            for (int i = 1; i < partesNombre.length; i++) {
+            for (int i = 2; i < partesNombre.length; i++) {
                 apellidos.append(partesNombre[i]).append(" ");
             }
-            return apellidos.toString().trim(); // Devuelve los apellidos sin espacios adicionales
+            return apellidos.toString().trim();
         } else {
-            return ""; // Si no hay apellidos, devuelve una cadena vacía
+            return ""; // Devolver cadena vacía si no hay apellidos
         }
     }
 
@@ -117,14 +126,14 @@ public class Padre {
     // Método toString para representar el objeto como una cadena
     @Override
     public String toString() {
-        return "Padre{" +
-                "id=" + id +
-                ", nombreCompleto='" + nombreCompleto + '\'' +
-                ", genero='" + genero + '\'' +
-                ", cedula='" + cedula + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", estado='" + estado + '\'' +
-                '}';
+        return "Padre{"
+                + "id=" + id
+                + ", nombreCompleto='" + nombreCompleto + '\''
+                + ", genero='" + genero + '\''
+                + ", cedula='" + cedula + '\''
+                + ", telefono='" + telefono + '\''
+                + ", direccion='" + direccion + '\''
+                + ", estado='" + estado + '\''
+                + '}';
     }
 }

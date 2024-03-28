@@ -162,6 +162,8 @@ public class padreControlador implements ActionListener {
             if (consPadres.eliminarPadre(padre)) {
                 limpiar();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN PADRE.", "Informacioin", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -302,7 +304,6 @@ public class padreControlador implements ActionListener {
         return camposValidos;
     }
 
-
     //METODOS DE CONFIGURACION ********************************************************************************
     //LIMPIAR
     public void limpiar() {
@@ -322,6 +323,7 @@ public class padreControlador implements ActionListener {
         Color colorResaltado = new Color(219, 52, 52);
         campo.setBackground(colorResaltado);
     }
+
     //PARA EL TEXT AREA
     private void resaltarCampoVacio(JTextArea txtDireccion) {
         Color colorResaltado = new Color(219, 52, 52);
@@ -377,12 +379,10 @@ public class padreControlador implements ActionListener {
             datos[4] = padreTemporal.getTelefono();
             datos[5] = padreTemporal.getDireccion();
             datos[6] = padreTemporal.getEstado();
-            
+
             modelo.addRow(datos);
         }
         formConsPadres.tbl_consulta.setModel(modelo);
     }
-
-    
 
 }
