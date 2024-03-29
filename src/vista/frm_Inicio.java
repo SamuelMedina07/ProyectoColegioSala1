@@ -6,8 +6,11 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,6 +25,7 @@ public class frm_Inicio extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         iniciarBarra(frmLogin);
+ 
     }
 
    public void iniciarBarra(frm_login frmLogin){
@@ -31,14 +35,17 @@ public class frm_Inicio extends javax.swing.JFrame {
              for(int i=1; i<=100; i++){
                  try {
                      Thread.sleep(50);//milisegundos
-                     lblTitulo.setText("Cargando...");
+                     lblTitulo.setText("CARGANDO...");
                      barra.setValue(i);
-                     if(i ==50){
+                     ReajsuteImagen("LogoBosquesSinFondoCorto.png");
+                     if(i >=50){
                          barra.setForeground(Color.yellow);
+                         ReajsuteImagen("LogoBosquesSinFondoMedio.png");
                      }
-                     if(i ==90){
+                     if(i >=85){
                          barra.setForeground(Color.green);
-                         lblTitulo.setText("Listo");
+                         lblTitulo.setText("BIENVENIDO");
+                         ReajsuteImagen("LogoBosquesSinFondo.png");
                      }
                  } catch (InterruptedException ex) {
                      Logger.getLogger(frm_Inicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,6 +57,18 @@ public class frm_Inicio extends javax.swing.JFrame {
        };
        hilo.start();
    }
+   
+     public void ReajsuteImagen(String nombreImagen)
+    {
+         ImageIcon imagen;
+    Icon icono;
+    
+        imagen = new ImageIcon("src/imagenes/"+nombreImagen);
+        icono = new ImageIcon(imagen.getImage().getScaledInstance(jlbCarga.getWidth(),jlbCarga.getHeight(),Image.SCALE_DEFAULT));
+        jlbCarga.setIcon(icono); 
+    
+    }
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,24 +76,28 @@ public class frm_Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         barra = new javax.swing.JProgressBar();
         lblTitulo = new javax.swing.JLabel();
+        jlbCarga = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(241, 250, 255));
         jPanel1.setLayout(null);
 
-        barra.setBackground(new java.awt.Color(0, 0, 0));
-        barra.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        barra.setForeground(new java.awt.Color(255, 204, 102));
+        barra.setBackground(new java.awt.Color(241, 250, 255));
+        barra.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        barra.setForeground(new java.awt.Color(255, 204, 204));
+        barra.setBorder(new javax.swing.border.MatteBorder(null));
         barra.setStringPainted(true);
         jPanel1.add(barra);
         barra.setBounds(20, 200, 210, 32);
 
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setForeground(new java.awt.Color(0, 130, 90));
         jPanel1.add(lblTitulo);
         lblTitulo.setBounds(100, 170, 100, 30);
+        jPanel1.add(jlbCarga);
+        jlbCarga.setBounds(80, 60, 92, 92);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 300));
 
@@ -86,6 +109,7 @@ public class frm_Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barra;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jlbCarga;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
