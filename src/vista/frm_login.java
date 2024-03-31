@@ -102,9 +102,14 @@ public class frm_login extends javax.swing.JFrame {
         jPanel1.add(jPanel3);
         jPanel3.setBounds(50, 260, 190, 40);
 
-        btnCancelar.setText("CANCELAR");
+        btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalir.png"))); // NOI18N
+        btnCancelar.setBorder(null);
+        btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
+        btnCancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
+        btnCancelar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
         jPanel1.add(btnCancelar);
-        btnCancelar.setBounds(50, 400, 190, 32);
+        btnCancelar.setBounds(50, 390, 190, 32);
 
         btnIngresar.setBackground(new java.awt.Color(241, 250, 255));
         btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAcceso.png"))); // NOI18N
