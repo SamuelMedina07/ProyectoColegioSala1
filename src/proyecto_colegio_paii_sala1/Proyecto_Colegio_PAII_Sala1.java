@@ -5,6 +5,7 @@
  */
 package proyecto_colegio_paii_sala1;
 
+import animacionesdiseno.login;
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
 import controlador.padreControlador;
@@ -38,6 +39,9 @@ public class Proyecto_Colegio_PAII_Sala1 {
         frm_login formLogin = new frm_login();
         ConsultaUsuarios consUsuario = new ConsultaUsuarios();
         LoginControlador contLogin = new LoginControlador(usuario, formLogin, consUsuario,frm_pri);
+        //Animacion&Diseño
+        login disenologin = new login(formLogin);
+        
         
         //INICIO
         frm_Inicio formInicio = new frm_Inicio(formLogin);

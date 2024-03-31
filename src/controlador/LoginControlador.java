@@ -1,10 +1,8 @@
 package controlador;
 
-import java.awt.Image;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.ConsultaUsuarios;
 import modelo.Usuario;
@@ -25,7 +23,7 @@ public class LoginControlador implements ActionListener {
         this.formPrincipal = formPrincipal;
         this.formUsuario.btnIngresar.addActionListener(this);
         this.formUsuario.btnCancelar.addActionListener(this);
-        ReajsuteImagen("LogoBosquesSinFondo.png");
+
 
     }
 
@@ -51,17 +49,6 @@ public class LoginControlador implements ActionListener {
             JOptionPane.showMessageDialog(null, "Credenciales incorrectas. Inténtalo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-      public void ReajsuteImagen(String nombreImagen)
-    {
-         ImageIcon imagen;
-    Icon icono;
-    
-        imagen = new ImageIcon("src/imagenes/"+nombreImagen);
-        icono = new ImageIcon(imagen.getImage().getScaledInstance(formUsuario.jlbLogo.getWidth(),formUsuario.jlbLogo.getHeight(),Image.SCALE_DEFAULT));
-        formUsuario.jlbLogo.setIcon(icono); 
-    
-    }
-    
+      
    
 }
