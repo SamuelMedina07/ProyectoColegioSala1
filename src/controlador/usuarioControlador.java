@@ -129,6 +129,7 @@ public class usuarioControlador implements ActionListener {
         //BOTON SALIR
         if (e.getSource() == form.btnSalir) {
             this.form.dispose();
+             
         }
     }
 
