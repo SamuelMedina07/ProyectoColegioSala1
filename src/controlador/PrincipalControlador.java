@@ -20,14 +20,17 @@ public class PrincipalControlador implements ActionListener{
     private frm_Usuarios frmUsuarios;
     private frm_Padres formPadres;
 
+ 
+
     public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
-        
+      
         this.formPrin.btnUsuarios.addActionListener(this);
         this.formPrin.btnPadres.addActionListener(this);
         this.formPrin.btnSalir.addActionListener(this);
+ 
     }
     
     public void inciar(){
@@ -48,6 +51,7 @@ public class PrincipalControlador implements ActionListener{
             formPadres.lblUsuario.setText(formPrin.lblUsuario.getText());
             formPadres.setVisible(true);
         }
+       
         //SALIR
         if(e.getSource()==formPrin.btnSalir){
             System.exit(0);

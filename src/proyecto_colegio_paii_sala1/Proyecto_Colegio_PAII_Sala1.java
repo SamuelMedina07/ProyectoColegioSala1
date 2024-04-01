@@ -6,6 +6,7 @@
 package proyecto_colegio_paii_sala1;
 
 import animacionesdiseno.login;
+import animacionesdiseno.usuarios;
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
 import controlador.padreControlador;
@@ -53,6 +54,8 @@ public class Proyecto_Colegio_PAII_Sala1 {
         frm_Consulta_Usuarios formConsUsuario = new frm_Consulta_Usuarios(formUsuarios, true);
         ConsultaUsuarios consUsuario2 = new ConsultaUsuarios();
         usuarioControlador contUsuario = new usuarioControlador(usuario2, formUsuarios, consUsuario2,formConsUsuario);
+        //Animacion&Diseño
+        usuarios disenousuario = new usuarios(formUsuarios);
         
         //PADRES MVC
         Padre padre = new Padre();
