@@ -49,7 +49,8 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         btnReportes1 = new javax.swing.JButton();
-        btnClientes1 = new javax.swing.JButton();
+        btnGrados = new javax.swing.JButton();
+        btnClientes2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,7 +161,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnPadres);
-        btnPadres.setBounds(210, 210, 160, 50);
+        btnPadres.setBounds(180, 210, 160, 50);
 
         jPanel3.setBackground(new java.awt.Color(204, 0, 0));
 
@@ -200,17 +201,29 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnReportes1);
         btnReportes1.setBounds(10, 280, 160, 50);
 
-        btnClientes1.setBackground(new java.awt.Color(255, 255, 255));
-        btnClientes1.setText("          CLIENTES");
-        btnClientes1.setBorder(null);
-        btnClientes1.setBorderPainted(false);
-        btnClientes1.addActionListener(new java.awt.event.ActionListener() {
+        btnGrados.setBackground(new java.awt.Color(255, 255, 255));
+        btnGrados.setText("          CLIENTES");
+        btnGrados.setBorder(null);
+        btnGrados.setBorderPainted(false);
+        btnGrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientes1ActionPerformed(evt);
+                btnGradosActionPerformed(evt);
             }
         });
-        jPanel2.add(btnClientes1);
-        btnClientes1.setBounds(10, 80, 160, 50);
+        jPanel2.add(btnGrados);
+        btnGrados.setBounds(180, 140, 160, 50);
+
+        btnClientes2.setBackground(new java.awt.Color(255, 255, 255));
+        btnClientes2.setText("          CLIENTES");
+        btnClientes2.setBorder(null);
+        btnClientes2.setBorderPainted(false);
+        btnClientes2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientes2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnClientes2);
+        btnClientes2.setBounds(10, 80, 160, 50);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -273,9 +286,13 @@ public class frm_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReportes1ActionPerformed
 
-    private void btnClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientes1ActionPerformed
+    private void btnGradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGradosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClientes1ActionPerformed
+    }//GEN-LAST:event_btnGradosActionPerformed
+
+    private void btnClientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientes2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClientes2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,7 +333,8 @@ public class frm_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnClientes1;
+    public javax.swing.JButton btnClientes2;
+    public javax.swing.JButton btnGrados;
     public javax.swing.JButton btnPadres;
     public javax.swing.JButton btnProductos;
     public javax.swing.JButton btnProveedores;

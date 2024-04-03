@@ -7,6 +7,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import vista.frm_Grados;
 import vista.frm_Principal;
 import vista.frm_Usuarios;
 import vista.frm_Padres;
@@ -19,17 +20,20 @@ public class PrincipalControlador implements ActionListener{
     private frm_Principal formPrin;
     private frm_Usuarios frmUsuarios;
     private frm_Padres formPadres;
+    private frm_Grados formGrados;
 
  
 
-    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres) {
+    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
-      
+        this.formGrados = formGrados;
+        
         this.formPrin.btnUsuarios.addActionListener(this);
         this.formPrin.btnPadres.addActionListener(this);
         this.formPrin.btnSalir.addActionListener(this);
+        this.formPrin.btnGrados.addActionListener(this);
  
     }
     
@@ -37,6 +41,7 @@ public class PrincipalControlador implements ActionListener{
         formPrin.setLocationRelativeTo(null);
         frmUsuarios.setLocationRelativeTo(null);
         formPadres.setLocationRelativeTo(null);
+        formGrados.setLocationRelativeTo(null);
     }
 
     @Override
@@ -51,7 +56,11 @@ public class PrincipalControlador implements ActionListener{
             formPadres.lblUsuario.setText(formPrin.lblUsuario.getText());
             formPadres.setVisible(true);
         }
-       
+       //GRADOS
+       if(e.getSource()==formPrin.btnGrados){
+            formPadres.lblUsuario.setText(formPrin.lblUsuario.getText());
+            formGrados.setVisible(true);
+        }
         //SALIR
         if(e.getSource()==formPrin.btnSalir){
             System.exit(0);

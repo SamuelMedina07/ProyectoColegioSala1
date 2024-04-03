@@ -43,7 +43,7 @@ public class frm_Grados extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbl_usuarios = new javax.swing.JTable();
+        tbl_registros = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         btnCrear = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
@@ -57,9 +57,7 @@ public class frm_Grados extends javax.swing.JDialog {
         lblUsuario = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        cbUsuarios = new javax.swing.JComboBox<>();
+        txtNombre = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -72,7 +70,7 @@ public class frm_Grados extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)), "Grados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(204, 0, 0))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbl_usuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_registros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -80,7 +78,7 @@ public class frm_Grados extends javax.swing.JDialog {
                 "CODIGO", "USUARIO", "ROL"
             }
         ));
-        jScrollPane2.setViewportView(tbl_usuarios);
+        jScrollPane2.setViewportView(tbl_registros);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 150));
 
@@ -194,24 +192,17 @@ public class frm_Grados extends javax.swing.JDialog {
         jLabel6.setText("NOMBRE");
         jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        txtNombre1.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNombre1MouseClicked(evt);
+                txtNombreMouseClicked(evt);
             }
         });
-        txtNombre1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombre1ActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
-        jPanel6.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 130, 29));
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel7.setText("ESTADO");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
-        cbUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVO", "INACTIVO" }));
-        jPanel6.add(cbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 180, 30));
+        jPanel6.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 130, 29));
 
         btnBuscar.setText("Buscar");
         jPanel6.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 50, 30));
@@ -255,7 +246,7 @@ public class frm_Grados extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(47, 47, 47)
@@ -281,9 +272,9 @@ public class frm_Grados extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombre1ActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
@@ -309,10 +300,10 @@ public class frm_Grados extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtNombre1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombre1MouseClicked
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
         // TODO add your handling code here:
-        AsignarColorCampo(txtNombre1);
-    }//GEN-LAST:event_txtNombre1MouseClicked
+        AsignarColorCampo(txtNombre);
+    }//GEN-LAST:event_txtNombreMouseClicked
 
     /**
      * @param args the command line arguments
@@ -373,9 +364,7 @@ public class frm_Grados extends javax.swing.JDialog {
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnSalir;
-    public javax.swing.JComboBox<String> cbUsuarios;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -384,8 +373,8 @@ public class frm_Grados extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel lblUsuario;
-    public javax.swing.JTable tbl_usuarios;
+    public javax.swing.JTable tbl_registros;
     public javax.swing.JTextField txtCodigo;
-    public javax.swing.JTextField txtNombre1;
+    public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

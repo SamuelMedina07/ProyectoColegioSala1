@@ -21,8 +21,8 @@ public class Grado {
         this.estado = estado;
     }
 
-    Grado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Grado() {
+        
     }
 
     // Getters y setters

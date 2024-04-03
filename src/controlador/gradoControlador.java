@@ -17,6 +17,7 @@ import modelo.ConsultaGrados;
 import modelo.Padre;
 import modelo.ConsultaPadres;
 import modelo.Grado;
+import vista.frm_Consulta_Grados;
 import vista.frm_Consulta_Padres;
 import vista.frm_Grados;
 import vista.frm_Padres;
@@ -29,14 +30,16 @@ public class gradoControlador implements ActionListener {
 
     private Grado grado;
     private frm_Grados formGrados;
+    private frm_Consulta_Grados formConsulta;
     private ConsultaGrados consultaGrados;
     private Object datos[] = new Object[3];
     private DefaultTableModel modelo;
 
-    public gradoControlador(Grado grado, frm_Grados formGrados, ConsultaGrados consultaGrados) {
+    public gradoControlador(Grado grado, frm_Grados formGrados, ConsultaGrados consultaGrados,frm_Consulta_Grados formConsulta) {
         this.grado = grado;
         this.formGrados = formGrados;
         this.consultaGrados = consultaGrados;
+        this.formConsulta = formConsulta;
 
         inicializarComponentes();
     }
@@ -60,7 +63,25 @@ public class gradoControlador implements ActionListener {
     }
 
     private void inicializarBotonBuscar() {
-        formGrados.btnConsultar.addActionListener(this);
+        formConsulta.btn_buscarPor.addActionListener(this);
+        formConsulta.tbl_consulta.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                manejarEventoTablaGrados();
+            }
+        });
+    }
+     private void manejarEventoTablaGrados() {
+        int filaSeleccionada = formConsulta.tbl_consulta.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) formConsulta.tbl_consulta.getModel();
+        if (filaSeleccionada >= 0) {
+            String id = String.valueOf(model.getValueAt(filaSeleccionada, 0));
+            Grado Seleccionado = consultaGrados.obtenerGradoSegunId(Integer.parseInt(id));
+
+            formGrados.txtCodigo.setText(String.valueOf(Seleccionado.getId()));
+            formGrados.txtNombre.setText(String.valueOf(Seleccionado.getNombre()));
+            model.setRowCount(0);
+            formConsulta.dispose();
+        }
     }
 
     @Override
@@ -82,7 +103,7 @@ public class gradoControlador implements ActionListener {
         if (e.getSource() == formGrados.btnBuscar) {
             formGrados.setVisible(true);
         }
-        if (e.getSource() == formGrados.btnConsultar) {
+        if (e.getSource() == formGrados.btnBuscar) {
             consultarGrados();
         }
         if (e.getSource() == formGrados.btnModificar) {
@@ -128,7 +149,7 @@ public class gradoControlador implements ActionListener {
     }
 
     public void llenarTabla() {
-        modelo = (DefaultTableModel) formGrados.tblGrados.getModel();
+        modelo = (DefaultTableModel) formGrados.tbl_registros.getModel();
         modelo.setRowCount(0);
         ArrayList<Grado> listaGrados = consultaGrados.leerTodosGrados();
         for (Grado grado : listaGrados) {
@@ -137,12 +158,12 @@ public class gradoControlador implements ActionListener {
             datos[2] = grado.getEstado();
             modelo.addRow(datos);
         }
-        formGrados.tblGrados.setModel(modelo);
+        formGrados.tbl_registros.setModel(modelo);
     }
 
     public void consultarGrados() {
-        String campoSeleccionado = (String) formGrados.cbBuscarPor.getSelectedItem();
-        String campoBuscar = formGrados.txtBuscar.getText();
+        String campoSeleccionado = (String) formConsulta.cbBuscarPor.getSelectedItem();
+        String campoBuscar = formConsulta.txtBuscar.getText();
 
         switch (campoSeleccionado) {
             case "CÓDIGO":
@@ -205,14 +226,13 @@ public class gradoControlador implements ActionListener {
     public void limpiar() {
         formGrados.txtCodigo.setText(String.valueOf(consultaGrados.obtenerSiguienteCodigo()));
         formGrados.txtNombre.setText("");
-        formGrados.cbEstado.setSelectedIndex(0);
-        modelo = (DefaultTableModel) formGrados.tblGrados.getModel();
+        modelo = (DefaultTableModel) formGrados.tbl_registros.getModel();
         modelo.setRowCount(0);
     }
 
     public void resaltarCampoVacio(JTextField campo) {
         Color colorResaltado = new Color(219, 52, 52);
-        campo.setBackground(colorcampoResaltado);
+        campo.setBackground(colorResaltado);
     }
 
     public void habilitarBotones() {
@@ -243,7 +263,7 @@ public class gradoControlador implements ActionListener {
     }
 
     public void llenarTablaConsulta(ArrayList<Grado> listaGrados) {
-        modelo = (DefaultTableModel) formGrados.tblGrados.getModel();
+        modelo = (DefaultTableModel) formConsulta.tbl_consulta.getModel();
         modelo.setRowCount(0);
         for (Grado grado : listaGrados) {
             datos[0] = grado.getId();
@@ -251,6 +271,6 @@ public class gradoControlador implements ActionListener {
             datos[2] = grado.getEstado();
             modelo.addRow(datos);
         }
-        formGrados.tblGrados.setModel(modelo);
+        formConsulta.tbl_consulta.setModel(modelo);
     }
 }

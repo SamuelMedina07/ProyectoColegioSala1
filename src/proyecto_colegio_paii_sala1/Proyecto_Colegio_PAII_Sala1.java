@@ -9,14 +9,19 @@ import animacionesdiseno.login;
 import animacionesdiseno.usuarios;
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
+import controlador.gradoControlador;
 import controlador.padreControlador;
 import controlador.usuarioControlador;
+import modelo.ConsultaGrados;
 import modelo.ConsultaPadres;
 import modelo.ConsultaUsuarios;
+import modelo.Grado;
 import modelo.Padre;
 import modelo.Usuario;
+import vista.frm_Consulta_Grados;
 import vista.frm_Consulta_Padres;
 import vista.frm_Consulta_Usuarios;
+import vista.frm_Grados;
 import vista.frm_Inicio;
 import vista.frm_Padres;
 import vista.frm_Principal;
@@ -64,8 +69,16 @@ public class Proyecto_Colegio_PAII_Sala1 {
         frm_Consulta_Padres formConsPadres = new frm_Consulta_Padres(formPadre, true);
         padreControlador contPadre = new padreControlador(padre, formPadre, consPadres, formConsPadres);
         
+        //GRADOS MVC
+        Grado grado = new Grado();
+        frm_Grados formGrados = new frm_Grados(frm_pri, true, "");
+        ConsultaGrados consGrados = new ConsultaGrados();
+        frm_Consulta_Grados formConsultaGrados = new frm_Consulta_Grados(formGrados, true);
+        gradoControlador contControlador = new gradoControlador(grado, formGrados, consGrados, formConsultaGrados);
+        
+        
         //PRINCIPAL
-        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios,formPadre);
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios,formPadre,formGrados);
         contPrincipal.inciar();
        
     }
