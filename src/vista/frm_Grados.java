@@ -75,7 +75,7 @@ public class frm_Grados extends javax.swing.JDialog {
 
             },
             new String [] {
-                "CODIGO", "USUARIO", "ROL"
+                "CODIGO", "GRADO", "ESTADO"
             }
         ));
         jScrollPane2.setViewportView(tbl_registros);

@@ -73,7 +73,7 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
 
             },
             new String [] {
-                "CODIGO", "USUARIO", "ROL", "ESTADO"
+                "CODIGO", "GRADO", "ESTADO"
             }
         ));
         jScrollPane1.setViewportView(tbl_consulta);

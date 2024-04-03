@@ -202,7 +202,7 @@ public class frm_Principal extends javax.swing.JFrame {
         btnReportes1.setBounds(10, 280, 160, 50);
 
         btnGrados.setBackground(new java.awt.Color(255, 255, 255));
-        btnGrados.setText("          CLIENTES");
+        btnGrados.setText("GRADOS");
         btnGrados.setBorder(null);
         btnGrados.setBorderPainted(false);
         btnGrados.addActionListener(new java.awt.event.ActionListener() {

@@ -132,26 +132,23 @@ public class ConsultaGrados extends Conexion {
     }
 
 //**********************************************************************************************
-    public boolean existePadreConCedula(String cedula, int idPadre) {
+    public boolean existeGrado(String nombreGrado, int idGrado) {
         Connection con = getConnection();
-        sentenciaSQL = "SELECT COUNT(*) AS num_padres FROM tbl_padres WHERE padres_cedula = ? AND padres_id <> ?";
-
+        sentenciaSQL = "SELECT COUNT(*) FROM tbl_grados WHERE grados_nombre = ? AND grados_id != ?";
         try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setString(1, cedula);
-            ps.setInt(2, idPadre);
+            ps.setString(1, nombreGrado);
+            ps.setInt(2, idGrado);
             rs = ps.executeQuery();
-
             if (rs.next()) {
-                int numPadres = rs.getInt("num_padres");
-                return numPadres > 0;
+                int count = rs.getInt(1);
+                return count > 0; // Devolverá true si la condición es verdadera
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al verificar cédula: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al verificar la existencia del grado: " + ex.getMessage());
         } finally {
             closeConnection(con);
         }
-
         return false;
     }
 

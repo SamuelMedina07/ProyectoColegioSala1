@@ -35,7 +35,7 @@ public class gradoControlador implements ActionListener {
     private Object datos[] = new Object[3];
     private DefaultTableModel modelo;
 
-    public gradoControlador(Grado grado, frm_Grados formGrados, ConsultaGrados consultaGrados,frm_Consulta_Grados formConsulta) {
+    public gradoControlador(Grado grado, frm_Grados formGrados, ConsultaGrados consultaGrados, frm_Consulta_Grados formConsulta) {
         this.grado = grado;
         this.formGrados = formGrados;
         this.consultaGrados = consultaGrados;
@@ -70,7 +70,8 @@ public class gradoControlador implements ActionListener {
             }
         });
     }
-     private void manejarEventoTablaGrados() {
+
+    private void manejarEventoTablaGrados() {
         int filaSeleccionada = formConsulta.tbl_consulta.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) formConsulta.tbl_consulta.getModel();
         if (filaSeleccionada >= 0) {
@@ -101,9 +102,9 @@ public class gradoControlador implements ActionListener {
             llenarTabla();
         }
         if (e.getSource() == formGrados.btnBuscar) {
-            formGrados.setVisible(true);
+            formConsulta.setVisible(true);
         }
-        if (e.getSource() == formGrados.btnBuscar) {
+        if (e.getSource() == formConsulta.btn_buscarPor) {
             consultarGrados();
         }
         if (e.getSource() == formGrados.btnModificar) {
@@ -166,7 +167,7 @@ public class gradoControlador implements ActionListener {
         String campoBuscar = formConsulta.txtBuscar.getText();
 
         switch (campoSeleccionado) {
-            case "CÓDIGO":
+            case "ID":
                 try {
                     int idGrado = Integer.parseInt(campoBuscar);
                     Grado gradoEncontrado = consultaGrados.obtenerGradoSegunId(idGrado);
@@ -203,8 +204,17 @@ public class gradoControlador implements ActionListener {
 
     private boolean validarYVerificarGrado() {
         if (validarCamposNoVacios()) {
-            grado.setNombre(formGrados.txtNombre.getText());
+            grado.setId(Integer.parseInt(formGrados.txtCodigo.getText()));
+            String nombreGrado = formGrados.txtNombre.getText().toUpperCase(); // Convertir el nombre del grado a mayúsculas
+            grado.setNombre(nombreGrado);
             grado.setEstado("Activo");
+
+            // Verificar si el grado ya existe en la base de datos
+            if (consultaGrados.existeGrado(nombreGrado, grado.getId())) {
+                JOptionPane.showMessageDialog(null, "Ya existe un grado con el mismo nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
             return true;
         }
         return false;
@@ -224,7 +234,7 @@ public class gradoControlador implements ActionListener {
     }
 
     public void limpiar() {
-        formGrados.txtCodigo.setText(String.valueOf(consultaGrados.obtenerSiguienteCodigo()));
+        formGrados.txtCodigo.setText("");
         formGrados.txtNombre.setText("");
         modelo = (DefaultTableModel) formGrados.tbl_registros.getModel();
         modelo.setRowCount(0);
