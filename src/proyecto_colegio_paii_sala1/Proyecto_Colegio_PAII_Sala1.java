@@ -10,19 +10,24 @@ import animacionesdiseno.usuarios;
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
 import controlador.gradoControlador;
+import controlador.materiaControlador;
 import controlador.padreControlador;
 import controlador.usuarioControlador;
 import modelo.ConsultaGrados;
+import modelo.ConsultaMaterias;
 import modelo.ConsultaPadres;
 import modelo.ConsultaUsuarios;
 import modelo.Grado;
+import modelo.Materia;
 import modelo.Padre;
 import modelo.Usuario;
 import vista.frm_Consulta_Grados;
+import vista.frm_Consulta_Materias;
 import vista.frm_Consulta_Padres;
 import vista.frm_Consulta_Usuarios;
 import vista.frm_Grados;
 import vista.frm_Inicio;
+import vista.frm_Materias;
 import vista.frm_Padres;
 import vista.frm_Principal;
 import vista.frm_Usuarios;
@@ -76,9 +81,15 @@ public class Proyecto_Colegio_PAII_Sala1 {
         frm_Consulta_Grados formConsultaGrados = new frm_Consulta_Grados(formGrados, true);
         gradoControlador contControlador = new gradoControlador(grado, formGrados, consGrados, formConsultaGrados);
         
+         //MATERIAS MVC
+        Materia materia = new Materia();
+        frm_Materias formMaterias= new frm_Materias(frm_pri, true, "");
+        ConsultaMaterias consMaterias = new ConsultaMaterias();
+        frm_Consulta_Materias formConsultaMaterias = new frm_Consulta_Materias(formMaterias, true);
+        materiaControlador contMateria = new materiaControlador(materia, formMaterias, consMaterias, formConsultaMaterias);
         
         //PRINCIPAL
-        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios,formPadre,formGrados);
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios,formPadre,formGrados,formMaterias);
         contPrincipal.inciar();
        
     }

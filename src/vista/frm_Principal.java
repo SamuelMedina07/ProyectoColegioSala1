@@ -41,7 +41,7 @@ public class frm_Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
-        btnProveedores = new javax.swing.JButton();
+        btnMaterias = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
         btnUsuarios = new javax.swing.JButton();
@@ -103,17 +103,17 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnSalir);
         btnSalir.setBounds(10, 330, 160, 50);
 
-        btnProveedores.setBackground(new java.awt.Color(255, 255, 255));
-        btnProveedores.setText("   PROVEEDORES");
-        btnProveedores.setBorder(null);
-        btnProveedores.setBorderPainted(false);
-        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+        btnMaterias.setBackground(new java.awt.Color(255, 255, 255));
+        btnMaterias.setText("MATERIAS");
+        btnMaterias.setBorder(null);
+        btnMaterias.setBorderPainted(false);
+        btnMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProveedoresActionPerformed(evt);
+                btnMateriasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnProveedores);
-        btnProveedores.setBounds(10, 130, 160, 50);
+        jPanel2.add(btnMaterias);
+        btnMaterias.setBounds(380, 140, 160, 50);
 
         btnProductos.setBackground(new java.awt.Color(255, 255, 255));
         btnProductos.setText("      PRODUCTOS");
@@ -262,9 +262,9 @@ public class frm_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+    private void btnMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnProveedoresActionPerformed
+    }//GEN-LAST:event_btnMateriasActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
@@ -335,9 +335,9 @@ public class frm_Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnClientes2;
     public javax.swing.JButton btnGrados;
+    public javax.swing.JButton btnMaterias;
     public javax.swing.JButton btnPadres;
     public javax.swing.JButton btnProductos;
-    public javax.swing.JButton btnProveedores;
     public javax.swing.JButton btnReportes1;
     public javax.swing.JButton btnSalir;
     public javax.swing.JButton btnUsuarios;
