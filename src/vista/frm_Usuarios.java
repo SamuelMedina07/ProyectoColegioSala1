@@ -26,7 +26,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
     
     public void AsignarColorCampo(JTextField campo){
         //Color colorResaltado = new Color(219, 52, 52);
-        Color color = Color.white;
+        Color color = new Color(241,250,255);
         campo.setBackground(color);
     }
 
@@ -143,7 +143,10 @@ public class frm_Usuarios extends javax.swing.JDialog {
         jPanel6.add(cbUsuarios);
         cbUsuarios.setBounds(90, 190, 160, 30);
 
+        btnBuscar.setBackground(new java.awt.Color(241, 250, 255));
+        btnBuscar.setForeground(new java.awt.Color(0, 130, 90));
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 1, true));
         jPanel6.add(btnBuscar);
         btnBuscar.setBounds(260, 10, 80, 30);
 
@@ -155,7 +158,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtVerificarContra);
-        txtVerificarContra.setBounds(110, 140, 140, 40);
+        txtVerificarContra.setBounds(110, 140, 140, 30);
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 130, 90));
@@ -199,7 +202,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtCodigo);
-        txtCodigo.setBounds(180, 10, 80, 29);
+        txtCodigo.setBounds(140, 10, 120, 29);
         jPanel6.add(jSeparator1);
         jSeparator1.setBounds(20, 80, 230, 2);
         jPanel6.add(jSeparator2);

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import vista.frm_Consulta_Usuarios;
 import vista.frm_Usuarios;
 
 /**
@@ -20,10 +21,12 @@ import vista.frm_Usuarios;
 public class usuarios implements ActionListener{
     
      private frm_Usuarios formUsuarios;
+     private frm_Consulta_Usuarios formConsUsuario;
      
      
-       public usuarios(frm_Usuarios formUsuarios) {
+       public usuarios(frm_Usuarios formUsuarios,frm_Consulta_Usuarios formConsUsuario) {
         this.formUsuarios = formUsuarios;
+        this.formConsUsuario =formConsUsuario;
         formUsuarios.btnOpciones.addActionListener(this);
         ReajsuteImagen("LogoBosquesSinFondo.png");
 
@@ -34,12 +37,15 @@ public class usuarios implements ActionListener{
        public void ReajsuteImagen(String nombreImagen)
     {
          ImageIcon imagen;
-    Icon icono;
+         Icon icono,icono2;
     
+           
+           
         imagen = new ImageIcon("src/imagenes/"+nombreImagen);
-        icono = new ImageIcon(imagen.getImage().getScaledInstance(formUsuarios.jlbLogo.getWidth(),formUsuarios.jlbLogo.getHeight(),Image.SCALE_DEFAULT));
-        formUsuarios.jlbLogo.setIcon(icono); 
-    
+        icono = new ImageIcon(imagen.getImage().getScaledInstance( formUsuarios.jlbLogo.getWidth(), formUsuarios.jlbLogo.getHeight(),Image.SCALE_DEFAULT));
+        icono2 = new ImageIcon(imagen.getImage().getScaledInstance( formConsUsuario.jlbLogo.getWidth(), formConsUsuario.jlbLogo.getHeight(),Image.SCALE_DEFAULT));
+       formUsuarios.jlbLogo.setIcon(icono); 
+    formConsUsuario.jlbLogo.setIcon(icono2); 
     }
     
         @Override

@@ -60,7 +60,7 @@ public class Proyecto_Colegio_PAII_Sala1 {
         ConsultaUsuarios consUsuario2 = new ConsultaUsuarios();
         usuarioControlador contUsuario = new usuarioControlador(usuario2, formUsuarios, consUsuario2,formConsUsuario);
         //Animacion&Diseño
-        usuarios disenousuario = new usuarios(formUsuarios);
+        usuarios disenousuario = new usuarios(formUsuarios,formConsUsuario);
         
         //PADRES MVC
         Padre padre = new Padre();
