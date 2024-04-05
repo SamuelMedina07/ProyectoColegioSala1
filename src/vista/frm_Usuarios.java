@@ -82,6 +82,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbl_usuarios.setBackground(new java.awt.Color(241, 250, 255));
+        tbl_usuarios.setForeground(new java.awt.Color(241, 250, 255));
         tbl_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -94,17 +95,17 @@ public class frm_Usuarios extends javax.swing.JDialog {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 460, 150));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 530, 180));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 530, 180));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Usuario:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 56, -1));
+        jLabel8.setForeground(new java.awt.Color(0, 130, 90));
+        jLabel8.setText("Usuario en Linea:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 100, -1));
 
         lblUsuario.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 73, 14));
+        lblUsuario.setForeground(new java.awt.Color(236, 28, 36));
+        lblUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 1, true));
+        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 80, 14));
 
         jPanel6.setBackground(new java.awt.Color(241, 250, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true), "Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 130, 90))); // NOI18N
@@ -319,17 +320,19 @@ public class frm_Usuarios extends javax.swing.JDialog {
         jPanel6.add(jlbLogo);
         jlbLogo.setBounds(290, 60, 220, 160);
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 530, 232));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 770, 232));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
         );
 
         pack();

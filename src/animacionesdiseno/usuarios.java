@@ -44,8 +44,8 @@ public class usuarios implements ActionListener{
         imagen = new ImageIcon("src/imagenes/"+nombreImagen);
         icono = new ImageIcon(imagen.getImage().getScaledInstance( formUsuarios.jlbLogo.getWidth(), formUsuarios.jlbLogo.getHeight(),Image.SCALE_DEFAULT));
         icono2 = new ImageIcon(imagen.getImage().getScaledInstance( formConsUsuario.jlbLogo.getWidth(), formConsUsuario.jlbLogo.getHeight(),Image.SCALE_DEFAULT));
-       formUsuarios.jlbLogo.setIcon(icono); 
-    formConsUsuario.jlbLogo.setIcon(icono2); 
+         formUsuarios.jlbLogo.setIcon(icono); 
+        formConsUsuario.jlbLogo.setIcon(icono2); 
     }
     
         @Override
