@@ -114,9 +114,7 @@ public class padreControlador implements ActionListener {
             formConsPadres.setVisible(true);
         }
         //BOTON BUSCAR USARIO FILATRADO
-        if (e.getSource() == formConsPadres.btn_buscarPor) {
-            consultarUsuarios();
-        }
+       
         //BOTON MODIFICAR
         if (e.getSource() == form.btnModificar) {
             modificarPadre();
@@ -188,56 +186,6 @@ public class padreControlador implements ActionListener {
         }
         form.tbl_padres.setModel(modelo);
     }
-
-    //LEER POR FILTRADO
-    public void consultarUsuarios() {
-        String campoSeleccionado = (String) formConsPadres.cbBuscarPor.getSelectedItem();
-        String campoBuscar = formConsPadres.txtBuscar.getText();
-
-        switch (campoSeleccionado) {
-            case "ID":
-                try {
-                    int idPadre = Integer.parseInt(campoBuscar);
-                    Padre padreEncontrado = consPadres.obtenerPadreSegunId(idPadre);
-                    if (padreEncontrado != null) {
-                        ArrayList<Padre> listaPadre = new ArrayList<>();
-                        listaPadre.add(padreEncontrado);
-                        llenarTablaConsulta(listaPadre);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró ningún padre con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case "NOMBRE":
-                manejarResultadoConsulta(consPadres.buscarPadresPorNombre(campoBuscar), "No se encontró ningún padre con el nombre especificado.");
-                break;
-            case "IDENTIDAD":
-                manejarResultadoConsulta(consPadres.buscarPadresPorCedula(campoBuscar), "No se encontró ningún padre con la identidad especificada.");
-                break;
-            case "GENERO":
-                manejarResultadoConsulta(consPadres.buscarPadresPorGenero(campoBuscar), "No se encontró ningún usuario con el genero especificado.");
-                break;
-            case "ACTIVOS":
-                manejarResultadoConsulta(consPadres.buscarPadresActivos(), "No se encontró ningún padre activo.");
-                break;
-            case "INACTIVOS":
-                manejarResultadoConsulta(consPadres.buscarPadresInactivos(), "No se encontró ningún padre inactivo.");
-                break;
-        }
-
-    }
-
-    //METODO AUXILIAR PARA LEER POR FILTRADO
-    private void manejarResultadoConsulta(ArrayList<Padre> padresEncontrados, String mensajeError) {
-        if (!padresEncontrados.isEmpty()) {
-            llenarTablaConsulta(padresEncontrados);
-        } else {
-            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
     //VALIDACIONES **************************************************************************
     //VERIFICAR PADRE
     private boolean validarYVerificarPadre() {
@@ -362,27 +310,6 @@ public class padreControlador implements ActionListener {
         form.btnLimpiar.setEnabled(false);
         form.btnModificar.setEnabled(false);
         form.btnSalir.setEnabled(false);
-    }
-
-    //LENNAR TABLA DEL FORMULARIO DE CONSULTAS:
-    public void llenarTablaConsulta(ArrayList<Padre> listaPadres) {
-        modelo = (DefaultTableModel) formConsPadres.tbl_consulta.getModel();
-        modelo.setRowCount(0);
-        int registros = listaPadres.size();
-        for (int i = 0; i < registros; i++) {
-            Padre padreTemporal = listaPadres.get(i);
-
-            datos[0] = padreTemporal.getId();
-            datos[1] = padreTemporal.getNombreCompleto();
-            datos[2] = padreTemporal.getGenero();
-            datos[3] = padreTemporal.getCedula();
-            datos[4] = padreTemporal.getTelefono();
-            datos[5] = padreTemporal.getDireccion();
-            datos[6] = padreTemporal.getEstado();
-
-            modelo.addRow(datos);
-        }
-        formConsPadres.tbl_consulta.setModel(modelo);
     }
 
 }

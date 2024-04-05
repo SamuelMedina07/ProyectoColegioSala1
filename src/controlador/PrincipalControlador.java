@@ -7,6 +7,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import vista.frm_Alumnos;
 import vista.frm_Grados;
 import vista.frm_Materias;
 import vista.frm_Principal;
@@ -23,21 +24,23 @@ public class PrincipalControlador implements ActionListener{
     private frm_Padres formPadres;
     private frm_Grados formGrados;
     private frm_Materias formMaterias;
+    private frm_Alumnos formAlumnos;
  
 
-    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias) {
+    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
         this.formGrados = formGrados;
         this.formMaterias = formMaterias;
+        this.formAlumnos=formAlumnos;
         
         this.formPrin.btnUsuarios.addActionListener(this);
         this.formPrin.btnPadres.addActionListener(this);
         this.formPrin.btnSalir.addActionListener(this);
         this.formPrin.btnGrados.addActionListener(this);
         this.formPrin.btnMaterias.addActionListener(this);
- 
+        this.formPrin.btnAlumnos.addActionListener(this);
     }
     
     public void inciar(){
@@ -46,6 +49,7 @@ public class PrincipalControlador implements ActionListener{
         formPadres.setLocationRelativeTo(null);
         formGrados.setLocationRelativeTo(null);
         formMaterias.setLocationRelativeTo(null);
+        formAlumnos.setLocationRelativeTo(null);
     }
 
     @Override
@@ -69,6 +73,11 @@ public class PrincipalControlador implements ActionListener{
        if(e.getSource()==formPrin.btnMaterias){
             formMaterias.lblUsuario.setText(formPrin.lblUsuario.getText());
             formMaterias.setVisible(true);
+        }
+       //GRADOS
+       if(e.getSource()==formPrin.btnAlumnos){
+            formAlumnos.lblUsuario.setText(formPrin.lblUsuario.getText());
+            formAlumnos.setVisible(true);
         }
         //SALIR
         if(e.getSource()==formPrin.btnSalir){

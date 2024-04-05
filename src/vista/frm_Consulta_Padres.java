@@ -5,12 +5,21 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.ConsultaPadres;
+import modelo.Padre;
+
 /**
  *
  * @author ammcp
  */
 public class frm_Consulta_Padres extends javax.swing.JDialog {
 
+    private DefaultTableModel modelo;
+    private Object datos[] = new Object[10];
+    private ConsultaPadres consPadres = new ConsultaPadres();
     /**
      * Creates new form frm_Consulta_Producto
      */
@@ -102,6 +111,11 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
         btn_buscarPor.setText("B");
         btn_buscarPor.setBorder(null);
         btn_buscarPor.setBorderPainted(false);
+        btn_buscarPor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarPorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,9 +183,78 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btn_buscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorActionPerformed
+        // TODO add your handling code here:
+        consultarUsuarios();
+    }//GEN-LAST:event_btn_buscarPorActionPerformed
+
+     public void consultarUsuarios() {
+        String campoSeleccionado = (String) cbBuscarPor.getSelectedItem();
+        String campoBuscar = txtBuscar.getText();
+
+        switch (campoSeleccionado) {
+            case "ID":
+                try {
+                    int idPadre = Integer.parseInt(campoBuscar);
+                    Padre padreEncontrado = consPadres.obtenerPadreSegunId(idPadre);
+                    if (padreEncontrado != null) {
+                        ArrayList<Padre> listaPadre = new ArrayList<>();
+                        listaPadre.add(padreEncontrado);
+                        llenarTablaConsulta(listaPadre);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontró ningún padre con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "NOMBRE":
+                manejarResultadoConsulta(consPadres.buscarPadresPorNombre(campoBuscar), "No se encontró ningún padre con el nombre especificado.");
+                break;
+            case "IDENTIDAD":
+                manejarResultadoConsulta(consPadres.buscarPadresPorCedula(campoBuscar), "No se encontró ningún padre con la identidad especificada.");
+                break;
+            case "GENERO":
+                manejarResultadoConsulta(consPadres.buscarPadresPorGenero(campoBuscar), "No se encontró ningún usuario con el genero especificado.");
+                break;
+            case "ACTIVOS":
+                manejarResultadoConsulta(consPadres.buscarPadresActivos(), "No se encontró ningún padre activo.");
+                break;
+            case "INACTIVOS":
+                manejarResultadoConsulta(consPadres.buscarPadresInactivos(), "No se encontró ningún padre inactivo.");
+                break;
+        }
+
+    }
+     
+     private void manejarResultadoConsulta(ArrayList<Padre> padresEncontrados, String mensajeError) {
+        if (!padresEncontrados.isEmpty()) {
+            llenarTablaConsulta(padresEncontrados);
+        } else {
+            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+     
+     public void llenarTablaConsulta(ArrayList<Padre> listaPadres) {
+        modelo = (DefaultTableModel) tbl_consulta.getModel();
+        modelo.setRowCount(0);
+        int registros = listaPadres.size();
+        for (int i = 0; i < registros; i++) {
+            Padre padreTemporal = listaPadres.get(i);
+
+            datos[0] = padreTemporal.getId();
+            datos[1] = padreTemporal.getNombreCompleto();
+            datos[2] = padreTemporal.getGenero();
+            datos[3] = padreTemporal.getCedula();
+            datos[4] = padreTemporal.getTelefono();
+            datos[5] = padreTemporal.getDireccion();
+            datos[6] = padreTemporal.getEstado();
+
+            modelo.addRow(datos);
+        }
+        tbl_consulta.setModel(modelo);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

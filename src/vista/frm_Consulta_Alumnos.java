@@ -8,22 +8,26 @@ package vista;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Alumno;
+import modelo.ConsultaAlumnos;
 import modelo.ConsultaGrados;
-import modelo.Grado;
+import modelo.ConsultaPadres;
 
 /**
  *
  * @author ammcp
  */
-public class frm_Consulta_Grados extends javax.swing.JDialog {
-    
-    private Object datos[] = new Object[3];
+public class frm_Consulta_Alumnos extends javax.swing.JDialog {
+
+    private Object datos[] = new Object[10];
     private DefaultTableModel modelo;
-    private ConsultaGrados consultaGrados = new ConsultaGrados();
+    private ConsultaAlumnos consultaAlumnos= new ConsultaAlumnos();
+    private ConsultaPadres consPadre = new ConsultaPadres();
+    private ConsultaGrados consGrados = new ConsultaGrados();
     /**
      * Creates new form frm_Consulta_Producto
      */
-    public frm_Consulta_Grados(java.awt.Dialog parent, boolean modal) {
+    public frm_Consulta_Alumnos(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -82,7 +86,7 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
 
             },
             new String [] {
-                "CODIGO", "GRADO", "ESTADO"
+                "# CUENTA", "NOMBRE COMPLETO", "GENERO", "EDAD", "DIRECCION", "TELEFONO", "ENCARGADO", "GRADO"
             }
         ));
         jScrollPane1.setViewportView(tbl_consulta);
@@ -106,7 +110,7 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("POR:");
 
-        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NOMBRE", "ACTIVOS", "INACTIVOS" }));
+        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NUMERO DE CUENTA", "NOMBRE", "GENERO", "ACTIVOS", "INACTIVOS" }));
 
         btn_buscarPor.setText("B");
         btn_buscarPor.setBorder(null);
@@ -185,61 +189,68 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
 
     private void btn_buscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorActionPerformed
         // TODO add your handling code here:
-        consultarGrados();
+        consultarAlumnos();
+        
     }//GEN-LAST:event_btn_buscarPorActionPerformed
 
-    
-    public void consultarGrados() {
+    public void consultarAlumnos() {
         String campoSeleccionado = (String) cbBuscarPor.getSelectedItem();
-        String campoBuscar = txtBuscar.getText();
+        String valorBuscar = txtBuscar.getText();
 
         switch (campoSeleccionado) {
-            case "ID":
-                try {
-                    int idGrado = Integer.parseInt(campoBuscar);
-                    Grado gradoEncontrado = consultaGrados.obtenerGradoSegunId(idGrado);
-                    if (gradoEncontrado != null) {
-                        ArrayList<Grado> listaGrado = new ArrayList<>();
-                        listaGrado.add(gradoEncontrado);
-                        llenarTablaConsulta(listaGrado);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró ningún grado con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            case "NUMERO DE CUENTA":
+                String numCuenta = valorBuscar;
+                Alumno alumnoEncontrado = consultaAlumnos.obtenerAlumnoSegunNumCuenta(numCuenta);
+                if (alumnoEncontrado != null) {
+                    ArrayList<Alumno> listaAlumno = new ArrayList<>();
+                    listaAlumno.add(alumnoEncontrado);
+                    llenarTablaConsulta(listaAlumno);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró ninguna materia con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 break;
             case "NOMBRE":
-                manejarResultadoConsulta(consultaGrados.buscarGradosPorNombre(campoBuscar), "No se encontró ningún grado con el nombre especificado.");
+                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosPorNombre(valorBuscar), "No se encontró ningún alumno con el nombre especificado.");
+                break;
+            case "GENERO":
+                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosPorGenero(valorBuscar), "No se encontró ningún alumno con el género especificado.");
                 break;
             case "ACTIVOS":
-                manejarResultadoConsulta(consultaGrados.buscarGradosActivos(), "No se encontró ningún grado activo.");
+                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosActivos(), "No se encontró ningún alumno activo.");
                 break;
             case "INACTIVOS":
-                manejarResultadoConsulta(consultaGrados.buscarGradosInactivos(), "No se encontró ningún grado inactivo.");
+                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosInactivos(), "No se encontró ningún alumno inactivo.");
                 break;
         }
     }
 
-    private void manejarResultadoConsulta(ArrayList<Grado> gradosEncontrados, String mensajeError) {
-        if (!gradosEncontrados.isEmpty()) {
-            llenarTablaConsulta(gradosEncontrados);
+    private void manejarResultadoConsulta(ArrayList<Alumno> alumnosEncontrados, String mensajeError) {
+        if (!alumnosEncontrados.isEmpty()) {
+            llenarTablaConsulta(alumnosEncontrados);
         } else {
             JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-     public void llenarTablaConsulta(ArrayList<Grado> listaGrados) {
+    public void llenarTablaConsulta(ArrayList<Alumno> listaAlumnos) {
         modelo = (DefaultTableModel) tbl_consulta.getModel();
         modelo.setRowCount(0);
-        for (Grado grado : listaGrados) {
-            datos[0] = grado.getId();
-            datos[1] = grado.getNombre();
-            datos[2] = grado.getEstado();
+        for (Alumno alumno : listaAlumnos) {
+            datos[0] = alumno.getNumCuenta();
+            datos[1] = alumno.getNombreCompleto();
+            datos[2] = alumno.getGenero();
+            datos[3] = alumno.obtenerEdad();
+            datos[4] = alumno.getDireccion();
+            datos[5] = alumno.getTelefono();
+            datos[6] = consPadre.obtenerPadreSegunId(alumno.getIdPadres()).getNombreCompleto();
+            datos[7] = consGrados.obtenerGradoSegunId(alumno.getIdGrado()).getNombre();
             modelo.addRow(datos);
         }
         tbl_consulta.setModel(modelo);
     }
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -254,14 +265,18 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frm_Consulta_Grados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_Consulta_Alumnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frm_Consulta_Grados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_Consulta_Alumnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frm_Consulta_Grados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_Consulta_Alumnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frm_Consulta_Grados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frm_Consulta_Alumnos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -270,7 +285,7 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frm_Consulta_Grados dialog = new frm_Consulta_Grados(new javax.swing.JDialog(), true);
+                frm_Consulta_Alumnos dialog = new frm_Consulta_Alumnos(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

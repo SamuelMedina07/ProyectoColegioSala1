@@ -50,7 +50,7 @@ public class frm_Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnReportes1 = new javax.swing.JButton();
         btnGrados = new javax.swing.JButton();
-        btnClientes2 = new javax.swing.JButton();
+        btnAlumnos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -213,17 +213,17 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnGrados);
         btnGrados.setBounds(180, 140, 160, 50);
 
-        btnClientes2.setBackground(new java.awt.Color(255, 255, 255));
-        btnClientes2.setText("          CLIENTES");
-        btnClientes2.setBorder(null);
-        btnClientes2.setBorderPainted(false);
-        btnClientes2.addActionListener(new java.awt.event.ActionListener() {
+        btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
+        btnAlumnos.setText("ALUMNOS");
+        btnAlumnos.setBorder(null);
+        btnAlumnos.setBorderPainted(false);
+        btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientes2ActionPerformed(evt);
+                btnAlumnosActionPerformed(evt);
             }
         });
-        jPanel2.add(btnClientes2);
-        btnClientes2.setBounds(10, 80, 160, 50);
+        jPanel2.add(btnAlumnos);
+        btnAlumnos.setBounds(370, 210, 160, 50);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -290,9 +290,9 @@ public class frm_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGradosActionPerformed
 
-    private void btnClientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientes2ActionPerformed
+    private void btnAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlumnosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClientes2ActionPerformed
+    }//GEN-LAST:event_btnAlumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,7 +333,7 @@ public class frm_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnClientes2;
+    public javax.swing.JButton btnAlumnos;
     public javax.swing.JButton btnGrados;
     public javax.swing.JButton btnMaterias;
     public javax.swing.JButton btnPadres;

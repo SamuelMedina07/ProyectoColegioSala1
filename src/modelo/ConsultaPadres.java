@@ -174,7 +174,7 @@ public class ConsultaPadres extends Conexion {
 
     public boolean existePadreConNombreCompleto(String nombreCompleto, int idPadre) {
         Connection con = getConnection();
-         sentenciaSQL = "SELECT COUNT(*) AS num_padres FROM tbl_padres WHERE padres_nombreCompleto = ? AND padres_id <> ?";
+        sentenciaSQL = "SELECT COUNT(*) AS num_padres FROM tbl_padres WHERE padres_nombreCompleto = ? AND padres_id <> ?";
 
         try {
             ps = con.prepareStatement(sentenciaSQL);
@@ -391,6 +391,29 @@ public class ConsultaPadres extends Conexion {
         }
 
         return padresInactivos;
+    }
+
+    public int obtenerIdPadreSegunNombre(String nombreCompleto) {
+        Connection con = getConnection();
+        int idPadre = -1; // Valor predeterminado si no se encuentra el padre
+
+         sentenciaSQL = "SELECT padres_id FROM tbl_padres WHERE padres_nombreCompleto = ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, nombreCompleto);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idPadre = rs.getInt("padres_id");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener ID del padre: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return idPadre;
     }
 
 }

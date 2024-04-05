@@ -104,9 +104,7 @@ public class gradoControlador implements ActionListener {
         if (e.getSource() == formGrados.btnBuscar) {
             formConsulta.setVisible(true);
         }
-        if (e.getSource() == formConsulta.btn_buscarPor) {
-            consultarGrados();
-        }
+        
         if (e.getSource() == formGrados.btnModificar) {
             modificarGrado();
         }
@@ -162,45 +160,7 @@ public class gradoControlador implements ActionListener {
         formGrados.tbl_registros.setModel(modelo);
     }
 
-    public void consultarGrados() {
-        String campoSeleccionado = (String) formConsulta.cbBuscarPor.getSelectedItem();
-        String campoBuscar = formConsulta.txtBuscar.getText();
-
-        switch (campoSeleccionado) {
-            case "ID":
-                try {
-                    int idGrado = Integer.parseInt(campoBuscar);
-                    Grado gradoEncontrado = consultaGrados.obtenerGradoSegunId(idGrado);
-                    if (gradoEncontrado != null) {
-                        ArrayList<Grado> listaGrado = new ArrayList<>();
-                        listaGrado.add(gradoEncontrado);
-                        llenarTablaConsulta(listaGrado);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró ningún grado con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case "NOMBRE":
-                manejarResultadoConsulta(consultaGrados.buscarGradosPorNombre(campoBuscar), "No se encontró ningún grado con el nombre especificado.");
-                break;
-            case "ACTIVOS":
-                manejarResultadoConsulta(consultaGrados.buscarGradosActivos(), "No se encontró ningún grado activo.");
-                break;
-            case "INACTIVOS":
-                manejarResultadoConsulta(consultaGrados.buscarGradosInactivos(), "No se encontró ningún grado inactivo.");
-                break;
-        }
-    }
-
-    private void manejarResultadoConsulta(ArrayList<Grado> gradosEncontrados, String mensajeError) {
-        if (!gradosEncontrados.isEmpty()) {
-            llenarTablaConsulta(gradosEncontrados);
-        } else {
-            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+    
 
     private boolean validarYVerificarGrado() {
         if (validarCamposNoVacios()) {
@@ -272,15 +232,5 @@ public class gradoControlador implements ActionListener {
         formGrados.btnSalir.setEnabled(false);
     }
 
-    public void llenarTablaConsulta(ArrayList<Grado> listaGrados) {
-        modelo = (DefaultTableModel) formConsulta.tbl_consulta.getModel();
-        modelo.setRowCount(0);
-        for (Grado grado : listaGrados) {
-            datos[0] = grado.getId();
-            datos[1] = grado.getNombre();
-            datos[2] = grado.getEstado();
-            modelo.addRow(datos);
-        }
-        formConsulta.tbl_consulta.setModel(modelo);
-    }
+   
 }

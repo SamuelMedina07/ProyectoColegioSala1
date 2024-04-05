@@ -275,4 +275,27 @@ public class ConsultaGrados extends Conexion {
         return gradosInactivos;
     }
 
+    public int obtenerIdGradoSegunNombre(String nombreGrado) {
+        Connection con = getConnection();
+        int idGrado = -1; // Valor predeterminado si no se encuentra el grado
+
+         sentenciaSQL = "SELECT grados_id FROM tbl_grados WHERE grados_nombre = ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, nombreGrado);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idGrado = rs.getInt("grados_id");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener ID del grado: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return idGrado;
+    }
+
 }
