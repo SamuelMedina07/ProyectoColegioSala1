@@ -142,7 +142,7 @@ public class alumnoControlador implements ActionListener {
             String id = String.valueOf(model.getValueAt(filaSeleccionada, 0));
             Grado gradoSeleccionado = consGrados.obtenerGradoSegunId(Integer.parseInt(id));
             if(gradoSeleccionado.getEstado().equals("Inactivo")){
-                JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN GRADO ACTIVO.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN GRADO no me deja ACTIVO.", "Información", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
             formularioAlumno.txtGrado.setText(gradoSeleccionado.getNombre());
