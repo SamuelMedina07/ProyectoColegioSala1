@@ -124,8 +124,8 @@ public class profesorControlador implements ActionListener {
         if (filaSeleccionada >= 0) {
             String idUsuario = String.valueOf(model.getValueAt(filaSeleccionada, 0));
             Usuario usuarioSeleccionado = consUsuario.obtenerUusuarioSegunIdUsuario(Integer.parseInt(idUsuario));
-            if (usuarioSeleccionado.getEstado().equals("Inactivo")) {
-                JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN USUARIO ACTIVO.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            if (usuarioSeleccionado.getEstado().equals("Inactivo") && !usuarioSeleccionado.getRol().equals("PROFESOR")) {
+                JOptionPane.showMessageDialog(null, "DEBE SELECCINAR UN USUARIO ACTIVO O CON ROL PROFESOR.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             formularioProfesor.txtUsuario.setText(usuarioSeleccionado.getNombre());
