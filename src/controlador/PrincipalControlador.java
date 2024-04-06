@@ -13,6 +13,7 @@ import vista.frm_Materias;
 import vista.frm_Principal;
 import vista.frm_Usuarios;
 import vista.frm_Padres;
+import vista.frm_Profesor;
 
 /**
  *
@@ -25,15 +26,16 @@ public class PrincipalControlador implements ActionListener{
     private frm_Grados formGrados;
     private frm_Materias formMaterias;
     private frm_Alumnos formAlumnos;
- 
+    private frm_Profesor formProfesor;
 
-    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos) {
+    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
         this.formGrados = formGrados;
         this.formMaterias = formMaterias;
         this.formAlumnos=formAlumnos;
+        this.formProfesor = formProfesor;
         
         this.formPrin.btnUsuarios.addActionListener(this);
         this.formPrin.btnPadres.addActionListener(this);
@@ -41,6 +43,7 @@ public class PrincipalControlador implements ActionListener{
         this.formPrin.btnGrados.addActionListener(this);
         this.formPrin.btnMaterias.addActionListener(this);
         this.formPrin.btnAlumnos.addActionListener(this);
+        this.formPrin.btnProfesores.addActionListener(this);
     }
     
     public void inciar(){
@@ -50,6 +53,7 @@ public class PrincipalControlador implements ActionListener{
         formGrados.setLocationRelativeTo(null);
         formMaterias.setLocationRelativeTo(null);
         formAlumnos.setLocationRelativeTo(null);
+        formProfesor.setLocationRelativeTo(null);
     }
 
     @Override
@@ -69,15 +73,20 @@ public class PrincipalControlador implements ActionListener{
             formPadres.lblUsuario.setText(formPrin.lblUsuario.getText());
             formGrados.setVisible(true);
         }
-       //GRADOS
+       //MATERIAS
        if(e.getSource()==formPrin.btnMaterias){
             formMaterias.lblUsuario.setText(formPrin.lblUsuario.getText());
             formMaterias.setVisible(true);
         }
-       //GRADOS
+       //ALUMNOS
        if(e.getSource()==formPrin.btnAlumnos){
             formAlumnos.lblUsuario.setText(formPrin.lblUsuario.getText());
             formAlumnos.setVisible(true);
+        }
+       //PROFESORES
+       if(e.getSource()==formPrin.btnProfesores){
+            formProfesor.lblUsuario.setText(formPrin.lblUsuario.getText());
+            formProfesor.setVisible(true);
         }
         //SALIR
         if(e.getSource()==formPrin.btnSalir){

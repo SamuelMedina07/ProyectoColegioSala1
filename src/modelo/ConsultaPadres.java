@@ -194,7 +194,8 @@ public class ConsultaPadres extends Conexion {
 
         return false; // Si no se puede realizar la verificación, devuelve false
     }
-
+    
+    
     //***********************************************************
     public int obtenerSiguienteCodigo() {
         Connection con = getConnection();

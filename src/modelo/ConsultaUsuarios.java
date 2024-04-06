@@ -163,24 +163,24 @@ public class ConsultaUsuarios extends Conexion {
     }
 
     public boolean existeUsuario(String nombreUsuario, int codigoUsuario) {
-    Connection con = getConnection();
-    sentenciaSQL = "SELECT COUNT(*) FROM tbl_usuarios WHERE usuario_nombre = ? AND usuario_codigo != ?";
-    try {
-        ps = con.prepareStatement(sentenciaSQL);
-        ps.setString(1, nombreUsuario);
-        ps.setInt(2, codigoUsuario);
-        rs = ps.executeQuery();
-        if (rs.next()) {
-            int count = rs.getInt(1);
-            return count > 0; // Devolverá true si la condición es verdadera
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT COUNT(*) FROM tbl_usuarios WHERE usuario_nombre = ? AND usuario_codigo != ?";
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, nombreUsuario);
+            ps.setInt(2, codigoUsuario);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0; // Devolverá true si la condición es verdadera
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al verificar usuario: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
         }
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al verificar usuario: " + ex.getMessage());
-    } finally {
-        closeConnection(con);
+        return false;
     }
-    return false;
-}
 
     //***********************************BUSQUEDAS
     public int obtenerSiguienteCodigo() {
@@ -200,14 +200,14 @@ public class ConsultaUsuarios extends Conexion {
         }
         return 1; // Si no se puede obtener el siguiente código, devuelve 1 como valor predeterminado
     }
-    
-    public Usuario obtenerUusuarioSegunIdUsuario(int id){
+
+    public Usuario obtenerUusuarioSegunIdUsuario(int id) {
         Connection con = getConnection();
         sentenciaSQL = "SELECT * FROM tbl_usuarios WHERE usuario_codigo=?";
-        
-        try{
+
+        try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setInt(1,id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             if (rs.next()) {
                 usuario = new Usuario();
@@ -218,16 +218,43 @@ public class ConsultaUsuarios extends Conexion {
                 usuario.setEstado(rs.getString(5));
                 return usuario;
             }
-            
+
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "No se pudo leer datos " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo leer datos " + ex.getMessage());
         } finally {
             closeConnection(con);
         }
         return null;
     }
-    
-     public ArrayList<Usuario> buscarUsuariosPorNombre(String nombreUsuario) {
+
+    public Usuario obtenerUsuarioSegunNombre(String nombreUsuario) {
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_usuarios WHERE usuario_nombre=?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, nombreUsuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setCodigo(rs.getInt(1));
+                usuario.setNombre(rs.getString(2));
+                usuario.setContrasena(rs.getString(3));
+                usuario.setRol(rs.getString(4));
+                usuario.setEstado(rs.getString(5));
+                return usuario;
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo leer datos " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+        return null;
+    }
+
+    public ArrayList<Usuario> buscarUsuariosPorNombre(String nombreUsuario) {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         Connection con = getConnection();
         sentenciaSQL = "SELECT * FROM tbl_usuarios WHERE usuario_nombre LIKE ? AND usuario_estado = 'Activo'";
@@ -252,8 +279,8 @@ public class ConsultaUsuarios extends Conexion {
         }
         return listaUsuarios;
     }
-     
-     public ArrayList<Usuario> buscarUsuariosPorRol(String rol) {
+
+    public ArrayList<Usuario> buscarUsuariosPorRol(String rol) {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         Connection con = getConnection();
         sentenciaSQL = "SELECT * FROM tbl_usuarios WHERE usuario_rol = ? AND usuario_estado = 'Activo'";

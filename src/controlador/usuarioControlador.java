@@ -110,10 +110,6 @@ public class usuarioControlador implements ActionListener {
         if (e.getSource() == form.btnBuscar) {
             formConsUsuario.setVisible(true);
         }
-        //BOTON BUSCAR USARIO FILATRADO
-        if (e.getSource() == formConsUsuario.btn_buscarPor) {
-            consultarUsuarios();
-        }
         //BOTON MODIFICAR
         if (e.getSource() == form.btnModificar) {
             modificarUsuario();
@@ -183,51 +179,8 @@ public class usuarioControlador implements ActionListener {
         form.tbl_usuarios.setModel(modelo);
     }
 
-    //LEER POR FILTRADO
-    public void consultarUsuarios() {
-        String campoSeleccionado = (String) formConsUsuario.cbBuscarPor.getSelectedItem();
-        String campoBuscar = formConsUsuario.txtBuscar.getText();
-
-        switch (campoSeleccionado) {
-            case "ID":
-                try {
-                    int idUsuario = Integer.parseInt(campoBuscar);
-                    Usuario usuarioEncontrado = consUsuario.obtenerUusuarioSegunIdUsuario(idUsuario);
-                    if (usuarioEncontrado != null) {
-                        ArrayList<Usuario> listaUsuariosId = new ArrayList<>();
-                        listaUsuariosId.add(usuarioEncontrado);
-                        llenarTablaConsulta(listaUsuariosId);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case "USUARIO":
-                manejarResultadoConsulta(consUsuario.buscarUsuariosPorNombre(campoBuscar), "No se encontró ningún usuario con el nombre especificado.");
-                break;
-            case "ROL":
-                manejarResultadoConsulta(consUsuario.buscarUsuariosPorRol(campoBuscar), "No se encontró ningún usuario con el rol especificado.");
-                break;
-            case "ACTIVOS":
-                manejarResultadoConsulta(consUsuario.buscarUsuariosActivos(), "No se encontró ningún usuario activo.");
-                break;
-            case "INACTIVOS":
-                manejarResultadoConsulta(consUsuario.buscarUsuariosInactivos(), "No se encontró ningún usuario inactivo.");
-                break;
-        }
-
-    }
-
-    //METODO AUXILIAR PARA LEER POR FILTRADO
-    private void manejarResultadoConsulta(ArrayList<Usuario> usuariosEncontrados, String mensajeError) {
-        if (!usuariosEncontrados.isEmpty()) {
-            llenarTablaConsulta(usuariosEncontrados);
-        } else {
-            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+   
+    
 
     //VALIDACIONES **************************************************************************
     //VERIFICAR USUARIO
@@ -334,21 +287,6 @@ public class usuarioControlador implements ActionListener {
         form.btnSalir.setEnabled(false);
     }
 
-    //LENNAR TABLA DEL FORMULARIO DE CONSULTAS:
-    public void llenarTablaConsulta(ArrayList<Usuario> listaUsuarios) {
-        modelo = (DefaultTableModel) formConsUsuario.tbl_usuarios.getModel();
-        modelo.setRowCount(0);
-        int registros = listaUsuarios.size();
-        for (int i = 0; i < registros; i++) {
-            Usuario usuarioTemporal = listaUsuarios.get(i);
-
-            datos[0] = usuarioTemporal.getCodigo();
-            datos[1] = usuarioTemporal.getNombre();
-            datos[2] = usuarioTemporal.getRol();
-            datos[3] = usuarioTemporal.getEstado();
-            modelo.addRow(datos);
-        }
-        formConsUsuario.tbl_usuarios.setModel(modelo);
-    }
+    
 
 }

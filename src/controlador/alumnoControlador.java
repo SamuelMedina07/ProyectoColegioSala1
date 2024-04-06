@@ -294,6 +294,10 @@ public class alumnoControlador implements ActionListener {
             resaltarCampoVacio(formularioAlumno.txtNombres1);
             camposValidos = false;
         }
+        if (formularioAlumno.txtApellidos.getText().trim().isEmpty()) {
+            resaltarCampoVacio(formularioAlumno.txtApellidos);
+            camposValidos = false;
+        }
         if (formularioAlumno.DateNacimiento == null) {
             formularioAlumno.DateNacimiento.setBackground(new Color(219, 52, 52));
             camposValidos = false;
