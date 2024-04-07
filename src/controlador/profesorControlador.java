@@ -144,7 +144,7 @@ public class profesorControlador implements ActionListener {
             limpiar();
         }
         if (e.getSource() == formularioProfesor.btnCrear) {
-            guardarAlumno();
+            guardarProfesor();
         }
         if (e.getSource() == formularioProfesor.btnLeer) {
             llenarTabla();
@@ -153,10 +153,10 @@ public class profesorControlador implements ActionListener {
             formularioConsulta.setVisible(true);
         }
         if (e.getSource() == formularioProfesor.btnModificar) {
-            modificarAlumno();
+            modificarProfesor();
         }
         if (e.getSource() == formularioProfesor.btnEliminar) {
-            eliminarAlumno();
+            eliminarProfesor();
         }
         if (e.getSource() == formularioProfesor.btnSeleccionarUsuario) {
             formularioConsultaUsuarios.setVisible(true);
@@ -190,7 +190,7 @@ public class profesorControlador implements ActionListener {
         }
     }
 
-    public void guardarAlumno() {
+    public void guardarProfesor() {
         if (validarYVerificarProfesor()) {
             if (consultaProfesor.crearProfesor(profesor)) {
                 limpiar();
@@ -199,7 +199,7 @@ public class profesorControlador implements ActionListener {
         }
     }
 
-    public void modificarAlumno() {
+    public void modificarProfesor() {
         if (validarYVerificarProfesor()) {
             if (consultaProfesor.modificarProfesor(profesor)) {
                 limpiar();
@@ -207,7 +207,7 @@ public class profesorControlador implements ActionListener {
         }
     }
 
-    public void eliminarAlumno() {
+    public void eliminarProfesor() {
         if (!formularioProfesor.txtCodigo.getText().isEmpty()) {
             String id = formularioProfesor.txtCodigo.getText();
             if (consultaProfesor.eliminarProfesor(Integer.parseInt(id))) {

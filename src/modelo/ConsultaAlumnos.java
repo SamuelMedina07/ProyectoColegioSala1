@@ -400,5 +400,5 @@ public class ConsultaAlumnos extends Conexion {
         
         return fechaNacimiento;
     }
-
+   
 }
