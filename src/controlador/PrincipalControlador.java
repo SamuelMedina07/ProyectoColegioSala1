@@ -28,8 +28,10 @@ public class PrincipalControlador implements ActionListener{
     private frm_Materias formMaterias;
     private frm_Alumnos formAlumnos;
     private frm_Profesor formProfesor;
+    private frm_Asistencias formAsistencias;
+    
 
-    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor) {
+    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
@@ -37,6 +39,7 @@ public class PrincipalControlador implements ActionListener{
         this.formMaterias = formMaterias;
         this.formAlumnos=formAlumnos;
         this.formProfesor = formProfesor;
+        this.formAsistencias=formAsistencias;
         
         
         this.formPrin.btnUsuarios.addActionListener(this);
@@ -46,6 +49,7 @@ public class PrincipalControlador implements ActionListener{
         this.formPrin.btnMaterias.addActionListener(this);
         this.formPrin.btnAlumnos.addActionListener(this);
         this.formPrin.btnProfesores.addActionListener(this);
+        this.formPrin.btnAsistencias.addActionListener(this);
         
     }
     
@@ -57,6 +61,7 @@ public class PrincipalControlador implements ActionListener{
         formMaterias.setLocationRelativeTo(null);
         formAlumnos.setLocationRelativeTo(null);
         formProfesor.setLocationRelativeTo(null);
+        formAsistencias.setLocationRelativeTo(null);
       
     }
 
@@ -91,6 +96,10 @@ public class PrincipalControlador implements ActionListener{
        if(e.getSource()==formPrin.btnProfesores){
             formProfesor.lblUsuario.setText(formPrin.lblUsuario.getText());
             formProfesor.setVisible(true);
+        }
+       //PROFESORES
+       if(e.getSource()==formPrin.btnAsistencias){
+            formAsistencias.setVisible(true);
         }
         //SALIR
         if(e.getSource()==formPrin.btnSalir){

@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Alumno;
 import modelo.Asistencia;
@@ -78,6 +79,7 @@ public class AsistenciaControlador implements ActionListener {
     public void guardarAsistencia() {
         if (validarYVerificarAsistencia()) {
             if (consultaAs.crearAsistencia(asistencia)) {
+                
                 limpiar();
 
             }
@@ -92,6 +94,9 @@ public class AsistenciaControlador implements ActionListener {
         if (e.getSource() == frmAsistencias.btnLimpiar) {
             limpiar();
         }
+        if (e.getSource() == frmAsistencias.btnSeleccionarAlumno) {
+            formConsultaA.setVisible(true);
+        }
         if (e.getSource() == frmAsistencias.btnSalir) {
             frmAsistencias.dispose();
 
@@ -100,9 +105,10 @@ public class AsistenciaControlador implements ActionListener {
 
     private boolean validarYVerificarAsistencia() {
         if (validarCamposNoVacios()) {
-            String nombreCompleto = frmAsistencias.jtNombre.getText() + " ";
+            Alumno alumno = consAlumnos.obtenerAlumnoPorNombre(frmAsistencias.jtNombre.getText());
+            
             // Validar si al alumno ya se le coloco asistencia.
-            if (consultaAs.existeAlumnoconAsistencia(nombreCompleto, Integer.parseInt(frmAsistencias.jtNombre.getText()))) {
+            if (consultaAs.validarAsistenciaExistente(Integer.parseInt(alumno.getNumCuenta()),frmAsistencias.DateFecha.getDate() )) {
                 JOptionPane.showMessageDialog(null, "ya se paso asistencia a este alumno.", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
@@ -122,6 +128,7 @@ public class AsistenciaControlador implements ActionListener {
         boolean camposValidos = true;
 
         if (frmAsistencias.jtNombre.getText().trim().isEmpty()) {
+            resaltarCampoVacio(frmAsistencias.jtNombre);
             camposValidos = false;
         }
         if (frmAsistencias.DateFecha == null) {
@@ -135,6 +142,11 @@ public class AsistenciaControlador implements ActionListener {
         frmAsistencias.jtNombre.setText("");
         frmAsistencias.jcbasistencia.setSelectedIndex(0);
         frmAsistencias.DateFecha.setDate(null);
+    }
+
+    private void resaltarCampoVacio(JTextField campo) {
+       Color colorResaltado = new Color(219, 52, 52);
+        campo.setBackground(colorResaltado);
     }
 
 }

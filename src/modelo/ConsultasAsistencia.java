@@ -29,7 +29,7 @@ public class ConsultasAsistencia extends Conexion{
              ps.setInt(1, asistencia.getIdAsistencia());
              ps.setInt(2, asistencia.getNumCuenta());
              ps.setDate(3, new java.sql.Date(asistencia.getAsistenciaFecha().getTime()));
-             ps.setString(10, asistencia.getAsistenciaEstado());
+             ps.setString(4, asistencia.getAsistenciaEstado());
              
              int filasAfectadas = ps.executeUpdate();
             if (filasAfectadas > 0) {
@@ -48,27 +48,27 @@ public class ConsultasAsistencia extends Conexion{
              
     }
     //VALIDACIONES//***************************************************
-    public boolean existeAlumnoconAsistencia(String nombreCompleto, int codigo) {
-        Connection con = getConnection();
-        sentenciaSQL = "SELECT COUNT(*) AS num_asistencias FROM tbl_asistencias WHERE asistencias_estado = ? AND asistencias_id <> ?";
-
-        try {
-            ps = con.prepareStatement(sentenciaSQL);
-            ps.setString(1, nombreCompleto);
-            ps.setInt(2, codigo);
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                int numAsistencias = rs.getInt("num_asistencias");
-                return numAsistencias > 0; // Si hay algún alumno con asistencia, devuelve true
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al verificar los datos: " + ex.getMessage());
-        } finally {
-            closeConnection(con);
+    public boolean validarAsistenciaExistente(int numCuentaAlumno, Date fecha) {
+    Connection con = getConnection();
+    sentenciaSQL = "SELECT COUNT(*) AS num_asistencias FROM tbl_asistencias WHERE alumnos_numCuenta = ? AND asistencia_fecha = ?";
+    
+    try {
+        ps = con.prepareStatement(sentenciaSQL);
+        ps.setInt(1, numCuentaAlumno);
+        ps.setDate(2, new java.sql.Date(fecha.getTime())); // Convertir la fecha de Java a java.sql.Date
+        rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            int numAsistencias = rs.getInt("num_asistencias");
+            return numAsistencias > 0; // Si hay alguna asistencia registrada, devuelve true
         }
-
-        return false;
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al validar la existencia de la asistencia: " + ex.getMessage());
+    } finally {
+        closeConnection(con);
     }
+    
+    return false;
+}
     
 }

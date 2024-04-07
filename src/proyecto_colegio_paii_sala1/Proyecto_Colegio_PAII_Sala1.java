@@ -7,6 +7,7 @@ package proyecto_colegio_paii_sala1;
 
 import animacionesdiseno.login;
 import animacionesdiseno.usuarios;
+import controlador.AsistenciaControlador;
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
 import controlador.alumnoControlador;
@@ -16,18 +17,21 @@ import controlador.padreControlador;
 import controlador.profesorControlador;
 import controlador.usuarioControlador;
 import modelo.Alumno;
+import modelo.Asistencia;
 import modelo.ConsultaAlumnos;
 import modelo.ConsultaGrados;
 import modelo.ConsultaMaterias;
 import modelo.ConsultaPadres;
 import modelo.ConsultaProfesor;
 import modelo.ConsultaUsuarios;
+import modelo.ConsultasAsistencia;
 import modelo.Grado;
 import modelo.Materia;
 import modelo.Padre;
 import modelo.Profesor;
 import modelo.Usuario;
 import vista.frm_Alumnos;
+import vista.frm_Asistencias;
 import vista.frm_Consulta_Alumnos;
 import vista.frm_Consulta_Grados;
 import vista.frm_Consulta_Materias;
@@ -111,8 +115,13 @@ public class Proyecto_Colegio_PAII_Sala1 {
         frm_Consulta_Profesor formConsultaProfesor = new frm_Consulta_Profesor(formProfesor, true);
         profesorControlador contProfesor = new profesorControlador(profesor, formProfesor, consProfesor, formConsultaProfesor);
 
+        //ASISTENCIA
+        Asistencia asistencia = new Asistencia();
+        frm_Asistencias formAsistencias = new frm_Asistencias(frm_pri,true);
+        ConsultasAsistencia consAsistencia = new ConsultasAsistencia();
+        AsistenciaControlador contAsistencia = new AsistenciaControlador(asistencia,formAsistencias,consAsistencia,formConsultaAlumnos);
         //PRINCIPAL
-        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor);
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias);
         contPrincipal.inciar();
 
     }
