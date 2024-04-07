@@ -249,7 +249,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnOpciones);
-        btnOpciones.setBounds(380, 10, 110, 32);
+        btnOpciones.setBounds(390, 10, 110, 32);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

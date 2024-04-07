@@ -28,6 +28,7 @@ public class materias implements ActionListener {
     {
     this.formMaterias = formMaterias;
     this.formConsultaMaterias = formConsultaMaterias; 
+    formMaterias.btnOpciones.addActionListener(this);
     ReajsuteImagen("LogoBosquesSinFondo.png");
     }
     
@@ -82,7 +83,7 @@ public class materias implements ActionListener {
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formMaterias.btnLimpiar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formMaterias.btnCancelar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formMaterias.btnSalir);
-         mostrar.jLabelYUp(240, 60, 10,5, formMaterias.jlbLogo);
+         mostrar.jLabelYUp(290, 50, 10,5, formMaterias.jlbLogo);
          
          
    //Ocultando botones con transicion
@@ -97,7 +98,7 @@ public class materias implements ActionListener {
          ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnLimpiar);
          ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnCancelar);
          ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnSalir);
-         ocultar.jLabelYDown(60, 240, 10,5, formMaterias.jlbLogo);
+         ocultar.jLabelYDown(50, 290, 10,5, formMaterias.jlbLogo);
        
     }
    

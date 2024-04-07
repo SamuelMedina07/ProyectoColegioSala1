@@ -127,7 +127,7 @@ public class frm_Profesor extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(tbl_registros);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 510, 170));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 510, 120));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 130, 90));
@@ -167,9 +167,9 @@ public class frm_Profesor extends javax.swing.JDialog {
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 130, 90));
-        jLabel13.setText("DIRECCION DE ACTUAL VIVIENDA");
+        jLabel13.setText("DIRECCION DE VIVIENDA ACTUAL");
         jPanel6.add(jLabel13);
-        jLabel13.setBounds(50, 340, 210, 20);
+        jLabel13.setBounds(50, 330, 210, 20);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 130, 90));
@@ -198,7 +198,7 @@ public class frm_Profesor extends javax.swing.JDialog {
         jScrollPane1.setViewportView(txtDireccion);
 
         jPanel6.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 360, 260, 90);
+        jScrollPane1.setBounds(20, 350, 260, 90);
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 130, 90));
@@ -459,10 +459,10 @@ public class frm_Profesor extends javax.swing.JDialog {
                     .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -476,9 +476,7 @@ public class frm_Profesor extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
