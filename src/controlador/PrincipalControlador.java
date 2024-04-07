@@ -8,6 +8,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vista.frm_Alumnos;
+import vista.frm_Asistencias;
 import vista.frm_Grados;
 import vista.frm_Materias;
 import vista.frm_Principal;
@@ -37,6 +38,7 @@ public class PrincipalControlador implements ActionListener{
         this.formAlumnos=formAlumnos;
         this.formProfesor = formProfesor;
         
+        
         this.formPrin.btnUsuarios.addActionListener(this);
         this.formPrin.btnPadres.addActionListener(this);
         this.formPrin.btnSalir.addActionListener(this);
@@ -44,6 +46,7 @@ public class PrincipalControlador implements ActionListener{
         this.formPrin.btnMaterias.addActionListener(this);
         this.formPrin.btnAlumnos.addActionListener(this);
         this.formPrin.btnProfesores.addActionListener(this);
+        
     }
     
     public void inciar(){
@@ -54,6 +57,7 @@ public class PrincipalControlador implements ActionListener{
         formMaterias.setLocationRelativeTo(null);
         formAlumnos.setLocationRelativeTo(null);
         formProfesor.setLocationRelativeTo(null);
+      
     }
 
     @Override

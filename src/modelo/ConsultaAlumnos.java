@@ -400,5 +400,39 @@ public class ConsultaAlumnos extends Conexion {
         
         return fechaNacimiento;
     }
+    
+    public Alumno obtenerAlumnoPorNombre(String nombreCompleto) {
+    Connection con = getConnection();
+    Alumno alumno = null;
+    String query = "SELECT * FROM tbl_alumnos WHERE alumno_nombreCompleto = ?";
+    
+    try {
+        ps = con.prepareStatement(query);
+        ps.setString(1, nombreCompleto);
+        rs = ps.executeQuery();
+        if (rs.next()) {
+            alumno = new Alumno();
+            alumno.setNumCuenta(rs.getString("alumno_numCuenta"));
+            alumno.setNombreCompleto(rs.getString("alumno_nombreCompleto"));
+            alumno.setGenero(rs.getString("alumno_genero"));
+            alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
+            alumno.setDireccion(rs.getString("alumno_direccion"));
+            alumno.setTelefono(rs.getString("alumno_telefono"));
+            alumno.setFoto(rs.getString("alumno_foto"));
+            alumno.setIdPadres(rs.getInt("padres_id"));
+            alumno.setIdGrado(rs.getInt("grados_id"));
+            alumno.setEstado(rs.getString("alumnos_estado"));
+        } else {
+            // lanzar una excepción o devolver null
+            throw new IllegalArgumentException("No se encontró ningún alumno con el nombre especificado");
+        }
+    } catch (SQLException ex) {
+        System.err.println("Error al obtener el alumno: " + ex.getMessage());
+    } finally {
+        closeConnection(con);
+    }
+    
+    return alumno;
+}
 
 }
