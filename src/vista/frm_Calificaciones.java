@@ -8,13 +8,17 @@ package vista;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.plaf.LabelUI;
+import modelo.ConsultaProfesor;
 import modelo.Materia;
+import modelo.Profesor;
+import modelo.Usuario;
 
 public class frm_Calificaciones extends javax.swing.JDialog {
-
+    ConsultaProfesor consProfesor = new ConsultaProfesor();
     /**
      * Creates new form frm_Clientes
      */
@@ -24,12 +28,30 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         lblUsuario.setText(user);
+        
     }
 
     public void AsignarColorCampo(JTextField campo) {
         //Color colorResaltado = new Color(219, 52, 52);
         Color color = Color.white;
         campo.setBackground(color);
+    }
+    
+    public void establecerEncargado(Usuario user){
+        txtProfesor.setText(obtenerEncargado(user));
+    }
+    
+    public String obtenerEncargado(Usuario user){
+        String nombreEncargado = "NO CONECTADO";
+        if(user.getRol().equals("PROFESOR")){
+            Profesor profesor = consProfesor.obtenerProfesorPorCodigoUsuario(user.getCodigo());
+            nombreEncargado = profesor.getNombreCompleto();
+        }
+        if(user.getRol().equals("ADMIN")){
+            nombreEncargado = user.getNombre();
+        }
+        
+       return nombreEncargado;
     }
 
     /**
@@ -101,6 +123,11 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         txtNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNotaActionPerformed(evt);
+            }
+        });
+        txtNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNotaKeyTyped(evt);
             }
         });
         jPanel6.add(txtNota);
@@ -194,6 +221,11 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         txtCodigo.setBounds(180, 10, 120, 29);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         jPanel6.add(btnBuscar);
         btnBuscar.setBounds(300, 10, 60, 30);
 
@@ -229,7 +261,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnAgregar);
-        btnAgregar.setBounds(550, 110, 92, 20);
+        btnAgregar.setBounds(550, 110, 92, 19);
 
         btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 130, 90));
@@ -241,28 +273,28 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnCancelar);
-        btnCancelar.setBounds(670, 150, 92, 20);
+        btnCancelar.setBounds(670, 150, 92, 19);
 
         btnCrear.setBackground(new java.awt.Color(241, 250, 255));
         btnCrear.setForeground(new java.awt.Color(0, 130, 90));
         btnCrear.setText("CREAR");
         btnCrear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnCrear);
-        btnCrear.setBounds(550, 150, 92, 20);
+        btnCrear.setBounds(550, 150, 92, 19);
 
         btnLeer.setBackground(new java.awt.Color(241, 250, 255));
         btnLeer.setForeground(new java.awt.Color(0, 130, 90));
         btnLeer.setText("LEER");
         btnLeer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnLeer);
-        btnLeer.setBounds(550, 70, 92, 20);
+        btnLeer.setBounds(550, 70, 92, 19);
 
         btnModificar.setBackground(new java.awt.Color(241, 250, 255));
         btnModificar.setForeground(new java.awt.Color(0, 130, 90));
         btnModificar.setText("MODIFICAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnModificar);
-        btnModificar.setBounds(550, 190, 92, 20);
+        btnModificar.setBounds(550, 190, 92, 19);
 
         btnEliminar.setBackground(new java.awt.Color(241, 250, 255));
         btnEliminar.setForeground(new java.awt.Color(0, 130, 90));
@@ -274,7 +306,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnEliminar);
-        btnEliminar.setBounds(670, 70, 92, 20);
+        btnEliminar.setBounds(670, 70, 92, 19);
 
         btnLimpiar.setBackground(new java.awt.Color(241, 250, 255));
         btnLimpiar.setForeground(new java.awt.Color(0, 130, 90));
@@ -286,7 +318,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnLimpiar);
-        btnLimpiar.setBounds(670, 110, 92, 20);
+        btnLimpiar.setBounds(670, 110, 92, 19);
 
         btnSalir.setBackground(new java.awt.Color(241, 250, 255));
         btnSalir.setForeground(new java.awt.Color(0, 130, 90));
@@ -298,7 +330,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnSalir);
-        btnSalir.setBounds(670, 190, 92, 20);
+        btnSalir.setBounds(670, 190, 92, 19);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
         jPanel6.add(jlbLogo);
@@ -413,7 +445,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
 
     private void txtAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlumnoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtAlumnoActionPerformed
 
     private void txtGradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGradoMouseClicked
@@ -444,6 +476,18 @@ public class frm_Calificaciones extends javax.swing.JDialog {
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOpcionesActionPerformed
+
+    private void txtNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNotaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+            evt.consume(); 
+        }
+    }//GEN-LAST:event_txtNotaKeyTyped
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

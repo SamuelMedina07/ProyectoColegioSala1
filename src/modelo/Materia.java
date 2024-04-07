@@ -49,11 +49,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", estado='" + estado + '\'' +
-                '}';
+        return this.getNombre();
     }
 }
 

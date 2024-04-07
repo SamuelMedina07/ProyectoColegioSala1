@@ -44,6 +44,7 @@ public class LoginControlador implements ActionListener {
             JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
             // Abre la ventana principal
             formPrincipal.setVisible(true);
+            formPrincipal.lblUsuario.setText(nombreUsuario);
             formUsuario.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Credenciales incorrectas. Inténtalo de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);

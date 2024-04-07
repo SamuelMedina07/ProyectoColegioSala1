@@ -9,12 +9,17 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Alumno;
+import modelo.Calificacion;
 import modelo.ConsultaAlumnos;
+import modelo.ConsultaCalificaciones;
 import modelo.ConsultaGrados;
+import modelo.ConsultaMaterias;
 import modelo.ConsultaPadres;
+import modelo.ConsultaProfesor;
 import modelo.Grado;
 import modelo.Materia;
 
@@ -26,8 +31,10 @@ public class frm_Consulta_Calificaciones extends javax.swing.JDialog {
 
     private Object datos[] = new Object[10];
     private DefaultTableModel modelo;
-    private ConsultaAlumnos consultaAlumnos= new ConsultaAlumnos();
-    private ConsultaPadres consPadre = new ConsultaPadres();
+    private ConsultaProfesor consultaProfesor= new ConsultaProfesor();
+    private ConsultaAlumnos consultaAlumn= new ConsultaAlumnos();
+    private ConsultaCalificaciones consultaCalifs= new ConsultaCalificaciones();
+    private ConsultaMaterias consMaterias = new ConsultaMaterias();
     private ConsultaGrados consGrados = new ConsultaGrados();
     /**
      * Creates new form frm_Consulta_Producto
@@ -37,6 +44,40 @@ public class frm_Consulta_Calificaciones extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         ReajsuteImagen("LogoBosquesSinFondo.png");
+        actualizarCombobox();
+    }
+    
+    //Llenar Combobox con los proveedores
+    public void llenarComboBoxGrados() {
+        // Obtén la lista de todos los proveedores desde la base de datos
+        ArrayList<Grado> lista = consGrados.leerTodosGrados();
+
+        // Limpia el ComboBox antes de agregar nuevos elementos
+        cbGrado.removeAllItems();
+
+        // Llena el ComboBox con los nombres de los proveedores
+        for (Grado grado : lista) {
+            cbGrado.addItem(grado);
+        }
+    }
+    
+    public void llenarComboBoxMaterias() {
+        // Obtén la lista de todos los proveedores desde la base de datos
+        ArrayList<Materia> lista = consMaterias.leerTodasMaterias();
+
+        // Limpia el ComboBox antes de agregar nuevos elementos
+        cbMaterias.removeAllItems();
+
+        // Llena el ComboBox con los nombres de los proveedores
+        for (Materia materia : lista) {
+            cbMaterias.addItem(materia);
+        }
+    }
+
+    //Metodo para ejecutar la accion de llenar el combobox
+    public void actualizarCombobox() {
+        llenarComboBoxGrados();
+        llenarComboBoxMaterias();
     }
 
     /**
@@ -91,13 +132,13 @@ public class frm_Consulta_Calificaciones extends javax.swing.JDialog {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jlbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "CALIFICACIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(241, 250, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "CALIFICACIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(241, 250, 255))); // NOI18N
 
         tbl_consulta.setBackground(new java.awt.Color(241, 250, 255));
         tbl_consulta.setModel(new javax.swing.table.DefaultTableModel(
@@ -105,7 +146,7 @@ public class frm_Consulta_Calificaciones extends javax.swing.JDialog {
 
             },
             new String [] {
-                "CODIGO", "ALUMNO", "GRADO", "MATERIA", "PARCIAL", "NOTA", "PROFESOR", "ESTADO"
+                "CODIGO", "ALUMNO", "NOTA", "PROFESOR", "ESTADO"
             }
         ));
         jScrollPane1.setViewportView(tbl_consulta);
@@ -205,61 +246,35 @@ public class frm_Consulta_Calificaciones extends javax.swing.JDialog {
 
     private void btn_buscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorActionPerformed
         // TODO add your handling code here:
-        consultarAlumnos();
+        consultarCalificaciones();
         
     }//GEN-LAST:event_btn_buscarPorActionPerformed
 
-    public void consultarAlumnos() {
-        String campoSeleccionado = (String) cbMaterias.getSelectedItem();
-        String valorBuscar = "";
+    public void consultarCalificaciones() {
+        Materia materiaSeleccionado = (Materia) cbMaterias.getSelectedItem();
+        Grado gradoSeleccionado = (Grado) cbGrado.getSelectedItem();
+        String parcial = (String) cbParcial.getSelectedItem();
 
-        switch (campoSeleccionado) {
-            case "NUMERO DE CUENTA":
-                String numCuenta = valorBuscar;
-                Alumno alumnoEncontrado = consultaAlumnos.obtenerAlumnoSegunNumCuenta(numCuenta);
-                if (alumnoEncontrado != null) {
-                    ArrayList<Alumno> listaAlumno = new ArrayList<>();
-                    listaAlumno.add(alumnoEncontrado);
-                    llenarTablaConsulta(listaAlumno);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se encontró ninguna materia con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case "NOMBRE":
-                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosPorNombre(valorBuscar), "No se encontró ningún alumno con el nombre especificado.");
-                break;
-            case "GENERO":
-                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosPorGenero(valorBuscar), "No se encontró ningún alumno con el género especificado.");
-                break;
-            case "ACTIVOS":
-                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosActivos(), "No se encontró ningún alumno activo.");
-                break;
-            case "INACTIVOS":
-                manejarResultadoConsulta(consultaAlumnos.buscarAlumnosInactivos(), "No se encontró ningún alumno inactivo.");
-                break;
-        }
+        manejarResultadoConsulta(consultaCalifs.buscarCalificacionesPorGradoMateriaParcial(gradoSeleccionado.getId(), materiaSeleccionado.getId(),parcial), "No se encontró ningúna calificacion con los parametros especificados.");
     }
 
-    private void manejarResultadoConsulta(ArrayList<Alumno> alumnosEncontrados, String mensajeError) {
-        if (!alumnosEncontrados.isEmpty()) {
-            llenarTablaConsulta(alumnosEncontrados);
+    private void manejarResultadoConsulta(ArrayList<Calificacion> calificacionesEncontrados, String mensajeError) {
+        if (!calificacionesEncontrados.isEmpty()) {
+            llenarTablaConsulta(calificacionesEncontrados);
         } else {
             JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    public void llenarTablaConsulta(ArrayList<Alumno> listaAlumnos) {
+    public void llenarTablaConsulta(ArrayList<Calificacion> listaCalifs) {
         modelo = (DefaultTableModel) tbl_consulta.getModel();
         modelo.setRowCount(0);
-        for (Alumno alumno : listaAlumnos) {
-            datos[0] = alumno.getNumCuenta();
-            datos[1] = alumno.getNombreCompleto();
-            datos[2] = alumno.getGenero();
-            datos[3] = alumno.obtenerEdad();
-            datos[4] = alumno.getDireccion();
-            datos[5] = alumno.getTelefono();
-            datos[6] = consPadre.obtenerPadreSegunId(alumno.getIdPadres()).getNombreCompleto();
-            datos[7] = consGrados.obtenerGradoSegunId(alumno.getIdGrado()).getNombre();
+        for (Calificacion calificaion : listaCalifs) {
+            datos[0] = calificaion.getId();
+            datos[1] = consultaAlumn.obtenerAlumnoSegunNumCuenta(String.valueOf(calificaion.getNumCuentaAlumno())).getNombreCompleto();
+            datos[2] = calificaion.getNota();
+            datos[3] = consultaProfesor.obtenerProfesorPorId(calificaion.getIdProfesor()).getNombreCompleto();
+            datos[4] = calificaion.getEstado();
             modelo.addRow(datos);
         }
         tbl_consulta.setModel(modelo);

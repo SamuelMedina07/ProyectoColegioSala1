@@ -19,7 +19,7 @@ public class ConsultaMaterias extends Conexion {
     ResultSet rs;
 
     public boolean crearMateria(Materia materia) {
-        Connection con =getConnection();
+        Connection con = getConnection();
         sentenciaSQL = "INSERT INTO tbl_materias (materia_nombre, materia_estado) VALUES (?, ?)";
         try {
             ps = con.prepareStatement(sentenciaSQL);
@@ -80,7 +80,7 @@ public class ConsultaMaterias extends Conexion {
             JOptionPane.showMessageDialog(null, "Error al buscar la materia: " + ex.getMessage());
             return false;
         } finally {
-           closeConnection(con);
+            closeConnection(con);
         }
     }
 
@@ -216,7 +216,7 @@ public class ConsultaMaterias extends Conexion {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar materias por nombre: " + ex.getMessage());
         } finally {
-           closeConnection(con);
+            closeConnection(con);
         }
 
         return materiasEncontradas;
@@ -270,5 +270,30 @@ public class ConsultaMaterias extends Conexion {
         }
 
         return materiasInactivas;
+    }
+
+    public ArrayList<Materia> buscarMateriasPorIdGrado(int idGrado) {
+        ArrayList<Materia> materiasAsignadas = new ArrayList<>();
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT m.* FROM tbl_materias m "
+                + "INNER JOIN tbl_asignacion_grados_materias agm ON m.materia_id = agm.materia_id "
+                + "WHERE agm.grados_id = ? AND m.materia_estado = 'Activo'";
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setInt(1, idGrado);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia();
+                materia.setId(rs.getInt("materia_id"));
+                materia.setNombre(rs.getString("materia_nombre"));
+                materia.setEstado(rs.getString("materia_estado"));
+                materiasAsignadas.add(materia);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar materias por grado: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+        return materiasAsignadas;
     }
 }

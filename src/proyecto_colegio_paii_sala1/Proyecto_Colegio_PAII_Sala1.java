@@ -16,6 +16,7 @@ import controlador.AsistenciaControlador;
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
 import controlador.alumnoControlador;
+import controlador.calificacionControlador;
 import controlador.gradoControlador;
 import controlador.materiaControlador;
 import controlador.padreControlador;
@@ -23,7 +24,9 @@ import controlador.profesorControlador;
 import controlador.usuarioControlador;
 import modelo.Alumno;
 import modelo.Asistencia;
+import modelo.Calificacion;
 import modelo.ConsultaAlumnos;
+import modelo.ConsultaCalificaciones;
 import modelo.ConsultaGrados;
 import modelo.ConsultaMaterias;
 import modelo.ConsultaPadres;
@@ -37,7 +40,9 @@ import modelo.Profesor;
 import modelo.Usuario;
 import vista.frm_Alumnos;
 import vista.frm_Asistencias;
+import vista.frm_Calificaciones;
 import vista.frm_Consulta_Alumnos;
+import vista.frm_Consulta_Calificaciones;
 import vista.frm_Consulta_Grados;
 import vista.frm_Consulta_Materias;
 import vista.frm_Consulta_Padres;
@@ -135,8 +140,15 @@ public class Proyecto_Colegio_PAII_Sala1 {
         AsistenciaControlador contAsistencia = new AsistenciaControlador(asistencia,formAsistencias,consAsistencia,formConsultaAlumnos);
         //Animacion&Diseño
         profesores disenoprofesor = new profesores(formProfesor,formConsultaProfesor);
+        
+        //CALILFICACIONES
+        Calificacion calificacion = new Calificacion();
+        frm_Calificaciones formCalificaciones = new frm_Calificaciones(frm_pri, true, "");
+        ConsultaCalificaciones consCalificaciones = new  ConsultaCalificaciones();
+        frm_Consulta_Calificaciones formConsultaCalificaciones = new frm_Consulta_Calificaciones(formCalificaciones, true);
+        calificacionControlador contCalificaciones = new calificacionControlador(calificacion, formCalificaciones, consCalificaciones, formConsultaCalificaciones);
         //PRINCIPAL
-        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias);
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias,formCalificaciones);
         contPrincipal.inciar();
 
     }

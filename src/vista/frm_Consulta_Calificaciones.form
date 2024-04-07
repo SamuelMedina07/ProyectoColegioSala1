@@ -68,7 +68,7 @@
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jlbLogo" min="-2" pref="64" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -186,12 +186,9 @@
                   <Color blue="ff" green="fa" red="f1" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="0">
+                  <Table columnCount="5" rowCount="0">
                     <Column editable="true" title="CODIGO" type="java.lang.Object"/>
                     <Column editable="true" title="ALUMNO" type="java.lang.Object"/>
-                    <Column editable="true" title="GRADO" type="java.lang.Object"/>
-                    <Column editable="true" title="MATERIA" type="java.lang.Object"/>
-                    <Column editable="true" title="PARCIAL" type="java.lang.Object"/>
                     <Column editable="true" title="NOTA" type="java.lang.Object"/>
                     <Column editable="true" title="PROFESOR" type="java.lang.Object"/>
                     <Column editable="true" title="ESTADO" type="java.lang.Object"/>

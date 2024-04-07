@@ -199,27 +199,27 @@ public class ConsultaProfesor extends Conexion {
     }
 
     public boolean existeProfesorConMismoUsuario(int codigo, int idProfesor) {
-    Connection con = getConnection();
-    sentenciaSQL = "SELECT COUNT(*) AS num_profesores FROM tbl_profesor WHERE usuario_codigo = ? AND profesor_id <> ?";
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT COUNT(*) AS num_profesores FROM tbl_profesor WHERE usuario_codigo = ? AND profesor_id <> ?";
 
-    try {
-        ps = con.prepareStatement(sentenciaSQL);
-        ps.setInt(1, codigo);
-        ps.setInt(2, idProfesor);
-        rs = ps.executeQuery();
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setInt(1, codigo);
+            ps.setInt(2, idProfesor);
+            rs = ps.executeQuery();
 
-        if (rs.next()) {
-            int numProfesores = rs.getInt("num_profesores");
-            return numProfesores > 0;
+            if (rs.next()) {
+                int numProfesores = rs.getInt("num_profesores");
+                return numProfesores > 0;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al verificar nombre de usuario del profesor: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
         }
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al verificar nombre de usuario del profesor: " + ex.getMessage());
-    } finally {
-        closeConnection(con);
-    }
 
-    return false;
-}
+        return false;
+    }
 
     /**
      * **********************************************************************************
@@ -318,12 +318,12 @@ public class ConsultaProfesor extends Conexion {
     public ArrayList<Profesor> buscarProfesoresPorCedula(String cedula) {
         ArrayList<Profesor> profesoresEncontrados = new ArrayList<>();
         Connection con = getConnection();
-         sentenciaSQL = "SELECT * FROM tbl_profesor WHERE profesor_cedula = ?";
+        sentenciaSQL = "SELECT * FROM tbl_profesor WHERE profesor_cedula = ?";
 
         try {
-             ps = con.prepareStatement(sentenciaSQL);
+            ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, cedula);
-             rs = ps.executeQuery();
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 Profesor profesor = new Profesor();
@@ -472,4 +472,58 @@ public class ConsultaProfesor extends Conexion {
         return profesoresInactivos;
     }
 
+    public int obtenerIdProfesorPorNombre(String nombreProfesor) {
+        Connection con = getConnection();
+        int idProfesor = -1; // Valor predeterminado si no se encuentra el profesor
+
+        sentenciaSQL = "SELECT profesor_id FROM tbl_profesor WHERE profesor_nombreCompleto = ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, nombreProfesor);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idProfesor = rs.getInt("profesor_id");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener ID del profesor: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return idProfesor;
+    }
+
+    public Profesor obtenerProfesorPorCodigoUsuario(int codigoUsuario) {
+        Connection con = getConnection();
+        Profesor profesor = null;
+
+        sentenciaSQL = "SELECT * FROM tbl_profesor WHERE usuario_codigo = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sentenciaSQL);
+            ps.setInt(1, codigoUsuario);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                profesor = new Profesor();
+                profesor.setId(rs.getInt("profesor_id"));
+                profesor.setNombreCompleto(rs.getString("profesor_nombreCompleto"));
+                profesor.setCedula(rs.getString("profesor_cedula"));
+                profesor.setGenero(rs.getString("profesor_genero"));
+                profesor.setCodigoUsuario(rs.getInt("usuario_codigo"));
+                profesor.setTelefono(rs.getString("profesor_telefono"));
+                profesor.setDireccion(rs.getString("profesor_direccion"));
+                profesor.setFoto(rs.getString("profesor_foto"));
+                profesor.setEstado(rs.getString("profesor_estado"));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener el profesor por código de usuario: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return profesor;
+    }
 }

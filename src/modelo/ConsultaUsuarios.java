@@ -237,7 +237,7 @@ public class ConsultaUsuarios extends Conexion {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                Usuario usuario = new Usuario();
+                usuario = new Usuario();
                 usuario.setCodigo(rs.getInt(1));
                 usuario.setNombre(rs.getString(2));
                 usuario.setContrasena(rs.getString(3));

@@ -7,8 +7,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.ConsultaUsuarios;
+import modelo.Usuario;
 import vista.frm_Alumnos;
 import vista.frm_Asistencias;
+import vista.frm_Calificaciones;
 import vista.frm_Grados;
 import vista.frm_Materias;
 import vista.frm_Principal;
@@ -21,6 +24,9 @@ import vista.frm_Profesor;
  * @author ammcp
  */
 public class PrincipalControlador implements ActionListener{
+    //USUARIO
+    ConsultaUsuarios consUsuarios = new ConsultaUsuarios();
+    //
     private frm_Principal formPrin;
     private frm_Usuarios frmUsuarios;
     private frm_Padres formPadres;
@@ -29,9 +35,10 @@ public class PrincipalControlador implements ActionListener{
     private frm_Alumnos formAlumnos;
     private frm_Profesor formProfesor;
     private frm_Asistencias formAsistencias;
+    private frm_Calificaciones formCalificaciones;
     
 
-    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias) {
+    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias,frm_Calificaciones formCalificaciones) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
@@ -40,6 +47,7 @@ public class PrincipalControlador implements ActionListener{
         this.formAlumnos=formAlumnos;
         this.formProfesor = formProfesor;
         this.formAsistencias=formAsistencias;
+        this.formCalificaciones=formCalificaciones;
         
         
         this.formPrin.btnUsuarios.addActionListener(this);
@@ -50,6 +58,8 @@ public class PrincipalControlador implements ActionListener{
         this.formPrin.btnAlumnos.addActionListener(this);
         this.formPrin.btnProfesores.addActionListener(this);
         this.formPrin.btnAsistencias.addActionListener(this);
+        this.formPrin.btnCalificaciones.addActionListener(this);
+        this.formPrin.btnConsultas.addActionListener(this);
         
     }
     
@@ -62,7 +72,7 @@ public class PrincipalControlador implements ActionListener{
         formAlumnos.setLocationRelativeTo(null);
         formProfesor.setLocationRelativeTo(null);
         formAsistencias.setLocationRelativeTo(null);
-      
+        formCalificaciones.setLocationRelativeTo(null);
     }
 
     @Override
@@ -97,15 +107,27 @@ public class PrincipalControlador implements ActionListener{
             formProfesor.lblUsuario.setText(formPrin.lblUsuario.getText());
             formProfesor.setVisible(true);
         }
-       //PROFESORES
+       //ASISTENCIAS
        if(e.getSource()==formPrin.btnAsistencias){
             formAsistencias.setVisible(true);
+        }
+       //CALIFICACIONES
+       if(e.getSource()==formPrin.btnCalificaciones){
+            formCalificaciones.lblUsuario.setText(formPrin.lblUsuario.getText());
+            formCalificaciones.setVisible(true);
+            formCalificaciones.obtenerEncargado(obtenerUsuario());
         }
         //SALIR
         if(e.getSource()==formPrin.btnSalir){
             System.exit(0);
         }
         
+    }
+    
+    public Usuario obtenerUsuario(){
+        
+        Usuario user = consUsuarios.obtenerUsuarioSegunNombre(formPrin.lblUsuario.getText());
+        return user;
     }
     
     

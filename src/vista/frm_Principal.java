@@ -52,6 +52,8 @@ public class frm_Principal extends javax.swing.JFrame {
         btnReportes1 = new javax.swing.JButton();
         btnGrados = new javax.swing.JButton();
         btnAlumnos = new javax.swing.JButton();
+        btnCalificaciones = new javax.swing.JButton();
+        btnConsultas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,7 +128,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnProfesores);
-        btnProfesores.setBounds(380, 290, 160, 50);
+        btnProfesores.setBounds(380, 270, 160, 50);
 
         btnAsistencias.setBackground(new java.awt.Color(255, 255, 255));
         btnAsistencias.setText("ASISTENCIAS");
@@ -150,7 +152,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnUsuarios);
-        btnUsuarios.setBounds(200, 290, 160, 50);
+        btnUsuarios.setBounds(380, 340, 160, 50);
 
         btnPadres.setBackground(new java.awt.Color(255, 255, 255));
         btnPadres.setText("PADRES");
@@ -162,7 +164,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnPadres);
-        btnPadres.setBounds(180, 210, 160, 50);
+        btnPadres.setBounds(200, 200, 160, 50);
 
         jPanel3.setBackground(new java.awt.Color(204, 0, 0));
 
@@ -212,7 +214,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnGrados);
-        btnGrados.setBounds(180, 140, 160, 50);
+        btnGrados.setBounds(190, 140, 160, 50);
 
         btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
         btnAlumnos.setText("ALUMNOS");
@@ -224,7 +226,31 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnAlumnos);
-        btnAlumnos.setBounds(370, 210, 160, 50);
+        btnAlumnos.setBounds(380, 210, 160, 50);
+
+        btnCalificaciones.setBackground(new java.awt.Color(255, 255, 255));
+        btnCalificaciones.setText("CALIFICAIONES");
+        btnCalificaciones.setBorder(null);
+        btnCalificaciones.setBorderPainted(false);
+        btnCalificaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalificacionesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCalificaciones);
+        btnCalificaciones.setBounds(200, 330, 160, 50);
+
+        btnConsultas.setBackground(new java.awt.Color(255, 255, 255));
+        btnConsultas.setText("CONSULTAS");
+        btnConsultas.setBorder(null);
+        btnConsultas.setBorderPainted(false);
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnConsultas);
+        btnConsultas.setBounds(200, 260, 160, 50);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -295,6 +321,14 @@ public class frm_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlumnosActionPerformed
 
+    private void btnCalificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCalificacionesActionPerformed
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +370,8 @@ public class frm_Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAlumnos;
     public javax.swing.JButton btnAsistencias;
+    public javax.swing.JButton btnCalificaciones;
+    public javax.swing.JButton btnConsultas;
     public javax.swing.JButton btnGrados;
     public javax.swing.JButton btnMaterias;
     public javax.swing.JButton btnPadres;
