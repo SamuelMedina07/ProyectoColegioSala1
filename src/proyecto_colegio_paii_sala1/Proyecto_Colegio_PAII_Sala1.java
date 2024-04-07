@@ -5,7 +5,12 @@
  */
 package proyecto_colegio_paii_sala1;
 
+import animacionesdiseno.alumnos;
+import animacionesdiseno.grados;
 import animacionesdiseno.login;
+import animacionesdiseno.materias;
+import animacionesdiseno.padres;
+import animacionesdiseno.profesores;
 import animacionesdiseno.usuarios;
 import controlador.AsistenciaControlador;
 import controlador.LoginControlador;
@@ -86,27 +91,35 @@ public class Proyecto_Colegio_PAII_Sala1 {
         ConsultaPadres consPadres = new ConsultaPadres();
         frm_Consulta_Padres formConsPadres = new frm_Consulta_Padres(formPadre, true);
         padreControlador contPadre = new padreControlador(padre, formPadre, consPadres, formConsPadres);
-
+        //Animacion&Diseño
+        padres disenopadre = new padres(formPadre, formConsPadres);
+        
         //GRADOS MVC
         Grado grado = new Grado();
         frm_Grados formGrados = new frm_Grados(frm_pri, true, "");
         ConsultaGrados consGrados = new ConsultaGrados();
         frm_Consulta_Grados formConsultaGrados = new frm_Consulta_Grados(formGrados, true);
         gradoControlador contControlador = new gradoControlador(grado, formGrados, consGrados, formConsultaGrados);
-
+        //Animacion&Diseño
+        grados disenogrados = new grados(formGrados,formConsultaGrados);
+        
         //MATERIAS MVC
         Materia materia = new Materia();
         frm_Materias formMaterias = new frm_Materias(frm_pri, true, "");
         ConsultaMaterias consMaterias = new ConsultaMaterias();
         frm_Consulta_Materias formConsultaMaterias = new frm_Consulta_Materias(formMaterias, true);
         materiaControlador contMateria = new materiaControlador(materia, formMaterias, consMaterias, formConsultaMaterias);
-
-        //SLUMNOS MVC
+        //Animacion&Diseño
+         materias disenomateria = new materias(formMaterias,formConsultaMaterias);
+         
+        //ALUMNOS MVC
         Alumno alumno = new Alumno();
         frm_Alumnos formAlumnos = new frm_Alumnos(frm_pri, true, "");
         ConsultaAlumnos consAlumnos = new ConsultaAlumnos();
         frm_Consulta_Alumnos formConsultaAlumnos = new frm_Consulta_Alumnos(formAlumnos, true);
         alumnoControlador contAlumno = new alumnoControlador(alumno, formAlumnos, consAlumnos, formConsultaAlumnos);
+        //Animacion&Diseño
+        alumnos disenoalumnos = new alumnos(formAlumnos,formConsultaAlumnos);
 
         //PROFESOR MVC
         Profesor profesor = new Profesor();
@@ -120,6 +133,8 @@ public class Proyecto_Colegio_PAII_Sala1 {
         frm_Asistencias formAsistencias = new frm_Asistencias(frm_pri,true);
         ConsultasAsistencia consAsistencia = new ConsultasAsistencia();
         AsistenciaControlador contAsistencia = new AsistenciaControlador(asistencia,formAsistencias,consAsistencia,formConsultaAlumnos);
+        //Animacion&Diseño
+        profesores disenoprofesor = new profesores(formProfesor,formConsultaProfesor);
         //PRINCIPAL
         PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias);
         contPrincipal.inciar();

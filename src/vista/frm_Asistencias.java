@@ -67,7 +67,7 @@ public class frm_Asistencias extends javax.swing.JDialog {
         jLabel3.setText("ASISTENCIA");
 
         btGuardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btGuardar.setText("GUARDAR");
+        btGuardar.setText("asignar");
 
         btnLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
