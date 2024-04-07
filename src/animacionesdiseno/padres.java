@@ -89,16 +89,16 @@ public class padres implements ActionListener {
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formPadre.btnLeer);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnAgregar);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnCrear);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnModificar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formPadre.btnLeer);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnAgregar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnCrear);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnModificar);
          //Columna 2
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnEliminar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnLimpiar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnCancelar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnSalir);
-         ocultar.jLabelXLeft(-250, 290, 10,5, formPadre.jlbLogo);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnEliminar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnLimpiar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnCancelar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formPadre.btnSalir);
+         ocultar.jLabelXRight(-250, 290, 10,5, formPadre.jlbLogo);
         
        
     }

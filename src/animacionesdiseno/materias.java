@@ -89,15 +89,15 @@ public class materias implements ActionListener {
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formMaterias.btnLeer);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formMaterias.btnAgregar);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formMaterias.btnCrear);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formMaterias.btnModificar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formMaterias.btnLeer);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formMaterias.btnAgregar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formMaterias.btnCrear);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formMaterias.btnModificar);
          //Columna 2
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnEliminar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnLimpiar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnCancelar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnSalir);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnEliminar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnLimpiar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnCancelar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnSalir);
          ocultar.jLabelYDown(50, 290, 10,5, formMaterias.jlbLogo);
        
     }

@@ -5,7 +5,10 @@
  */
 package vista;
 
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.ConsultaPadres;
@@ -27,6 +30,7 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+         ReajsuteImagen("LogoBosquesSinFondo.png");
     }
 
     /**
@@ -266,6 +270,18 @@ public class frm_Consulta_Padres extends javax.swing.JDialog {
             modelo.addRow(datos);
         }
         tbl_consulta.setModel(modelo);
+    }
+     public void ReajsuteImagen(String nombreImagen)
+    {
+         ImageIcon imagen;
+         Icon icono2;
+    
+           
+           
+        imagen = new ImageIcon("src/imagenes/"+nombreImagen);
+        icono2 = new ImageIcon(imagen.getImage().getScaledInstance( jlbLogo.getWidth(), jlbLogo.getHeight(),Image.SCALE_DEFAULT));
+        jlbLogo.setIcon(icono2); 
+        
     }
     
     public static void main(String args[]) {

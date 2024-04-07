@@ -88,15 +88,15 @@ public class usuarios implements ActionListener{
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formUsuarios.btnLeer);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formUsuarios.btnAgregar);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formUsuarios.btnCrear);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formUsuarios.btnModificar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formUsuarios.btnLeer);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formUsuarios.btnAgregar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formUsuarios.btnCrear);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formUsuarios.btnModificar);
          //Columna 2
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnEliminar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnLimpiar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnCancelar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnSalir);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnEliminar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnLimpiar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnCancelar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formUsuarios.btnSalir);
          ocultar.jLabelYDown(60, 240, 10,5, formUsuarios.jlbLogo);
        
     }

@@ -89,15 +89,15 @@ public class grados implements ActionListener{
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formGrados.btnLeer);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formGrados.btnAgregar);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formGrados.btnCrear);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formGrados.btnModificar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formGrados.btnLeer);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formGrados.btnAgregar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formGrados.btnCrear);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formGrados.btnModificar);
          //Columna 2
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnEliminar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnLimpiar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnCancelar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnSalir);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnEliminar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnLimpiar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnCancelar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnSalir);
          ocultar.jLabelYDown(50, 290, 10,5, formGrados.jlbLogo);
        
     }

@@ -89,16 +89,16 @@ public class profesores implements ActionListener {
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formProfesor.btnLeer);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formProfesor.btnAgregar);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formProfesor.btnCrear);
-         ocultar.jButtonXLeft( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formProfesor.btnModificar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formProfesor.btnLeer);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formProfesor.btnAgregar);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formProfesor.btnCrear);
+         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formProfesor.btnModificar);
          //Columna 2
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnEliminar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnLimpiar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnCancelar);
-         ocultar.jButtonXLeft(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnSalir);
-         ocultar.jLabelXLeft(-250, 290, 10,5, formProfesor.jlbLogo);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnEliminar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnLimpiar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnCancelar);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formProfesor.btnSalir);
+         ocultar.jLabelXRight(-250, 290, 10,5, formProfesor.jlbLogo);
         
        
     }

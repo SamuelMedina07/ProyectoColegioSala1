@@ -5,6 +5,10 @@
  */
 package vista;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ammcp
@@ -18,6 +22,7 @@ public class frm_Consulta_Materias extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+         ReajsuteImagen("LogoBosquesSinFondo.png");
     }
 
     /**
@@ -183,7 +188,18 @@ public class frm_Consulta_Materias extends javax.swing.JDialog {
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
-
+  public void ReajsuteImagen(String nombreImagen)
+    {
+         ImageIcon imagen;
+         Icon icono2;
+    
+           
+           
+        imagen = new ImageIcon("src/imagenes/"+nombreImagen);
+        icono2 = new ImageIcon(imagen.getImage().getScaledInstance( jlbLogo.getWidth(), jlbLogo.getHeight(),Image.SCALE_DEFAULT));
+        jlbLogo.setIcon(icono2); 
+        
+    }
     /**
      * @param args the command line arguments
      */

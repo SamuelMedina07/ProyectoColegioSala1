@@ -5,6 +5,7 @@
  */
 package proyecto_colegio_paii_sala1;
 
+import animacionesdiseno.alumnos;
 import animacionesdiseno.grados;
 import animacionesdiseno.login;
 import animacionesdiseno.materias;
@@ -113,6 +114,8 @@ public class Proyecto_Colegio_PAII_Sala1 {
         ConsultaAlumnos consAlumnos = new ConsultaAlumnos();
         frm_Consulta_Alumnos formConsultaAlumnos = new frm_Consulta_Alumnos(formAlumnos, true);
         alumnoControlador contAlumno = new alumnoControlador(alumno, formAlumnos, consAlumnos, formConsultaAlumnos);
+        //Animacion&Diseño
+        alumnos disenoalumnos = new alumnos(formAlumnos,formConsultaAlumnos);
 
         //PROFESOR MVC
         Profesor profesor = new Profesor();
