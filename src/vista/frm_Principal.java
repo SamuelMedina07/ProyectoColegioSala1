@@ -17,6 +17,7 @@ public class frm_Principal extends javax.swing.JFrame {
     public frm_Principal(String user) {
         initComponents();
         establecerUsuarioLabel(user);
+        //hola como esta
     }
 
     public void establecerUsuarioLabel(String usuario) {
