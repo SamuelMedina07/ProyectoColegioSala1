@@ -160,7 +160,11 @@
               <Image iconType="3" name="/imagenes/BtnSalir.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="24" green="1c" red="ec" type="rgb"/>
+                </LineBorder>
+              </Border>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/BtnSalirOn.png"/>
@@ -177,7 +181,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="390" width="190" height="32"/>
+              <AbsoluteConstraints x="80" y="390" width="130" height="32"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -190,9 +194,12 @@
               <Image iconType="3" name="/imagenes/BtnAcceso.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="5a" green="82" red="0" type="rgb"/>
+                </LineBorder>
+              </Border>
             </Property>
-            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/BtnAccesoOn.png"/>
             </Property>
@@ -213,7 +220,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="330" width="190" height="-1"/>
+              <AbsoluteConstraints x="80" y="330" width="130" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

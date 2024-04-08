@@ -104,17 +104,16 @@ public class frm_login extends javax.swing.JFrame {
 
         btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalir.png"))); // NOI18N
-        btnCancelar.setBorder(null);
+        btnCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(236, 28, 36), 1, true));
         btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
         btnCancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
         btnCancelar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
         jPanel1.add(btnCancelar);
-        btnCancelar.setBounds(50, 390, 190, 32);
+        btnCancelar.setBounds(80, 390, 130, 32);
 
         btnIngresar.setBackground(new java.awt.Color(241, 250, 255));
         btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAcceso.png"))); // NOI18N
-        btnIngresar.setBorder(null);
-        btnIngresar.setBorderPainted(false);
+        btnIngresar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 1, true));
         btnIngresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAccesoOn.png"))); // NOI18N
         btnIngresar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAccesoOn.png"))); // NOI18N
         btnIngresar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAccesoOn.png"))); // NOI18N
@@ -134,7 +133,7 @@ public class frm_login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnIngresar);
-        btnIngresar.setBounds(50, 330, 190, 40);
+        btnIngresar.setBounds(80, 330, 130, 42);
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 130, 90));

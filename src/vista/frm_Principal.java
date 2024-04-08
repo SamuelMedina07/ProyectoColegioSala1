@@ -132,7 +132,7 @@ public class frm_Principal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 130, 90));
+        jPanel2.setBackground(new java.awt.Color(241, 250, 255));
         jPanel2.setLayout(null);
 
         btnSalir.setBackground(new java.awt.Color(255, 255, 255));
@@ -184,7 +184,7 @@ public class frm_Principal extends javax.swing.JFrame {
         btnAsistencias.setBounds(10, 230, 160, 50);
 
         btnUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        btnUsuarios.setText("USUARIOS'=");
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnUsuarios.png"))); // NOI18N
         btnUsuarios.setBorder(null);
         btnUsuarios.setBorderPainted(false);
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +193,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnUsuarios);
-        btnUsuarios.setBounds(380, 330, 160, 50);
+        btnUsuarios.setBounds(300, 20, 160, 50);
 
         btnPadres.setBackground(new java.awt.Color(255, 255, 255));
         btnPadres.setText("PADRES");
