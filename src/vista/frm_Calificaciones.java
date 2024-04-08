@@ -28,6 +28,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         lblUsuario.setText(user);
+        this.btnLeer.setVisible(false);
         
     }
 

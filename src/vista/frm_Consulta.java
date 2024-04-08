@@ -47,10 +47,10 @@ public class frm_Consulta extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(241, 250, 255));
 
         jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(0, 130, 90));
         jLabel3.setText("consultaS");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -70,12 +70,13 @@ public class frm_Consulta extends javax.swing.JDialog {
                 .addGap(44, 44, 44))
         );
 
-        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "CONSULTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 130, 90));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "CONSULTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(241, 250, 255))); // NOI18N
 
-        btnGrados.setBackground(new java.awt.Color(255, 255, 255));
+        btnGrados.setBackground(new java.awt.Color(241, 250, 255));
+        btnGrados.setForeground(new java.awt.Color(0, 130, 90));
         btnGrados.setText("GRADOS");
-        btnGrados.setBorder(null);
+        btnGrados.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
         btnGrados.setBorderPainted(false);
         btnGrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,9 +84,10 @@ public class frm_Consulta extends javax.swing.JDialog {
             }
         });
 
-        btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
+        btnAlumnos.setBackground(new java.awt.Color(241, 250, 255));
+        btnAlumnos.setForeground(new java.awt.Color(0, 130, 90));
         btnAlumnos.setText("ALUMNOS");
-        btnAlumnos.setBorder(null);
+        btnAlumnos.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
         btnAlumnos.setBorderPainted(false);
         btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,9 +95,10 @@ public class frm_Consulta extends javax.swing.JDialog {
             }
         });
 
-        btnCalificaciones.setBackground(new java.awt.Color(255, 255, 255));
+        btnCalificaciones.setBackground(new java.awt.Color(241, 250, 255));
+        btnCalificaciones.setForeground(new java.awt.Color(0, 130, 90));
         btnCalificaciones.setText("CALIFICAIONES");
-        btnCalificaciones.setBorder(null);
+        btnCalificaciones.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
         btnCalificaciones.setBorderPainted(false);
         btnCalificaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,9 +106,10 @@ public class frm_Consulta extends javax.swing.JDialog {
             }
         });
 
-        btnMaterias.setBackground(new java.awt.Color(255, 255, 255));
+        btnMaterias.setBackground(new java.awt.Color(241, 250, 255));
+        btnMaterias.setForeground(new java.awt.Color(0, 130, 90));
         btnMaterias.setText("MATERIAS");
-        btnMaterias.setBorder(null);
+        btnMaterias.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
         btnMaterias.setBorderPainted(false);
         btnMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,9 +117,10 @@ public class frm_Consulta extends javax.swing.JDialog {
             }
         });
 
-        btnPadres.setBackground(new java.awt.Color(255, 255, 255));
+        btnPadres.setBackground(new java.awt.Color(241, 250, 255));
+        btnPadres.setForeground(new java.awt.Color(0, 130, 90));
         btnPadres.setText("PADRES");
-        btnPadres.setBorder(null);
+        btnPadres.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
         btnPadres.setBorderPainted(false);
         btnPadres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,9 +128,10 @@ public class frm_Consulta extends javax.swing.JDialog {
             }
         });
 
-        btnProfesores.setBackground(new java.awt.Color(255, 255, 255));
+        btnProfesores.setBackground(new java.awt.Color(241, 250, 255));
+        btnProfesores.setForeground(new java.awt.Color(0, 130, 90));
         btnProfesores.setText("PROFESORES");
-        btnProfesores.setBorder(null);
+        btnProfesores.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
         btnProfesores.setBorderPainted(false);
         btnProfesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

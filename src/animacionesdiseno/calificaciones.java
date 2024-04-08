@@ -32,6 +32,7 @@ public class calificaciones implements ActionListener{
     this.formConsultaCalificaciones = formConsultaCalificaciones; 
     formCalificaciones.btnOpciones.addActionListener(this);
     ReajsuteImagen("LogoBosquesSinFondo.png");
+     formCalificaciones.btnLeer.setVisible(false);
     }
     
     
