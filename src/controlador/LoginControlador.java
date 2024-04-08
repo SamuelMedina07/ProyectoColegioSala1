@@ -52,5 +52,9 @@ public class LoginControlador implements ActionListener {
         }
     }
       
+    public void limpiarCampos(){
+        formUsuario.txtUsuario.setText("");
+        formUsuario.txtContra.setText("");
+    }
    
 }

@@ -154,7 +154,7 @@ public class Proyecto_Colegio_PAII_Sala1 {
 
 
 //PRINCIPAL
-        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias,formCalificaciones);
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri,formLogin, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias,formCalificaciones);
         contPrincipal.inciar();
 
     }

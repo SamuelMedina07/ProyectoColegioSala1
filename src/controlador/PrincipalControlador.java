@@ -21,6 +21,7 @@ import vista.frm_Principal;
 import vista.frm_Usuarios;
 import vista.frm_Padres;
 import vista.frm_Profesor;
+import vista.frm_login;
 
 /**
  *
@@ -41,9 +42,10 @@ public class PrincipalControlador implements ActionListener{
     private frm_Asistencias formAsistencias;
     private frm_Calificaciones formCalificaciones;
     private frm_Consulta formsConsultas;
+    private frm_login formLogin;
     
 
-    public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias,frm_Calificaciones formCalificaciones) {
+    public PrincipalControlador(frm_Principal formPrin, frm_login formLogin,frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias,frm_Calificaciones formCalificaciones) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
@@ -53,7 +55,9 @@ public class PrincipalControlador implements ActionListener{
         this.formProfesor = formProfesor;
         this.formAsistencias=formAsistencias;
         this.formCalificaciones=formCalificaciones;
+        this.formLogin=formLogin;
         this.formsConsultas = new frm_Consulta(formPrin, true);
+        
         
         
         this.formPrin.btnUsuarios.addActionListener(this);
@@ -139,7 +143,8 @@ public class PrincipalControlador implements ActionListener{
         }
         //SALIR
         if(e.getSource()==formPrin.btnSalir){
-            System.exit(0);
+            formLogin.setVisible(true);
+            formPrin.dispose();
         }
         
     }

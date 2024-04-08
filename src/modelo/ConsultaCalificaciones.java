@@ -175,7 +175,7 @@ public class ConsultaCalificaciones extends Conexion {
 
     public int obtenerSiguienteCodigo() {
         Connection con = getConnection();
-        sentenciaSQL = "SELECT MAX(materia_id) AS max_codigo FROM tbl_materias";
+        sentenciaSQL = "SELECT MAX(calificaciones_id) AS max_codigo FROM tbl_calificaciones";
 
         try {
             ps = con.prepareStatement(sentenciaSQL);
@@ -311,12 +311,11 @@ public class ConsultaCalificaciones extends Conexion {
 
     public boolean existeAsignacionProfesorMateria(int idCalificacion, int idProfesor, int idMateria) {
         Connection con = getConnection();
-        sentenciaSQL = "SELECT COUNT(*) AS count FROM tbl_asignacion_profesores_materias WHERE profesor_id = ? AND materia_id = ? AND asignacion_estado != 'CANCELADA' AND asignacion_id != ?";
+        sentenciaSQL = "SELECT COUNT(*) AS count FROM tbl_asignacion_profesores_materias WHERE profesor_id = ? AND materia_id = ? AND asignacion_estado != 'Inactivo' ";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setInt(1, idProfesor);
             ps.setInt(2, idMateria);
-            ps.setInt(3, idCalificacion); 
             rs = ps.executeQuery();
             if (rs.next()) {
                 int count = rs.getInt("count");

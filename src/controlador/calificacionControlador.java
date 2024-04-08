@@ -60,7 +60,6 @@ public class calificacionControlador implements ActionListener {
         this.formularioConsulta = formularioConsulta;
         this.formularioConsultaAlumnos = new frm_Consulta_Alumnos(formularioCalificaciones, true);
         inicializarComponentes();
-        inicializarBotonedListener();
     }
 
     private void inicializarComponentes() {
@@ -99,8 +98,8 @@ public class calificacionControlador implements ActionListener {
     }
 
     private void manejarEventoTablaAlumnos() {
-        int filaSeleccionada = formularioConsulta.tbl_consulta.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) formularioConsulta.tbl_consulta.getModel();
+        int filaSeleccionada = formularioConsultaAlumnos.tbl_consulta.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) formularioConsultaAlumnos.tbl_consulta.getModel();
         if (filaSeleccionada >= 0) {
             String numCuenta = String.valueOf(model.getValueAt(filaSeleccionada, 0));
             Alumno alumnoseleccionado = consultaAlumnos.obtenerAlumnoSegunNumCuenta(numCuenta);
@@ -110,11 +109,11 @@ public class calificacionControlador implements ActionListener {
                 return;
             }
 
-            formularioCalificaciones.txtAlumno.setText(alumnoseleccionado.getNombre());
+            formularioCalificaciones.txtAlumno.setText(alumnoseleccionado.getNombreCompleto());
             formularioCalificaciones.txtGrado.setText(consGrados.obtenerGradoSegunId(alumnoseleccionado.getIdGrado()).getNombre());
             llenarComboBoxMaterias(alumnoseleccionado.getIdGrado());
             model.setRowCount(0);
-            formularioConsulta.dispose();
+            formularioConsultaAlumnos.dispose();
         }
     }
 
@@ -157,7 +156,7 @@ public class calificacionControlador implements ActionListener {
             formularioCalificaciones.cbParcial.setSelectedItem(calificacionSeleccionado.getParcial());
             formularioCalificaciones.txtNota.setText(String.valueOf(calificacionSeleccionado.getNota()));
             model.setRowCount(0);
-            formularioCalificaciones.dispose();
+            formularioConsulta.dispose();
         }
     }
 
@@ -246,8 +245,8 @@ public class calificacionControlador implements ActionListener {
             }
 
             calificacion.setNota(Double.parseDouble(formularioCalificaciones.txtNota.getText()));
-            consultaProfesor.obtenerIdProfesorPorNombre(formularioCalificaciones.txtProfesor.getText());
-
+            calificacion.setIdProfesor(consultaProfesor.obtenerIdProfesorPorNombre(formularioCalificaciones.txtProfesor.getText()));
+            
             //   verificar si existe una asignación para ese profesor y esa materia
             if (!consultaCalificaciones.existeAsignacionProfesorMateria(calificacion.getId(),calificacion.getIdProfesor(), calificacion.getIdMateria())) {
                 // Si no se encuentra una asignación, mostrar un mensaje y retornar false
