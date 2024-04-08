@@ -6,6 +6,7 @@
 package proyecto_colegio_paii_sala1;
 
 import animacionesdiseno.alumnos;
+import animacionesdiseno.calificaciones;
 import animacionesdiseno.grados;
 import animacionesdiseno.login;
 import animacionesdiseno.materias;
@@ -132,14 +133,16 @@ public class Proyecto_Colegio_PAII_Sala1 {
         ConsultaProfesor consProfesor = new ConsultaProfesor();
         frm_Consulta_Profesor formConsultaProfesor = new frm_Consulta_Profesor(formProfesor, true);
         profesorControlador contProfesor = new profesorControlador(profesor, formProfesor, consProfesor, formConsultaProfesor);
-
+        //Animacion&Diseño
+        profesores disenoprofesor = new profesores(formProfesor,formConsultaProfesor);
+        
+        
         //ASISTENCIA
         Asistencia asistencia = new Asistencia();
         frm_Asistencias formAsistencias = new frm_Asistencias(frm_pri,true);
         ConsultasAsistencia consAsistencia = new ConsultasAsistencia();
         AsistenciaControlador contAsistencia = new AsistenciaControlador(asistencia,formAsistencias,consAsistencia,formConsultaAlumnos);
-        //Animacion&Diseño
-        profesores disenoprofesor = new profesores(formProfesor,formConsultaProfesor);
+        
         
         //CALILFICACIONES
         Calificacion calificacion = new Calificacion();
@@ -147,7 +150,10 @@ public class Proyecto_Colegio_PAII_Sala1 {
         ConsultaCalificaciones consCalificaciones = new  ConsultaCalificaciones();
         frm_Consulta_Calificaciones formConsultaCalificaciones = new frm_Consulta_Calificaciones(formCalificaciones, true);
         calificacionControlador contCalificaciones = new calificacionControlador(calificacion, formCalificaciones, consCalificaciones, formConsultaCalificaciones);
-        //PRINCIPAL
+        calificaciones disenocalificacion = new calificaciones(formCalificaciones,formConsultaCalificaciones);
+
+
+//PRINCIPAL
         PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias,formCalificaciones);
         contPrincipal.inciar();
 
