@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="077e27a5-a19b-4ea5-8ec2-5416eacbc6d0">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="nombreAlumno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_alumnos.`alumno_numCuenta` AS tbl_alumnos_alumno_numCuenta,
+     tbl_alumnos.`alumno_nombreCompleto` AS tbl_alumnos_alumno_nombreCompleto,
+     tbl_alumnos.`alumno_genero` AS tbl_alumnos_alumno_genero,
+     tbl_alumnos.`alumno_fechaNac` AS tbl_alumnos_alumno_fechaNac,
+     tbl_alumnos.`alumno_direccion` AS tbl_alumnos_alumno_direccion,
+     tbl_alumnos.`alumno_telefono` AS tbl_alumnos_alumno_telefono,
+     tbl_alumnos.`alumno_foto` AS tbl_alumnos_alumno_foto,
+     tbl_alumnos.`padres_id` AS tbl_alumnos_padres_id,
+     tbl_alumnos.`grados_id` AS tbl_alumnos_grados_id,
+     tbl_alumnos.`alumnos_estado` AS tbl_alumnos_alumnos_estado,
+     tbl_grados.`grados_id` AS tbl_grados_grados_id,
+     tbl_grados.`grados_nombre` AS tbl_grados_grados_nombre,
+     tbl_padres.`padres_id` AS tbl_padres_padres_id,
+     tbl_padres.`padres_nombreCompleto` AS tbl_padres_padres_nombreCompleto,
+     tbl_empresa.`empresa_id` AS tbl_empresa_empresa_id,
+     tbl_empresa.`empresa_nombre` AS tbl_empresa_empresa_nombre
+FROM
+     `tbl_grados` tbl_grados INNER JOIN `tbl_alumnos` tbl_alumnos ON tbl_grados.`grados_id` = tbl_alumnos.`grados_id`
+     INNER JOIN `tbl_padres` tbl_padres ON tbl_alumnos.`padres_id` = tbl_padres.`padres_id`,
+     `tbl_empresa` tbl_empresa
+WHERE 
+tbl_alumnos.`alumno_nombreCompleto` = $P{nombreAlumno}]]>
+	</queryString>
+	<field name="tbl_alumnos_alumno_numCuenta" class="java.lang.Integer"/>
+	<field name="tbl_alumnos_alumno_nombreCompleto" class="java.lang.String"/>
+	<field name="tbl_alumnos_alumno_genero" class="java.lang.String"/>
+	<field name="tbl_alumnos_alumno_fechaNac" class="java.sql.Date"/>
+	<field name="tbl_alumnos_alumno_direccion" class="java.lang.String"/>
+	<field name="tbl_alumnos_alumno_telefono" class="java.lang.String"/>
+	<field name="tbl_alumnos_alumno_foto" class="java.lang.String"/>
+	<field name="tbl_alumnos_padres_id" class="java.lang.Integer"/>
+	<field name="tbl_alumnos_grados_id" class="java.lang.Integer"/>
+	<field name="tbl_alumnos_alumnos_estado" class="java.lang.String"/>
+	<field name="tbl_grados_grados_id" class="java.lang.Integer"/>
+	<field name="tbl_grados_grados_nombre" class="java.lang.String"/>
+	<field name="tbl_padres_padres_id" class="java.lang.Integer"/>
+	<field name="tbl_padres_padres_nombreCompleto" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_id" class="java.lang.Integer"/>
+	<field name="tbl_empresa_empresa_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="134" y="0" width="404" height="54" uuid="9bd62f2f-89e5-4964-97cf-13ebd6a75d42"/>
+				<textElement>
+					<font fontName="Yu Gothic Light" size="20" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_nombre}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="3" y="0" width="198" height="132" uuid="fa165002-dc07-4eea-ac2f-79ea95324502"/>
+				<imageExpression><![CDATA["C:\\Users\\ammcp\\Documents\\NetBeansProjects\\Proyecto_Colegio_PAII_Sala1\\src\\reportes\\LogoBosquesSinFondo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="164" y="93" width="83" height="20" forecolor="#000000" uuid="083f55fa-eb94-4cf0-81d6-3134fd875242"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[#CUENTA:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="257" y="93" width="258" height="18" uuid="bbe73d73-51a3-4486-a0d8-b6a134434206"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_alumnos_alumno_numCuenta}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="164" y="54" width="351" height="27" uuid="fda8454d-5991-492f-b0a0-85ab162a37ee"/>
+				<textElement>
+					<font size="18" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_alumnos_alumno_nombreCompleto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="162" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="96" y="17" width="132" height="20" forecolor="#000000" uuid="b4b45d5a-5105-4f11-ab7e-7e6ce712bb72"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[GENERO:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="247" y="17" width="338" height="18" uuid="f09bfa07-26fe-4c28-8ce5-3cf569d2e107"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_alumnos_alumno_genero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="96" y="37" width="151" height="20" forecolor="#000000" uuid="dac6fecf-c8cd-4036-923a-98dfbb9d0d2c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[FECHA NACIMIENTO:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="247" y="37" width="338" height="18" uuid="9a8aed11-d4d1-4f5e-98b3-1e8c0d864078"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_alumnos_alumno_fechaNac}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="96" y="57" width="132" height="20" forecolor="#000000" uuid="9fcf852b-6a65-43b0-958e-8a396e3b7811"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECCION:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="247" y="57" width="338" height="18" uuid="f0abf3bc-aa8d-49f6-99fe-ce268ffd7ab3"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_alumnos_alumno_direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="96" y="77" width="132" height="20" forecolor="#000000" uuid="4362c714-640b-43f7-958e-281b1aafe5cc"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[TELEFONO:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="247" y="77" width="338" height="18" uuid="a116fb68-93a4-48a3-bcf0-974c011d5517"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_alumnos_alumno_telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="96" y="94" width="132" height="20" forecolor="#000000" uuid="ad268686-c0a9-422b-99b0-bf0493bd0720"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="247" y="94" width="338" height="18" uuid="ff7c17e8-ba83-427f-b045-02d3806a1165"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_alumnos_alumnos_estado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="96" y="114" width="132" height="20" forecolor="#000000" uuid="1bfea1c6-960e-494e-914d-b3980a7b0a06"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[GRADO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="247" y="114" width="338" height="18" uuid="49b0ca6d-2a39-4716-90ec-72cc76a10d64"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_grados_grados_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="96" y="134" width="132" height="20" forecolor="#000000" uuid="fa8540cf-77d2-49b7-81c9-6999fec64bd3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PADRE:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="247" y="134" width="338" height="18" uuid="d7ff3ca3-a36b-49f4-87ea-36ffc75432b2"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_padres_padres_nombreCompleto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="a79a99ce-1b37-40ae-a208-fe7a5d41e3b0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8" uuid="f914a6b4-f1a4-4fc8-8332-34dac7741d7c"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="496" y="0" width="40" height="13" forecolor="#FFFFFF" uuid="47ed5d98-7aa6-4499-94af-82e034c154b0"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="4da01d7b-1b97-4e38-a5d2-883d4f147500"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="399" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="2be062b3-ad8d-426a-b47a-f2a159c25308"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
