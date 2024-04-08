@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Reportes.frm_Reportes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelo.ConsultaProfesor;
@@ -43,7 +44,7 @@ public class PrincipalControlador implements ActionListener{
     private frm_Calificaciones formCalificaciones;
     private frm_Consulta formsConsultas;
     private frm_login formLogin;
-    
+    private frm_Reportes formReportes;
 
     public PrincipalControlador(frm_Principal formPrin, frm_login formLogin,frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias,frm_Calificaciones formCalificaciones) {
         this.formPrin = formPrin;
@@ -57,6 +58,7 @@ public class PrincipalControlador implements ActionListener{
         this.formCalificaciones=formCalificaciones;
         this.formLogin=formLogin;
         this.formsConsultas = new frm_Consulta(formPrin, true);
+        this.formReportes = new frm_Reportes(formPrin, true);
         
         
         
@@ -85,6 +87,7 @@ public class PrincipalControlador implements ActionListener{
         formAsistencias.setLocationRelativeTo(null);
         formCalificaciones.setLocationRelativeTo(null);
         formsConsultas.setLocationRelativeTo(null);
+        formReportes.setLocationRelativeTo(null);
     }
     
     
@@ -134,7 +137,7 @@ public class PrincipalControlador implements ActionListener{
         }
         //REPORTES
        if(e.getSource()==formPrin.btnReportes1){
-            //FORMULARIO REPORTES
+            formReportes.setVisible(true);
         }
         //ASISTENCIAS
        if(e.getSource()==formPrin.btnConsultas){

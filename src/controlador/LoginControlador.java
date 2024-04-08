@@ -32,6 +32,9 @@ public class LoginControlador implements ActionListener {
         if (e.getSource() == formUsuario.btnIngresar) {
             ingresar();
         }
+        if (e.getSource() == formUsuario.btnCancelar) {
+            System.exit(0);
+        }
     }
 
     public void ingresar() {

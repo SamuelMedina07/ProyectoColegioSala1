@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7ea2405-47b6-487e-8fd2-685c49df56bd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="nombreProfesor" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_materias.`materia_id` AS tbl_materias_materia_id,
+     tbl_materias.`materia_nombre` AS tbl_materias_materia_nombre,
+     tbl_materias.`materia_estado` AS tbl_materias_materia_estado,
+     tbl_profesor.`profesor_id` AS tbl_profesor_profesor_id,
+     tbl_profesor.`profesor_nombreCompleto` AS tbl_profesor_profesor_nombreCompleto,
+     tbl_asignacion_profesores_materias.`profesor_id` AS tbl_asignacion_profesores_materias_profesor_id,
+     tbl_asignacion_profesores_materias.`materia_id` AS tbl_asignacion_profesores_materias_materia_id,
+     tbl_empresa.`empresa_id` AS tbl_empresa_empresa_id,
+     tbl_empresa.`empresa_nombre` AS tbl_empresa_empresa_nombre,
+     tbl_empresa.`empresa_direccion` AS tbl_empresa_empresa_direccion,
+     tbl_empresa.`empresa_rtn` AS tbl_empresa_empresa_rtn,
+     tbl_empresa.`empresa_telefono` AS tbl_empresa_empresa_telefono,
+     tbl_empresa.`empresa_correo` AS tbl_empresa_empresa_correo,
+     tbl_empresa.`empresa_logo` AS tbl_empresa_empresa_logo,
+     tbl_profesor.`profesor_foto` AS tbl_profesor_profesor_foto
+FROM
+     `tbl_profesor` tbl_profesor INNER JOIN `tbl_asignacion_profesores_materias` tbl_asignacion_profesores_materias ON tbl_profesor.`profesor_id` = tbl_asignacion_profesores_materias.`profesor_id`
+     INNER JOIN `tbl_materias` tbl_materias ON tbl_asignacion_profesores_materias.`materia_id` = tbl_materias.`materia_id`,
+     `tbl_empresa` tbl_empresa
+WHERE
+     tbl_profesor.profesor_nombreCompleto LIKE CONCAT('%', $P{nombreProfesor}, '%')]]>
+	</queryString>
+	<field name="tbl_materias_materia_id" class="java.lang.Integer"/>
+	<field name="tbl_materias_materia_nombre" class="java.lang.String"/>
+	<field name="tbl_materias_materia_estado" class="java.lang.String"/>
+	<field name="tbl_profesor_profesor_id" class="java.lang.Integer"/>
+	<field name="tbl_profesor_profesor_nombreCompleto" class="java.lang.String"/>
+	<field name="tbl_asignacion_profesores_materias_profesor_id" class="java.lang.Integer"/>
+	<field name="tbl_asignacion_profesores_materias_materia_id" class="java.lang.Integer"/>
+	<field name="tbl_empresa_empresa_id" class="java.lang.Integer"/>
+	<field name="tbl_empresa_empresa_nombre" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_direccion" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_rtn" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_telefono" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_correo" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_logo" class="java.lang.Object"/>
+	<field name="tbl_profesor_profesor_foto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="158" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="235" y="0" width="338" height="52" uuid="38550ab9-040a-47f6-a2cf-39d5a373c7b7"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="330" y="52" width="66" height="15" forecolor="#736343" uuid="bf43ec6f-cb75-43b1-a990-66dbb6d3bc4c"/>
+				<text><![CDATA[direccion:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="420" y="52" width="117" height="15" uuid="0be686b8-4eef-43a2-b60e-98d691742563"/>
+				<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="330" y="67" width="66" height="15" forecolor="#736343" uuid="38c4b20a-99a8-4f18-93b7-8874ea9a2f4c"/>
+				<text><![CDATA[rtn:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="420" y="67" width="117" height="15" uuid="d0d9a088-5c97-4ba7-8d5a-84a580d85634"/>
+				<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_rtn}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="40" y="0" width="158" height="125" uuid="ff15359c-4665-441f-9a5b-795f930a25de"/>
+				<imageExpression><![CDATA["C:\\Users\\ammcp\\Documents\\NetBeansProjects\\Proyecto_Colegio_PAII_Sala1\\src\\reportes\\LogoBosquesSinFondo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="1cd2906c-005f-4d6a-a2df-9e33cd10e60b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="110" height="15" forecolor="#736343" uuid="8ae5a3ee-fdf6-49fc-9ba1-e3c05aa02528"/>
+				<text><![CDATA[CODIGO M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="110" y="1" width="88" height="15" forecolor="#736343" uuid="8d6938f1-cd46-4709-b4a9-f836f2b1bc8e"/>
+				<text><![CDATA[MATERIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="215" y="0" width="66" height="15" forecolor="#736343" uuid="4785b7fc-44e7-4160-8db5-14c99dff6530"/>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="297" y="1" width="123" height="14" forecolor="#736343" uuid="01a03ac7-4f07-4f49-9353-e7319a3129c4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[DOCENTE:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="89" height="15" uuid="173f0638-da16-4e13-9c3b-c0d7dc7cc33f"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="66" height="15" uuid="31b5eac3-b32d-4b86-a7ab-f8612e234aa3"/>
+					<textFieldExpression><![CDATA[$F{tbl_materias_materia_id}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="110" y="0" width="88" height="15" uuid="59683ab3-e898-4626-8c8f-1cc631044a0a"/>
+				<textFieldExpression><![CDATA[$F{tbl_materias_materia_nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="215" y="0" width="66" height="15" uuid="d7124fdc-0375-4dc1-81c6-f3484b146d33"/>
+				<textFieldExpression><![CDATA[$F{tbl_materias_materia_estado}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="297" y="0" width="123" height="15" uuid="244b3286-b9e3-4e73-b31d-db06cf779170"/>
+				<textFieldExpression><![CDATA[$F{tbl_profesor_profesor_nombreCompleto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="84" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="d417201c-53e2-4caf-a87b-2aed965c1628"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="334" y="29" width="66" height="15" forecolor="#736343" uuid="d57ed2ef-0a95-422a-821a-5c258fb4f3ba"/>
+				<text><![CDATA[correo:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="410" y="29" width="163" height="15" uuid="617bdb6a-5cb5-4c05-aefa-2547461bdebf"/>
+				<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_correo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="334" y="44" width="66" height="15" forecolor="#736343" uuid="5a371ed7-a858-4c0b-9fd7-1eec6279c864"/>
+				<text><![CDATA[telefono:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="410" y="44" width="163" height="15" uuid="9004d0a2-53a3-4230-82d5-2b001ee1affb"/>
+				<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="36" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="ac93eb1f-4f93-4b6c-9baa-2a592791e09a"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="726e060d-ef06-45dc-8e70-5ae5b4e2cd3d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="4f26b6ca-738f-4430-a0e0-5e1b71fac952"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="14afe78a-7510-43aa-bb62-9672a39bb82b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
