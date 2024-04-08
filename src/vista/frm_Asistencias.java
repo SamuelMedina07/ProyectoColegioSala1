@@ -49,6 +49,7 @@ public class frm_Asistencias extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ASISTENCIAS");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 

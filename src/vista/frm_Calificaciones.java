@@ -84,6 +84,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CALIFICACIONES");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 

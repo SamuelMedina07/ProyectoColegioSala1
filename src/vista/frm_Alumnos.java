@@ -76,8 +76,6 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDireccion = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JFormattedTextField();
         txtNombres1 = new javax.swing.JTextField();
@@ -103,11 +101,18 @@ public class frm_Alumnos extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
         jlbLogo = new javax.swing.JLabel();
         btnOpciones = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDireccion = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_registros = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ALUMNOS");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 
@@ -175,19 +180,6 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jPanel6.add(txtCodigo);
         txtCodigo.setBounds(180, 10, 120, 29);
 
-        txtDireccion.setBackground(new java.awt.Color(241, 250, 255));
-        txtDireccion.setColumns(20);
-        txtDireccion.setRows(5);
-        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDireccionMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(txtDireccion);
-
-        jPanel6.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 350, 260, 90);
-
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 130, 90));
         jLabel10.setText("TELEFONO");
@@ -195,6 +187,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel10.setBounds(20, 300, 65, 14);
 
         txtTelefono.setBackground(new java.awt.Color(241, 250, 255));
+        txtTelefono.setBorder(null);
         try {
             txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(504)####-##-##")));
         } catch (java.text.ParseException ex) {
@@ -206,9 +199,10 @@ public class frm_Alumnos extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtTelefono);
-        txtTelefono.setBounds(90, 290, 160, 30);
+        txtTelefono.setBounds(90, 290, 190, 30);
 
         txtNombres1.setBackground(new java.awt.Color(241, 250, 255));
+        txtNombres1.setBorder(null);
         txtNombres1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNombres1MouseClicked(evt);
@@ -220,7 +214,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtNombres1);
-        txtNombres1.setBounds(90, 100, 160, 29);
+        txtNombres1.setBounds(90, 100, 190, 29);
 
         txtPadre.setEditable(false);
         txtPadre.setBackground(new java.awt.Color(241, 250, 255));
@@ -276,6 +270,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel16.setBounds(20, 160, 67, 14);
 
         txtApellidos.setBackground(new java.awt.Color(241, 250, 255));
+        txtApellidos.setBorder(null);
         txtApellidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtApellidosMouseClicked(evt);
@@ -287,7 +282,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtApellidos);
-        txtApellidos.setBounds(90, 150, 160, 29);
+        txtApellidos.setBounds(90, 150, 190, 29);
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 130, 90));
@@ -430,6 +425,27 @@ public class frm_Alumnos extends javax.swing.JDialog {
         });
         jPanel6.add(btnOpciones);
         btnOpciones.setBounds(390, 10, 90, 32);
+        jPanel6.add(jSeparator1);
+        jSeparator1.setBounds(20, 130, 230, 0);
+        jPanel6.add(jSeparator2);
+        jSeparator2.setBounds(20, 130, 260, 20);
+        jPanel6.add(jSeparator3);
+        jSeparator3.setBounds(20, 180, 260, 20);
+        jPanel6.add(jSeparator4);
+        jSeparator4.setBounds(20, 320, 260, 30);
+
+        txtDireccion.setBackground(new java.awt.Color(241, 250, 255));
+        txtDireccion.setColumns(20);
+        txtDireccion.setRows(5);
+        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDireccionMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(txtDireccion);
+
+        jPanel6.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 350, 260, 100);
 
         jPanel3.setBackground(new java.awt.Color(0, 130, 90));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "RESULTADO DE BUSQUEDA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(241, 250, 255))); // NOI18N
@@ -537,11 +553,6 @@ public class frm_Alumnos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPadreActionPerformed
 
-    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
-        // TODO add your handling code here:
-        txtDireccion.setBackground(Color.white);
-    }//GEN-LAST:event_txtDireccionMouseClicked
-
     private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
         // TODO add your handling code here:
         AsignarColorCampo(txtTelefono);
@@ -575,6 +586,11 @@ public class frm_Alumnos extends javax.swing.JDialog {
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOpcionesActionPerformed
+
+    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+        // TODO add your handling code here:
+        txtDireccion.setBackground(Color.white);
+    }//GEN-LAST:event_txtDireccionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -665,6 +681,10 @@ public class frm_Alumnos extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     public javax.swing.JLabel jlbLogo;
     public javax.swing.JLabel lblFoto;
     public javax.swing.JLabel lblUsuario;

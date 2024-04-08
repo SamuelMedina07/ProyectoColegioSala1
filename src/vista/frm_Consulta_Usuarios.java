@@ -55,6 +55,7 @@ public class frm_Consulta_Usuarios extends javax.swing.JDialog {
         btn_buscarPor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CONSULTA USUARIOS");
 
         jPanel2.setBackground(new java.awt.Color(241, 250, 255));
 
@@ -88,7 +89,7 @@ public class frm_Consulta_Usuarios extends javax.swing.JDialog {
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "USUARIOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(241, 250, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "USUARIOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(241, 250, 255))); // NOI18N
 
         tbl_usuarios.setBackground(new java.awt.Color(241, 250, 255));
         tbl_usuarios.setModel(new javax.swing.table.DefaultTableModel(

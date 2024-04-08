@@ -64,6 +64,7 @@ public class frm_Consulta_Profesor extends javax.swing.JDialog {
         btn_buscarPor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CONSULTA PROFESORES");
         setBackground(new java.awt.Color(241, 250, 255));
 
         jPanel2.setBackground(new java.awt.Color(241, 250, 255));

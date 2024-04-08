@@ -129,6 +129,7 @@ public class frm_Principal extends javax.swing.JFrame {
         jlbLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GESTIONES CENTRO EDUCATIVO JUCUTUMA");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 

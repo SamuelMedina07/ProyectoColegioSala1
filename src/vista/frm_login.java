@@ -45,6 +45,7 @@ public class frm_login extends javax.swing.JFrame {
         jlbLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LOGIN");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
         jPanel1.setLayout(null);

@@ -52,6 +52,7 @@ public class frm_Consulta extends javax.swing.JDialog {
         btnProfesores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CONSULTAS");
 
         jPanel2.setBackground(new java.awt.Color(241, 250, 255));
 

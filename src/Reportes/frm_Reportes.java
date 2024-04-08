@@ -5,6 +5,10 @@
  */
 package Reportes;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Samuel
@@ -17,6 +21,7 @@ public class frm_Reportes extends javax.swing.JDialog {
     public frm_Reportes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+          ReajsuteImagen("LogoBosquesSinFondo.png");
     }
 
     /**
@@ -40,6 +45,7 @@ public class frm_Reportes extends javax.swing.JDialog {
         jlbLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("REPORTES");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 
@@ -229,7 +235,18 @@ public class frm_Reportes extends javax.swing.JDialog {
     private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_6ActionPerformed
-
+  public void ReajsuteImagen(String nombreImagen)
+    {
+         ImageIcon imagen;
+         Icon icono2;
+    
+           
+           
+        imagen = new ImageIcon("src/imagenes/"+nombreImagen);
+        icono2 = new ImageIcon(imagen.getImage().getScaledInstance( jlbLogo.getWidth(), jlbLogo.getHeight(),Image.SCALE_DEFAULT));
+        jlbLogo.setIcon(icono2); 
+        
+    }
     /**
      * @param args the command line arguments
      */

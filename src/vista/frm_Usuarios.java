@@ -73,6 +73,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
         jlbLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("USUARIOS");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -243,7 +244,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnAgregar);
-        btnAgregar.setBounds(550, 110, 95, 19);
+        btnAgregar.setBounds(550, 110, 95, 20);
 
         btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 130, 90));
@@ -255,14 +256,14 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnCancelar);
-        btnCancelar.setBounds(670, 150, 95, 19);
+        btnCancelar.setBounds(670, 150, 95, 20);
 
         btnCrear.setBackground(new java.awt.Color(241, 250, 255));
         btnCrear.setForeground(new java.awt.Color(0, 130, 90));
         btnCrear.setText("CREAR");
         btnCrear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnCrear);
-        btnCrear.setBounds(550, 150, 95, 19);
+        btnCrear.setBounds(550, 150, 95, 20);
 
         btnLimpiar.setBackground(new java.awt.Color(241, 250, 255));
         btnLimpiar.setForeground(new java.awt.Color(0, 130, 90));
@@ -274,7 +275,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnLimpiar);
-        btnLimpiar.setBounds(670, 110, 95, 19);
+        btnLimpiar.setBounds(670, 110, 95, 20);
 
         btnEliminar.setBackground(new java.awt.Color(241, 250, 255));
         btnEliminar.setForeground(new java.awt.Color(0, 130, 90));
@@ -286,7 +287,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnEliminar);
-        btnEliminar.setBounds(670, 70, 95, 19);
+        btnEliminar.setBounds(670, 70, 95, 20);
 
         btnLeer.setBackground(new java.awt.Color(241, 250, 255));
         btnLeer.setForeground(new java.awt.Color(0, 130, 90));
@@ -301,7 +302,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
         btnModificar.setText("MODIFICAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnModificar);
-        btnModificar.setBounds(550, 190, 95, 19);
+        btnModificar.setBounds(550, 190, 95, 20);
 
         btnSalir.setBackground(new java.awt.Color(241, 250, 255));
         btnSalir.setForeground(new java.awt.Color(0, 130, 90));
@@ -313,7 +314,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnSalir);
-        btnSalir.setBounds(670, 190, 95, 19);
+        btnSalir.setBounds(670, 190, 95, 20);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
         jlbLogo.setText("jLabel1");

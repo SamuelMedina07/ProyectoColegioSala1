@@ -65,6 +65,7 @@ public class frm_Grados extends javax.swing.JDialog {
         btnOpciones = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GRADOS");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 

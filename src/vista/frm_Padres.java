@@ -80,6 +80,7 @@ public class frm_Padres extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("PADRES");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 

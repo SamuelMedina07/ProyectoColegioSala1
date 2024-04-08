@@ -55,6 +55,7 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         btn_buscarPor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CONSULTA GRADOS");
 
         jPanel2.setBackground(new java.awt.Color(241, 250, 255));
 
