@@ -235,7 +235,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtProfesor);
-        txtProfesor.setBounds(280, 220, 170, 29);
+        txtProfesor.setBounds(280, 220, 210, 29);
 
         btnAgregar.setBackground(new java.awt.Color(241, 250, 255));
         btnAgregar.setForeground(new java.awt.Color(0, 130, 90));
@@ -247,7 +247,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnAgregar);
-        btnAgregar.setBounds(550, 110, 92, 19);
+        btnAgregar.setBounds(550, 110, 92, 20);
 
         btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 130, 90));
@@ -259,28 +259,28 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnCancelar);
-        btnCancelar.setBounds(670, 150, 92, 19);
+        btnCancelar.setBounds(670, 150, 92, 20);
 
         btnCrear.setBackground(new java.awt.Color(241, 250, 255));
         btnCrear.setForeground(new java.awt.Color(0, 130, 90));
         btnCrear.setText("CREAR");
         btnCrear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnCrear);
-        btnCrear.setBounds(550, 150, 92, 19);
+        btnCrear.setBounds(550, 150, 92, 20);
 
         btnLeer.setBackground(new java.awt.Color(241, 250, 255));
         btnLeer.setForeground(new java.awt.Color(0, 130, 90));
         btnLeer.setText("LEER");
         btnLeer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnLeer);
-        btnLeer.setBounds(550, 70, 92, 19);
+        btnLeer.setBounds(550, 70, 92, 20);
 
         btnModificar.setBackground(new java.awt.Color(241, 250, 255));
         btnModificar.setForeground(new java.awt.Color(0, 130, 90));
         btnModificar.setText("MODIFICAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnModificar);
-        btnModificar.setBounds(550, 190, 92, 19);
+        btnModificar.setBounds(550, 190, 92, 20);
 
         btnEliminar.setBackground(new java.awt.Color(241, 250, 255));
         btnEliminar.setForeground(new java.awt.Color(0, 130, 90));
@@ -292,7 +292,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnEliminar);
-        btnEliminar.setBounds(670, 70, 92, 19);
+        btnEliminar.setBounds(670, 70, 92, 20);
 
         btnLimpiar.setBackground(new java.awt.Color(241, 250, 255));
         btnLimpiar.setForeground(new java.awt.Color(0, 130, 90));
@@ -304,7 +304,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnLimpiar);
-        btnLimpiar.setBounds(670, 110, 92, 19);
+        btnLimpiar.setBounds(670, 110, 92, 20);
 
         btnSalir.setBackground(new java.awt.Color(241, 250, 255));
         btnSalir.setForeground(new java.awt.Color(0, 130, 90));
@@ -316,7 +316,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnSalir);
-        btnSalir.setBounds(670, 190, 92, 19);
+        btnSalir.setBounds(670, 190, 92, 20);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
         jPanel6.add(jlbLogo);
@@ -348,7 +348,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         jPanel6.add(jSeparator2);
         jSeparator2.setBounds(20, 250, 140, 10);
         jPanel6.add(jSeparator3);
-        jSeparator3.setBounds(200, 250, 250, 10);
+        jSeparator3.setBounds(200, 250, 290, 10);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -387,9 +387,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

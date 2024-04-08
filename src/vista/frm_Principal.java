@@ -112,7 +112,6 @@ public class frm_Principal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnSalir = new javax.swing.JButton();
         btnMaterias = new javax.swing.JButton();
         btnProfesores = new javax.swing.JButton();
         btnAsistencias = new javax.swing.JButton();
@@ -124,192 +123,217 @@ public class frm_Principal extends javax.swing.JFrame {
         btnCalificaciones = new javax.swing.JButton();
         btnConsultas = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jlbLogo = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
+        jlbLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
 
-        jPanel2.setBackground(new java.awt.Color(241, 250, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 130, 90));
         jPanel2.setLayout(null);
 
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setText("               SALIR");
-        btnSalir.setBorder(null);
-        btnSalir.setBorderPainted(false);
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnSalir);
-        btnSalir.setBounds(10, 330, 160, 50);
-
         btnMaterias.setBackground(new java.awt.Color(255, 255, 255));
-        btnMaterias.setText("MATERIAS");
-        btnMaterias.setBorder(null);
-        btnMaterias.setBorderPainted(false);
+        btnMaterias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMaterias.png"))); // NOI18N
+        btnMaterias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnMaterias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMateriasOn.png"))); // NOI18N
+        btnMaterias.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMateriasOn.png"))); // NOI18N
+        btnMaterias.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMateriasOn.png"))); // NOI18N
         btnMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMateriasActionPerformed(evt);
             }
         });
         jPanel2.add(btnMaterias);
-        btnMaterias.setBounds(470, 170, 160, 50);
+        btnMaterias.setBounds(200, 170, 140, 45);
 
         btnProfesores.setBackground(new java.awt.Color(255, 255, 255));
-        btnProfesores.setText("PROFESORES");
-        btnProfesores.setBorder(null);
-        btnProfesores.setBorderPainted(false);
+        btnProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesores.png"))); // NOI18N
+        btnProfesores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnProfesores.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesoresOn.png"))); // NOI18N
+        btnProfesores.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesoresOn.png"))); // NOI18N
+        btnProfesores.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesoresOn.png"))); // NOI18N
         btnProfesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfesoresActionPerformed(evt);
             }
         });
         jPanel2.add(btnProfesores);
-        btnProfesores.setBounds(380, 260, 160, 50);
+        btnProfesores.setBounds(20, 170, 140, 45);
 
         btnAsistencias.setBackground(new java.awt.Color(255, 255, 255));
-        btnAsistencias.setText("ASISTENCIAS");
-        btnAsistencias.setBorder(null);
-        btnAsistencias.setBorderPainted(false);
+        btnAsistencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAsistencias.png"))); // NOI18N
+        btnAsistencias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnAsistencias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAsistenciasOn.png"))); // NOI18N
+        btnAsistencias.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAsistenciasOn.png"))); // NOI18N
+        btnAsistencias.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAsistenciasOn.png"))); // NOI18N
         btnAsistencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAsistenciasActionPerformed(evt);
             }
         });
         jPanel2.add(btnAsistencias);
-        btnAsistencias.setBounds(10, 230, 160, 50);
+        btnAsistencias.setBounds(370, 100, 140, 45);
 
         btnUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnUsuarios.png"))); // NOI18N
-        btnUsuarios.setBorder(null);
-        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnUsuarios.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnUsuariosOn.png"))); // NOI18N
+        btnUsuarios.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnUsuariosOn.png"))); // NOI18N
+        btnUsuarios.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnUsuariosOn.png"))); // NOI18N
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
             }
         });
         jPanel2.add(btnUsuarios);
-        btnUsuarios.setBounds(300, 20, 160, 50);
+        btnUsuarios.setBounds(200, 240, 140, 45);
 
         btnPadres.setBackground(new java.awt.Color(255, 255, 255));
-        btnPadres.setText("PADRES");
-        btnPadres.setBorder(null);
-        btnPadres.setBorderPainted(false);
+        btnPadres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadres.png"))); // NOI18N
+        btnPadres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnPadres.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadresOn.png"))); // NOI18N
+        btnPadres.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadresOn.png"))); // NOI18N
+        btnPadres.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadresOn.png"))); // NOI18N
         btnPadres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPadresActionPerformed(evt);
             }
         });
         jPanel2.add(btnPadres);
-        btnPadres.setBounds(280, 190, 160, 50);
+        btnPadres.setBounds(370, 240, 140, 45);
 
         btnReportes1.setBackground(new java.awt.Color(255, 255, 255));
-        btnReportes1.setText("        REPORTES");
-        btnReportes1.setBorder(null);
-        btnReportes1.setBorderPainted(false);
+        btnReportes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnReportes.png"))); // NOI18N
+        btnReportes1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnReportes1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnReportesOn.png"))); // NOI18N
+        btnReportes1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnReportesOn.png"))); // NOI18N
+        btnReportes1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnReportesOn.png"))); // NOI18N
         btnReportes1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportes1ActionPerformed(evt);
             }
         });
         jPanel2.add(btnReportes1);
-        btnReportes1.setBounds(10, 280, 160, 50);
+        btnReportes1.setBounds(200, 310, 140, 45);
 
         btnGrados.setBackground(new java.awt.Color(255, 255, 255));
-        btnGrados.setText("GRADOS");
-        btnGrados.setBorder(null);
-        btnGrados.setBorderPainted(false);
+        btnGrados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGrados.png"))); // NOI18N
+        btnGrados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnGrados.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGradosOn.png"))); // NOI18N
+        btnGrados.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGradosOn.png"))); // NOI18N
+        btnGrados.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGradosOn.png"))); // NOI18N
         btnGrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGradosActionPerformed(evt);
             }
         });
         jPanel2.add(btnGrados);
-        btnGrados.setBounds(380, 100, 160, 50);
+        btnGrados.setBounds(200, 100, 140, 45);
 
         btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
-        btnAlumnos.setText("ALUMNOS");
-        btnAlumnos.setBorder(null);
-        btnAlumnos.setBorderPainted(false);
+        btnAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnos.png"))); // NOI18N
+        btnAlumnos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnAlumnos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnosOn.png"))); // NOI18N
+        btnAlumnos.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnosOn.png"))); // NOI18N
+        btnAlumnos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnosOn.png"))); // NOI18N
         btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlumnosActionPerformed(evt);
             }
         });
         jPanel2.add(btnAlumnos);
-        btnAlumnos.setBounds(70, 80, 200, 60);
+        btnAlumnos.setBounds(20, 100, 140, 45);
 
         btnCalificaciones.setBackground(new java.awt.Color(255, 255, 255));
-        btnCalificaciones.setText("CALIFICAIONES");
-        btnCalificaciones.setBorder(null);
-        btnCalificaciones.setBorderPainted(false);
+        btnCalificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificaciones.png"))); // NOI18N
+        btnCalificaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnCalificaciones.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificacionesOn.png"))); // NOI18N
+        btnCalificaciones.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificacionesOn.png"))); // NOI18N
+        btnCalificaciones.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificacionesOn.png"))); // NOI18N
         btnCalificaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalificacionesActionPerformed(evt);
             }
         });
         jPanel2.add(btnCalificaciones);
-        btnCalificaciones.setBounds(200, 330, 160, 50);
+        btnCalificaciones.setBounds(370, 170, 140, 45);
 
         btnConsultas.setBackground(new java.awt.Color(255, 255, 255));
-        btnConsultas.setText("CONSULTAS");
-        btnConsultas.setBorder(null);
-        btnConsultas.setBorderPainted(false);
+        btnConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnConsultas.png"))); // NOI18N
+        btnConsultas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnConsultas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnConsultasOn.png"))); // NOI18N
+        btnConsultas.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnConsultasOn.png"))); // NOI18N
+        btnConsultas.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnConsultasOn.png"))); // NOI18N
         btnConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultasActionPerformed(evt);
             }
         });
         jPanel2.add(btnConsultas);
-        btnConsultas.setBounds(200, 260, 160, 50);
+        btnConsultas.setBounds(20, 240, 140, 45);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(241, 250, 255));
         jLabel3.setText("GESTIONES CENTRO EDUCATIVO JUCUTUMA");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(80, 10, 820, 58);
+        jLabel3.setBounds(10, 10, 540, 58);
 
-        jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
-        jPanel2.add(jlbLogo);
-        jlbLogo.setBounds(670, 70, 260, 300);
+        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalir.png"))); // NOI18N
+        btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(236, 28, 36), 3, true));
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
+        btnSalir.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
+        btnSalir.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSalir);
+        btnSalir.setBounds(380, 310, 135, 45);
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 130, 90));
-        jLabel5.setText("Usuario:");
+        jLabel5.setText("BIENVENIDO:");
 
-        lblUsuario.setBackground(new java.awt.Color(0, 130, 90));
-        lblUsuario.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(0, 130, 90));
+        lblUsuario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(236, 28, 36));
+
+        jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(754, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(355, 355, 355))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jlbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 332, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel5))
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbLogo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
