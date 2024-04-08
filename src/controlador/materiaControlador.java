@@ -108,9 +108,6 @@ public class materiaControlador implements ActionListener {
         if (e.getSource() == formMateria.btnBuscar) {
             formConsulta.setVisible(true);
         }
-        if (e.getSource() == formConsulta.btn_buscarPor) {
-            consultarMaterias();
-        }
         if (e.getSource() == formMateria.btnModificar) {
             modificarMateria();
         }
@@ -166,45 +163,6 @@ public class materiaControlador implements ActionListener {
         formMateria.tbl_registros.setModel(modelo);
     }
 
-    public void consultarMaterias() {
-        String campoSeleccionado = (String) formConsulta.cbBuscarPor.getSelectedItem();
-        String campoBuscar = formConsulta.txtBuscar.getText();
-
-        switch (campoSeleccionado) {
-            case "ID":
-                try {
-                    int idMateria = Integer.parseInt(campoBuscar);
-                    Materia materiaEncontrada = consultaMaterias.obtenerMateriaSegunId(idMateria);
-                    if (materiaEncontrada != null) {
-                        ArrayList<Materia> listaMateria = new ArrayList<>();
-                        listaMateria.add(materiaEncontrada);
-                        llenarTablaConsulta(listaMateria);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró ninguna materia con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            case "NOMBRE":
-                manejarResultadoConsulta(consultaMaterias.buscarMateriasPorNombre(campoBuscar), "No se encontró ninguna materia con el nombre especificado.");
-                break;
-            case "ACTIVAS":
-                manejarResultadoConsulta(consultaMaterias.buscarMateriasActivas(), "No se encontró ninguna materia activa.");
-                break;
-            case "INACTIVAS":
-                manejarResultadoConsulta(consultaMaterias.buscarMateriasInactivas(), "No se encontró ninguna materia inactiva.");
-                break;
-        }
-    }
-
-    private void manejarResultadoConsulta(ArrayList<Materia> materiasEncontradas, String mensajeError) {
-        if (!materiasEncontradas.isEmpty()) {
-            llenarTablaConsulta(materiasEncontradas);
-        } else {
-            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
     private boolean validarYVerificarMateria() {
         if (validarCamposNoVacios()) {
@@ -276,15 +234,5 @@ public class materiaControlador implements ActionListener {
         formMateria.btnSalir.setEnabled(false);
     }
 
-    public void llenarTablaConsulta(ArrayList<Materia> listaMaterias) {
-        modelo = (DefaultTableModel) formConsulta.tbl_consulta.getModel();
-        modelo.setRowCount(0);
-        for (Materia materia : listaMaterias) {
-            datos[0] = materia.getId();
-            datos[1] = materia.getNombre();
-            datos[2] = materia.getEstado();
-            modelo.addRow(datos);
-        }
-        formConsulta.tbl_consulta.setModel(modelo);
-    }
+    
 }

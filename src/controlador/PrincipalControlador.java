@@ -14,6 +14,7 @@ import modelo.Usuario;
 import vista.frm_Alumnos;
 import vista.frm_Asistencias;
 import vista.frm_Calificaciones;
+import vista.frm_Consulta;
 import vista.frm_Grados;
 import vista.frm_Materias;
 import vista.frm_Principal;
@@ -39,6 +40,7 @@ public class PrincipalControlador implements ActionListener{
     private frm_Profesor formProfesor;
     private frm_Asistencias formAsistencias;
     private frm_Calificaciones formCalificaciones;
+    private frm_Consulta formsConsultas;
     
 
     public PrincipalControlador(frm_Principal formPrin, frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias,frm_Calificaciones formCalificaciones) {
@@ -51,6 +53,7 @@ public class PrincipalControlador implements ActionListener{
         this.formProfesor = formProfesor;
         this.formAsistencias=formAsistencias;
         this.formCalificaciones=formCalificaciones;
+        this.formsConsultas = new frm_Consulta(formPrin, true);
         
         
         this.formPrin.btnUsuarios.addActionListener(this);
@@ -77,6 +80,7 @@ public class PrincipalControlador implements ActionListener{
         formProfesor.setLocationRelativeTo(null);
         formAsistencias.setLocationRelativeTo(null);
         formCalificaciones.setLocationRelativeTo(null);
+        formsConsultas.setLocationRelativeTo(null);
     }
     
     
@@ -130,7 +134,7 @@ public class PrincipalControlador implements ActionListener{
         }
         //ASISTENCIAS
        if(e.getSource()==formPrin.btnConsultas){
-            formAsistencias.setVisible(true);
+            formsConsultas.setVisible(true);
             //FORMULARIO CONSULTAS
         }
         //SALIR

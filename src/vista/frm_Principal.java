@@ -185,7 +185,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnProfesores);
-        btnProfesores.setBounds(380, 270, 160, 50);
+        btnProfesores.setBounds(380, 260, 160, 50);
 
         btnAsistencias.setBackground(new java.awt.Color(255, 255, 255));
         btnAsistencias.setText("ASISTENCIAS");
@@ -209,7 +209,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnUsuarios);
-        btnUsuarios.setBounds(380, 340, 160, 50);
+        btnUsuarios.setBounds(380, 330, 160, 50);
 
         btnPadres.setBackground(new java.awt.Color(255, 255, 255));
         btnPadres.setText("PADRES");
@@ -271,7 +271,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnGrados);
-        btnGrados.setBounds(190, 140, 160, 50);
+        btnGrados.setBounds(200, 140, 160, 50);
 
         btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
         btnAlumnos.setText("ALUMNOS");
@@ -283,7 +283,7 @@ public class frm_Principal extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnAlumnos);
-        btnAlumnos.setBounds(380, 210, 160, 50);
+        btnAlumnos.setBounds(380, 200, 160, 50);
 
         btnCalificaciones.setBackground(new java.awt.Color(255, 255, 255));
         btnCalificaciones.setText("CALIFICAIONES");

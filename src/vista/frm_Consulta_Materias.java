@@ -6,8 +6,13 @@
 package vista;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.ConsultaMaterias;
+import modelo.Materia;
 
 /**
  *
@@ -15,6 +20,10 @@ import javax.swing.ImageIcon;
  */
 public class frm_Consulta_Materias extends javax.swing.JDialog {
 
+    private ConsultaMaterias consultaMaterias = new ConsultaMaterias();
+    private Object datos[] = new Object[3];
+    private DefaultTableModel modelo;
+    
     /**
      * Creates new form frm_Consulta_Producto
      */
@@ -23,6 +32,58 @@ public class frm_Consulta_Materias extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
          ReajsuteImagen("LogoBosquesSinFondo.png");
+    }
+    
+    public void consultarMaterias() {
+        String campoSeleccionado = (String) cbBuscarPor.getSelectedItem();
+        String campoBuscar = txtBuscar.getText();
+
+        switch (campoSeleccionado) {
+            case "ID":
+                try {
+                    int idMateria = Integer.parseInt(campoBuscar);
+                    Materia materiaEncontrada = consultaMaterias.obtenerMateriaSegunId(idMateria);
+                    if (materiaEncontrada != null) {
+                        ArrayList<Materia> listaMateria = new ArrayList<>();
+                        listaMateria.add(materiaEncontrada);
+                        llenarTablaConsulta(listaMateria);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontró ninguna materia con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un valor de ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+            case "NOMBRE":
+                manejarResultadoConsulta(consultaMaterias.buscarMateriasPorNombre(campoBuscar), "No se encontró ninguna materia con el nombre especificado.");
+                break;
+            case "ACTIVAS":
+                manejarResultadoConsulta(consultaMaterias.buscarMateriasActivas(), "No se encontró ninguna materia activa.");
+                break;
+            case "INACTIVAS":
+                manejarResultadoConsulta(consultaMaterias.buscarMateriasInactivas(), "No se encontró ninguna materia inactiva.");
+                break;
+        }
+    }
+
+    private void manejarResultadoConsulta(ArrayList<Materia> materiasEncontradas, String mensajeError) {
+        if (!materiasEncontradas.isEmpty()) {
+            llenarTablaConsulta(materiasEncontradas);
+        } else {
+            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+     public void llenarTablaConsulta(ArrayList<Materia> listaMaterias) {
+        modelo = (DefaultTableModel) tbl_consulta.getModel();
+        modelo.setRowCount(0);
+        for (Materia materia : listaMaterias) {
+            datos[0] = materia.getId();
+            datos[1] = materia.getNombre();
+            datos[2] = materia.getEstado();
+            modelo.addRow(datos);
+        }
+        tbl_consulta.setModel(modelo);
     }
 
     /**
@@ -81,7 +142,7 @@ public class frm_Consulta_Materias extends javax.swing.JDialog {
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true), "MATERIAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(241, 250, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true), "MATERIAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(241, 250, 255))); // NOI18N
 
         tbl_consulta.setBackground(new java.awt.Color(241, 250, 255));
         tbl_consulta.setModel(new javax.swing.table.DefaultTableModel(
@@ -122,6 +183,11 @@ public class frm_Consulta_Materias extends javax.swing.JDialog {
         btn_buscarPor.setText("Buscar");
         btn_buscarPor.setBorder(null);
         btn_buscarPor.setBorderPainted(false);
+        btn_buscarPor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarPorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,6 +254,11 @@ public class frm_Consulta_Materias extends javax.swing.JDialog {
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void btn_buscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPorActionPerformed
+        // TODO add your handling code here:
+        consultarMaterias();
+    }//GEN-LAST:event_btn_buscarPorActionPerformed
   public void ReajsuteImagen(String nombreImagen)
     {
          ImageIcon imagen;
