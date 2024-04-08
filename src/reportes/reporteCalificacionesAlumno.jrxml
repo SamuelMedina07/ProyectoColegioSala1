@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4736b417-a9d8-476d-9bbc-fb1045abe5e9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="137"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="nombreAlumno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombreMateria" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_calificaciones.`calificaciones_id` AS tbl_calificaciones_calificaciones_id,
+     tbl_calificaciones.`calificaciones_parcial` AS tbl_calificaciones_calificaciones_parcial,
+     tbl_calificaciones.`calificaciones_nota` AS tbl_calificaciones_calificaciones_nota,
+     tbl_calificaciones.`materia_id` AS tbl_calificaciones_materia_id,
+     tbl_calificaciones.`alumno_numCuenta` AS tbl_calificaciones_alumno_numCuenta,
+     tbl_calificaciones.`calificaciones_estado` AS tbl_calificaciones_calificaciones_estado,
+     tbl_calificaciones.`idGrado` AS tbl_calificaciones_idGrado,
+     tbl_alumnos.`alumno_numCuenta` AS tbl_alumnos_alumno_numCuenta,
+     tbl_alumnos.`alumno_nombreCompleto` AS tbl_alumnos_alumno_nombreCompleto,
+     tbl_materias.`materia_id` AS tbl_materias_materia_id,
+     tbl_materias.`materia_nombre` AS tbl_materias_materia_nombre,
+     tbl_grados.`grados_id` AS tbl_grados_grados_id,
+     tbl_grados.`grados_nombre` AS tbl_grados_grados_nombre,
+     tbl_empresa.`empresa_nombre` AS tbl_empresa_empresa_nombre,
+     tbl_empresa.`empresa_direccion` AS tbl_empresa_empresa_direccion
+FROM
+     `tbl_alumnos` tbl_alumnos INNER JOIN `tbl_calificaciones` tbl_calificaciones ON tbl_alumnos.`alumno_numCuenta` = tbl_calificaciones.`alumno_numCuenta`
+     INNER JOIN `tbl_materias` tbl_materias ON tbl_calificaciones.`materia_id` = tbl_materias.`materia_id`
+     INNER JOIN `tbl_grados` tbl_grados ON tbl_calificaciones.`idGrado` = tbl_grados.`grados_id`
+     AND tbl_grados.`grados_id` = tbl_alumnos.`grados_id`,
+     `tbl_empresa` tbl_empresa
+WHERE
+tbl_alumnos.`alumno_nombreCompleto` = $P{nombreAlumno}&&
+tbl_materias.`materia_nombre` = $P{nombreMateria} &&
+tbl_calificaciones.`calificaciones_estado` != 'CANCELADA' ]]>
+	</queryString>
+	<field name="tbl_calificaciones_calificaciones_id" class="java.lang.Integer"/>
+	<field name="tbl_calificaciones_calificaciones_parcial" class="java.lang.String"/>
+	<field name="tbl_calificaciones_calificaciones_nota" class="java.math.BigDecimal"/>
+	<field name="tbl_calificaciones_materia_id" class="java.lang.Integer"/>
+	<field name="tbl_calificaciones_alumno_numCuenta" class="java.lang.Integer"/>
+	<field name="tbl_calificaciones_calificaciones_estado" class="java.lang.String"/>
+	<field name="tbl_calificaciones_idGrado" class="java.lang.Integer"/>
+	<field name="tbl_alumnos_alumno_numCuenta" class="java.lang.Integer"/>
+	<field name="tbl_alumnos_alumno_nombreCompleto" class="java.lang.String"/>
+	<field name="tbl_materias_materia_id" class="java.lang.Integer"/>
+	<field name="tbl_materias_materia_nombre" class="java.lang.String"/>
+	<field name="tbl_grados_grados_id" class="java.lang.Integer"/>
+	<field name="tbl_grados_grados_nombre" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_nombre" class="java.lang.String"/>
+	<field name="tbl_empresa_empresa_direccion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="634" height="66" backcolor="#000000" uuid="2b1b726a-4bb8-45b0-bebe-5b46c0de29d0"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="33" y="10" width="522" height="56" forecolor="#FFFFFF" uuid="4c26dedd-97a3-4fc4-ab44-78cfc001dd14"/>
+					<textElement>
+						<font size="22"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_nombre}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="2" y="66" width="632" height="30" forecolor="#000000" backcolor="#CC0000" uuid="e14c0fe9-9d90-4ff9-ad5e-407ad9279d87"/>
+				<staticText>
+					<reportElement style="Column header" x="229" y="0" width="88" height="18" forecolor="#FFFFFF" uuid="5e10bbe1-6b97-4f10-a404-76d668801cb3"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[direccion:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="317" y="0" width="184" height="18" forecolor="#FFFFFF" uuid="dab4ca3b-5f02-48c0-90a7-72a34ce10ac1"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_empresa_empresa_direccion}]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="0" y="0" width="144" height="20" forecolor="#FFFFFF" uuid="a3ec8168-2086-476a-b44c-5b7802245e31"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<image>
+				<reportElement x="634" y="0" width="135" height="110" uuid="3407a4ff-feaf-4b11-a96e-8a15e354d4e2"/>
+				<imageExpression><![CDATA["C:\\Users\\ammcp\\Documents\\NetBeansProjects\\Proyecto_Colegio_PAII_Sala1\\src\\reportes\\LogoBosquesSinFondo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="88" height="18" forecolor="#000000" uuid="64bc309a-350c-499c-9e7f-b31cfaed45a1"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[#CUENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="88" y="0" width="88" height="18" forecolor="#000000" uuid="3dea7a94-b9da-46c1-8eb8-b9ec79c2c766"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ALUMNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="176" y="0" width="88" height="18" forecolor="#000000" uuid="caad05ee-3533-4311-b5c5-586c8923992d"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[GRADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="0" width="88" height="18" forecolor="#000000" uuid="03f8f830-01ce-4c17-8584-868ba4930257"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[MATERIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="352" y="0" width="88" height="18" forecolor="#000000" uuid="7dd13db5-2bcf-4c79-aa9a-b326eb1da648"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PARCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="440" y="0" width="88" height="18" forecolor="#000000" uuid="fb64c060-4717-4f85-a72e-f77630e8948a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[NOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="528" y="0" width="88" height="18" forecolor="#000000" uuid="1fe33f45-2e44-4ee8-b1a7-5d919fb4b65f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="f930d392-4352-4277-8149-40f8d48681ac"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="88" height="18" uuid="d4dcc12f-ee73-4f35-aebd-9cb647b50f66"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_calificaciones_alumno_numCuenta}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="88" y="0" width="88" height="18" uuid="bbeae05b-419d-4e07-9b6a-60f217a2f342"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_alumnos_alumno_nombreCompleto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="176" y="0" width="88" height="18" uuid="2154e7d6-7811-4b9a-832b-ea67d7a948f4"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_grados_grados_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="264" y="0" width="88" height="18" uuid="fe9c69c9-7c02-48c2-a47f-dba4cc0cc7c8"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_materias_materia_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="352" y="0" width="88" height="18" uuid="03a4c327-8834-4692-b1a6-92a27968b855"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_calificaciones_calificaciones_parcial}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="440" y="0" width="88" height="18" uuid="dea4cb34-c9ec-4383-9328-765b9daa9b33"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_calificaciones_calificaciones_nota}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="528" y="0" width="88" height="18" uuid="36215d19-ef00-47b7-8957-83ca4e452616"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_calificaciones_calificaciones_estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="93" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="3ae437eb-05a0-402d-9cb6-4890ee3174e7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="15d5be9a-cb2e-48d6-9d47-6ea607135371"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="f83542c5-4816-42be-b2b8-1305d188b935"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="e7fa9584-4005-4e9e-aa6b-626af2189480"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="77404061-af72-4691-8d26-63d5c9f8aaa1"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
