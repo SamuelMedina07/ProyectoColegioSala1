@@ -42,6 +42,7 @@ public class LoginControlador implements ActionListener {
         // Verificar las credenciales
         if (consulta.verificarCredenciales(nombreUsuario, contrasena)) {
             JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
+            formPrincipal.configurarBotonesSegunRol(consulta.obtenerUsuarioSegunNombre(nombreUsuario).getRol());
             // Abre la ventana principal
             formPrincipal.setVisible(true);
             formPrincipal.lblUsuario.setText(nombreUsuario);

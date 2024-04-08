@@ -27,6 +27,63 @@ public class frm_Principal extends javax.swing.JFrame {
     public String obtenerUsarioLabel(){
         return lblUsuario.getText();
     }
+    
+    public void configurarBotonesSegunRol(String rol) {
+        // Si el usuario es ADMIN, habilitar todos los botones
+        if (rol.equals("ADMIN")) {
+            habilitarTodosLosBotones();
+        }
+        // Si el usuario es SECRETARIO, habilitar los botones permitidos para este rol
+        else if (rol.equals("SECRETARIO")) {
+            habilitarBotonesSecretario();
+        }
+        // Si el usuario es PROFESOR, habilitar los botones permitidos para este rol
+        else if (rol.equals("PROFESOR")) {
+            habilitarBotonesProfesor();
+        }
+    }
+
+    private void habilitarTodosLosBotones() {
+        // Habilitar todos los botones
+        btnSalir.setEnabled(true);
+        btnPadres.setEnabled(true);
+        btnGrados.setEnabled(true);
+        btnMaterias.setEnabled(true);
+        btnAlumnos.setEnabled(true);
+        btnProfesores.setEnabled(true);
+        btnAsistencias.setEnabled(true);
+        btnConsultas.setEnabled(true);
+        btnReportes1.setEnabled(true);
+        btnCalificaciones.setEnabled(true);
+    }
+
+    private void habilitarBotonesSecretario() {
+        // Habilitar los botones permitidos para el rol de SECRETARIO
+        btnSalir.setEnabled(true);
+        btnPadres.setEnabled(true);
+        btnGrados.setEnabled(true);
+        btnMaterias.setEnabled(true);
+        btnAlumnos.setEnabled(true);
+        btnProfesores.setEnabled(true);
+        btnAsistencias.setEnabled(true);
+        btnConsultas.setEnabled(true);
+        btnReportes1.setEnabled(true);
+        btnCalificaciones.setEnabled(false); // Deshabilitar el botón de Calificaciones
+    }
+
+    private void habilitarBotonesProfesor() {
+        // Habilitar los botones permitidos para el rol de PROFESOR
+        btnSalir.setEnabled(true);
+        btnPadres.setEnabled(false);
+        btnGrados.setEnabled(false);
+        btnMaterias.setEnabled(false);
+        btnAlumnos.setEnabled(false);
+        btnProfesores.setEnabled(false);
+        btnAsistencias.setEnabled(true); // Habilitar wl botón de Asistencias
+        btnConsultas.setEnabled(false);
+        btnReportes1.setEnabled(false);
+        btnCalificaciones.setEnabled(true); // Habilitar el botón de Calificaciones
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

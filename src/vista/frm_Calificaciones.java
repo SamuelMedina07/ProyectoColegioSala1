@@ -37,22 +37,7 @@ public class frm_Calificaciones extends javax.swing.JDialog {
         campo.setBackground(color);
     }
     
-    public void establecerEncargado(Usuario user){
-        txtProfesor.setText(obtenerEncargado(user));
-    }
-    
-    public String obtenerEncargado(Usuario user){
-        String nombreEncargado = "NO CONECTADO";
-        if(user.getRol().equals("PROFESOR")){
-            Profesor profesor = consProfesor.obtenerProfesorPorCodigoUsuario(user.getCodigo());
-            nombreEncargado = profesor.getNombreCompleto();
-        }
-        if(user.getRol().equals("ADMIN")){
-            nombreEncargado = user.getNombre();
-        }
-        
-       return nombreEncargado;
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

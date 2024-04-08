@@ -139,7 +139,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
         jLabel7.setBounds(20, 200, 25, 14);
 
         cbUsuarios.setBackground(new java.awt.Color(241, 250, 255));
-        cbUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "PROFESOR" }));
+        cbUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "SECRETARIO", "PROFESOR" }));
         cbUsuarios.setBorder(null);
         jPanel6.add(cbUsuarios);
         cbUsuarios.setBounds(90, 190, 160, 30);
@@ -243,7 +243,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnAgregar);
-        btnAgregar.setBounds(550, 110, 95, 20);
+        btnAgregar.setBounds(550, 110, 95, 19);
 
         btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 130, 90));
@@ -255,14 +255,14 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnCancelar);
-        btnCancelar.setBounds(670, 150, 95, 20);
+        btnCancelar.setBounds(670, 150, 95, 19);
 
         btnCrear.setBackground(new java.awt.Color(241, 250, 255));
         btnCrear.setForeground(new java.awt.Color(0, 130, 90));
         btnCrear.setText("CREAR");
         btnCrear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnCrear);
-        btnCrear.setBounds(550, 150, 95, 20);
+        btnCrear.setBounds(550, 150, 95, 19);
 
         btnLimpiar.setBackground(new java.awt.Color(241, 250, 255));
         btnLimpiar.setForeground(new java.awt.Color(0, 130, 90));
@@ -274,7 +274,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnLimpiar);
-        btnLimpiar.setBounds(670, 110, 95, 20);
+        btnLimpiar.setBounds(670, 110, 95, 19);
 
         btnEliminar.setBackground(new java.awt.Color(241, 250, 255));
         btnEliminar.setForeground(new java.awt.Color(0, 130, 90));
@@ -286,7 +286,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnEliminar);
-        btnEliminar.setBounds(670, 70, 95, 20);
+        btnEliminar.setBounds(670, 70, 95, 19);
 
         btnLeer.setBackground(new java.awt.Color(241, 250, 255));
         btnLeer.setForeground(new java.awt.Color(0, 130, 90));
@@ -301,7 +301,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
         btnModificar.setText("MODIFICAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnModificar);
-        btnModificar.setBounds(550, 190, 95, 20);
+        btnModificar.setBounds(550, 190, 95, 19);
 
         btnSalir.setBackground(new java.awt.Color(241, 250, 255));
         btnSalir.setForeground(new java.awt.Color(0, 130, 90));
@@ -313,7 +313,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnSalir);
-        btnSalir.setBounds(670, 190, 95, 20);
+        btnSalir.setBounds(670, 190, 95, 19);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
         jlbLogo.setText("jLabel1");

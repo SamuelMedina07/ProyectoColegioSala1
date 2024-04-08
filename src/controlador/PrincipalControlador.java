@@ -7,7 +7,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.ConsultaProfesor;
 import modelo.ConsultaUsuarios;
+import modelo.Profesor;
 import modelo.Usuario;
 import vista.frm_Alumnos;
 import vista.frm_Asistencias;
@@ -26,6 +28,7 @@ import vista.frm_Profesor;
 public class PrincipalControlador implements ActionListener{
     //USUARIO
     ConsultaUsuarios consUsuarios = new ConsultaUsuarios();
+    ConsultaProfesor consProfesor = new ConsultaProfesor();
     //
     private frm_Principal formPrin;
     private frm_Usuarios frmUsuarios;
@@ -60,6 +63,7 @@ public class PrincipalControlador implements ActionListener{
         this.formPrin.btnAsistencias.addActionListener(this);
         this.formPrin.btnCalificaciones.addActionListener(this);
         this.formPrin.btnConsultas.addActionListener(this);
+        this.formPrin.btnReportes1.addActionListener(this);
         
     }
     
@@ -74,6 +78,8 @@ public class PrincipalControlador implements ActionListener{
         formAsistencias.setLocationRelativeTo(null);
         formCalificaciones.setLocationRelativeTo(null);
     }
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -114,8 +120,18 @@ public class PrincipalControlador implements ActionListener{
        //CALIFICACIONES
        if(e.getSource()==formPrin.btnCalificaciones){
             formCalificaciones.lblUsuario.setText(formPrin.lblUsuario.getText());
+            formCalificaciones.txtProfesor.setText(obtenerEncargado(obtenerUsuario()));
             formCalificaciones.setVisible(true);
-            formCalificaciones.obtenerEncargado(obtenerUsuario());
+            
+        }
+        //REPORTES
+       if(e.getSource()==formPrin.btnReportes1){
+            //FORMULARIO REPORTES
+        }
+        //ASISTENCIAS
+       if(e.getSource()==formPrin.btnConsultas){
+            formAsistencias.setVisible(true);
+            //FORMULARIO CONSULTAS
         }
         //SALIR
         if(e.getSource()==formPrin.btnSalir){
@@ -125,11 +141,21 @@ public class PrincipalControlador implements ActionListener{
     }
     
     public Usuario obtenerUsuario(){
-        
         Usuario user = consUsuarios.obtenerUsuarioSegunNombre(formPrin.lblUsuario.getText());
         return user;
     }
     
-    
+    public String obtenerEncargado(Usuario user){
+        String nombreEncargado = "NO CONECTADO";
+        if(user.getRol().equals("PROFESOR")){
+            Profesor profesor = consProfesor.obtenerProfesorPorCodigoUsuario(user.getCodigo());
+            nombreEncargado = profesor.getNombreCompleto();
+        }
+        if(user.getRol().equals("ADMIN")){
+            nombreEncargado = user.getNombre();
+        }
+        
+       return nombreEncargado;
+    }
     
 }
