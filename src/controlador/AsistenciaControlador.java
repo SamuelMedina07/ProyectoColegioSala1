@@ -71,7 +71,7 @@ public class AsistenciaControlador implements ActionListener {
                 JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN ALUMNO ACTIVO.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            frmAsistencias.jtNombre.setText(seleccionado.getNombre());
+            frmAsistencias.jtNombre.setText(seleccionado.getNombreCompleto());
             formConsultaA.dispose();
         }
     }
