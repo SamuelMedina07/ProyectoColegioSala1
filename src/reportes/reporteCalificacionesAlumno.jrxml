@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4736b417-a9d8-476d-9bbc-fb1045abe5e9">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="137"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -45,7 +45,7 @@ FROM
 WHERE
 tbl_alumnos.`alumno_nombreCompleto` = $P{nombreAlumno}&&
 tbl_materias.`materia_nombre` = $P{nombreMateria} &&
-tbl_calificaciones.`calificaciones_estado` != 'CANCELADA' ]]>
+tbl_calificaciones.`calificaciones_estado` != 'CANCELADA']]>
 	</queryString>
 	<field name="tbl_calificaciones_calificaciones_id" class="java.lang.Integer"/>
 	<field name="tbl_calificaciones_calificaciones_parcial" class="java.lang.String"/>
@@ -62,6 +62,9 @@ tbl_calificaciones.`calificaciones_estado` != 'CANCELADA' ]]>
 	<field name="tbl_grados_grados_nombre" class="java.lang.String"/>
 	<field name="tbl_empresa_empresa_nombre" class="java.lang.String"/>
 	<field name="tbl_empresa_empresa_direccion" class="java.lang.String"/>
+	<variable name="tbl_calificaciones_calificaciones_nota_1" class="java.math.BigDecimal" resetType="Column" calculation="Average">
+		<variableExpression><![CDATA[$F{tbl_calificaciones_calificaciones_nota}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -221,12 +224,26 @@ tbl_calificaciones.`calificaciones_estado` != 'CANCELADA' ]]>
 	</detail>
 	<columnFooter>
 		<band height="93" splitType="Stretch">
+			<rectangle>
+				<reportElement x="46" y="12" width="247" height="67" uuid="331093c6-284a-415b-9337-480d8b6e4fad"/>
+			</rectangle>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="3ae437eb-05a0-402d-9cb6-4890ee3174e7"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement x="59" y="32" width="104" height="25" uuid="dd5c29ac-50f1-4dc7-9a39-11bcf85e3513"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROMEDIO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="164" y="32" width="100" height="25" uuid="11f54201-1c57-4b63-ac26-04ada05896d8"/>
+				<textFieldExpression><![CDATA[$V{tbl_calificaciones_calificaciones_nota_1}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
