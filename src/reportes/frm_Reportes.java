@@ -5,9 +5,25 @@
  */
 package Reportes;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Image;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import modelo.Conexion;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -15,6 +31,9 @@ import javax.swing.ImageIcon;
  */
 public class frm_Reportes extends javax.swing.JDialog {
 
+    String nombre, sentenciaSQL;
+    Connection con = null;
+    Conexion conecta;
     /**
      * Creates new form frm_reportes
      */
@@ -23,6 +42,111 @@ public class frm_Reportes extends javax.swing.JDialog {
         initComponents();
           ReajsuteImagen("LogoBosquesSinFondo.png");
     }
+    
+    public void conectarBD() {
+        conecta = new Conexion();
+        con = conecta.getConnection();
+    }
+    
+    public void llamarReporteMateriasPorProfesor() {
+        nombre = JOptionPane.showInputDialog("INGRESE EL NOMBRE DEL PROFESOR PARA LA BUSQUEDA");
+        generarReporte("reporteMateriasPorProfesor.jasper", "nombreProfesor", nombre);
+    }
+
+    public void llamarReporteMateriasPorGrado() {
+        nombre = JOptionPane.showInputDialog("INGRESE EL NOMBRE DEL GRADO PARA LA BUSQUEDA");
+        generarReporte("reporteMateriasPorGrado.jasper", "nombreGrado", nombre);
+    }
+
+    public void llamarReporteAlumnoPorNombre() {
+        nombre = JOptionPane.showInputDialog("INGRESE EL NOMBRE COMPLETO DEL ALUMNO PARA LA BUSQUEDA");
+        generarReporte("reporteNombreAlumno.jasper", "nombreAlumno", nombre);
+    }
+
+    public void llamarReporteProfesorPorNombre() {
+        nombre = JOptionPane.showInputDialog("INGRESE EL NOMBRE COMPLETO DEL PROFESOR PARA LA BUSQUEDA");
+        generarReporte("reporteProfesorPorNombre.jasper", "nombreProfesor", nombre);
+    }
+    
+    public void llamarReporteAsistenciaPorNombreYFecha() {
+        nombre = JOptionPane.showInputDialog("INGRESE EL NOMBRE  DEL ALUMNO PARA LA BUSQUEDA");
+        Date fecha = mostrarSelectorFecha(); // Llamar al método para obtener la fecha
+
+        if (fecha != null) { // Verificar si se seleccionó una fecha
+            generarReporte("reporteAsistencia.jasper", "nombreAlumno", nombre, "fecha", fecha);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se seleccionó ninguna fecha.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void llamarReporteCalificacionesPorAlumnoYMateria() {
+        String nombreAlumno = JOptionPane.showInputDialog("INGRESE EL NOMBRE COMPLETO DEL ALUMNO PARA LA BUSQUEDA");
+        String nombreMateria = JOptionPane.showInputDialog("INGRESE EL NOMBRE DE LA MATERIA PARA LA BUSQUEDA");
+
+        if (nombreAlumno != null && nombreMateria != null) { // Verificar si se ingresaron ambos nombres
+            generarReporte("reporteCalificacionesAlumno.jasper", "nombreAlumno", nombreAlumno, "nombreMateria", nombreMateria);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el nombre del alumno y el nombre de la materia.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void generarReporte(String rutaArchivoJasper, String nombreParametro, Object valorParametro) {
+        try {
+            conectarBD();
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put(nombreParametro, valorParametro);
+
+            URL urlMaestro = getClass().getResource(rutaArchivoJasper);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(urlMaestro);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, parametros, con);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setTitle("REPORTE DE C.E.B BOSQUES DE JUTUCUMA");
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+
+            con.close();
+        } catch (JRException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+    
+     public Date mostrarSelectorFecha() {
+        JDateChooser dateChooser = new JDateChooser(); // Crear un nuevo JDateChooser
+        dateChooser.setDateFormatString("dd/MM/yyyy"); // Establecer el formato de fecha
+        int opcion = JOptionPane.showConfirmDialog(this, dateChooser, "Seleccionar fecha", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (opcion == JOptionPane.OK_OPTION) {
+            return dateChooser.getDate(); // Retornar la fecha seleccionada
+        } else {
+            return null; // Si el usuario cancela, retornar null
+        }
+    }
+
+    public void generarReporte(String rutaArchivoJasper, String nombreParametro1, Object valorParametro1, String nombreParametro2, Object valorParametro2) {
+        try {
+            conectarBD();
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put(nombreParametro1, valorParametro1);
+            parametros.put(nombreParametro2, valorParametro2);
+
+            URL urlMaestro = getClass().getResource(rutaArchivoJasper);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(urlMaestro);
+
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, parametros, con);
+
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setTitle("REPORTE DE C.E.B BOSQUES DE JUTUCUMA");
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+
+            con.close();
+        } catch (JRException | SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,28 +336,33 @@ public class frm_Reportes extends javax.swing.JDialog {
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
         // TODO add your handling code here:
-       // consultarAlumnos();
+       llamarReporteAlumnoPorNombre();
 
     }//GEN-LAST:event_btn_1ActionPerformed
 
     private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
         // TODO add your handling code here:
+        llamarReporteProfesorPorNombre();
     }//GEN-LAST:event_btn_2ActionPerformed
 
     private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
         // TODO add your handling code here:
+        llamarReporteAsistenciaPorNombreYFecha();
     }//GEN-LAST:event_btn_3ActionPerformed
 
     private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
         // TODO add your handling code here:
+        llamarReporteMateriasPorGrado();
     }//GEN-LAST:event_btn_4ActionPerformed
 
     private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
         // TODO add your handling code here:
+        llamarReporteMateriasPorProfesor();
     }//GEN-LAST:event_btn_5ActionPerformed
 
     private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
         // TODO add your handling code here:
+        llamarReporteCalificacionesPorAlumnoYMateria();
     }//GEN-LAST:event_btn_6ActionPerformed
   public void ReajsuteImagen(String nombreImagen)
     {
