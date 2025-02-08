@@ -78,6 +78,8 @@ public class usuarioControlador implements ActionListener {
             form.txtContra1.setText(String.valueOf(usuarioSeleccionado.getContrasena()));
             form.txtVerificarContra.setText(String.valueOf(usuarioSeleccionado.getContrasena()));
             form.cbUsuarios.setSelectedItem(usuarioSeleccionado.getRol());
+            form.cbUsuarios.setSelectedIndex(usuarioSeleccionado.getIdRol());
+          //  form.cbUsuarios.setSelectedIndex(usuarioSeleccionado.getIdRol());
             model.setRowCount(0);
             formConsUsuario.dispose();
         }
@@ -173,6 +175,7 @@ public class usuarioControlador implements ActionListener {
             datos[0] = usuarioTemporal.getCodigo();
             datos[1] = usuarioTemporal.getNombre();
             datos[2] = usuarioTemporal.getRol();
+            datos[3] = usuarioTemporal.getIdRol();
 
             modelo.addRow(datos);
         }
@@ -196,6 +199,7 @@ public class usuarioControlador implements ActionListener {
                 usuario.setContrasena(form.txtContra1.getText());
                 usuario.setRol((String) form.cbUsuarios.getSelectedItem());
                 usuario.setEstado("Activo");
+                usuario.setIdRol(form.cbUsuarios.getSelectedIndex());
                 return true; // El usuario es válido y no existe otro con el mismo nombre
             }
         }

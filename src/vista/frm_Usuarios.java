@@ -89,7 +89,7 @@ public class frm_Usuarios extends javax.swing.JDialog {
 
             },
             new String [] {
-                "CODIGO", "USUARIO", "ROL"
+                "CODIGO", "USUARIO", "ROL", "ID ROL"
             }
         ));
         jScrollPane2.setViewportView(tbl_usuarios);

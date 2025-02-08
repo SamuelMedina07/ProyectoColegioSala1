@@ -97,7 +97,7 @@ public class frm_Consulta_Usuarios extends javax.swing.JDialog {
 
             },
             new String [] {
-                "CODIGO", "USUARIO", "ROL", "ESTADO"
+                "CODIGO", "USUARIO", "ROL", "ESTADO", "ID ROL"
             }
         ));
         jScrollPane1.setViewportView(tbl_usuarios);
@@ -265,6 +265,8 @@ public class frm_Consulta_Usuarios extends javax.swing.JDialog {
             datos[1] = usuarioTemporal.getNombre();
             datos[2] = usuarioTemporal.getRol();
             datos[3] = usuarioTemporal.getEstado();
+            datos[4] = usuarioTemporal.getIdRol();
+            
             modelo.addRow(datos);
         }
         tbl_usuarios.setModel(modelo);

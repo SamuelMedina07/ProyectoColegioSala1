@@ -25,13 +25,14 @@ public class ConsultaUsuarios extends Conexion {
 
     public boolean crearUsuario(Usuario usuario) {
         Connection con = getConnection();
-        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado) VALUES (?, ?, ?, ?)";
+        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado, id_rol) VALUES (?, ?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getContrasena());
             ps.setString(3, usuario.getRol());
             ps.setString(4, usuario.getEstado());
+            ps.setInt(5, usuario.getIdRol());
             int filasAfectadas = ps.executeUpdate(); // Usamos executeUpdate en lugar de execute
             if (filasAfectadas > 0) { // Verificamos si se insertaron filas en la base de datos
                 JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
@@ -61,7 +62,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_nombre"),
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
-                        rs.getString("usuario_estado")
+                        rs.getString("usuario_estado"),
+                        rs.getInt("id_rol")
                 ));
             }
         } catch (SQLException ex) {
@@ -84,6 +86,7 @@ public class ConsultaUsuarios extends Conexion {
                 usuario.setContrasena(rs.getString("usuario_contrasena"));
                 usuario.setRol(rs.getString("usuario_rol"));
                 usuario.setEstado(rs.getString("usuario_estado"));
+                 usuario.setIdRol(rs.getInt("id_rol"));
                 return true;
             }
             return false;
@@ -216,6 +219,8 @@ public class ConsultaUsuarios extends Conexion {
                 usuario.setContrasena(rs.getString(3));
                 usuario.setRol(rs.getString(4));
                 usuario.setEstado(rs.getString(5));
+                 usuario.setIdRol(rs.getInt(6));
+                
                 return usuario;
             }
 
@@ -243,6 +248,7 @@ public class ConsultaUsuarios extends Conexion {
                 usuario.setContrasena(rs.getString(3));
                 usuario.setRol(rs.getString(4));
                 usuario.setEstado(rs.getString(5));
+                usuario.setIdRol(rs.getInt(6));
                 return usuario;
             }
 
@@ -268,7 +274,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_nombre"),
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
-                        rs.getString("usuario_estado")
+                        rs.getString("usuario_estado"),
+                        rs.getInt("id_rol")
                 );
                 listaUsuarios.add(usuario);
             }
@@ -294,7 +301,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_nombre"),
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
-                        rs.getString("usuario_estado")
+                        rs.getString("usuario_estado"),
+                        rs.getInt("id_rol")
                 );
                 listaUsuarios.add(usuario);
             }
@@ -319,7 +327,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_nombre"),
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
-                        rs.getString("usuario_estado")
+                        rs.getString("usuario_estado"),
+                         rs.getInt("id_rol")
                 );
                 listaUsuarios.add(usuario);
             }
@@ -344,7 +353,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_nombre"),
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
-                        rs.getString("usuario_estado")
+                        rs.getString("usuario_estado"),
+                         rs.getInt("id_rol")
                 );
                 listaUsuarios.add(usuario);
             }
