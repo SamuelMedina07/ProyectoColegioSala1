@@ -20,7 +20,7 @@ import modelo.Usuario;
  */
 public class frm_Consulta_Usuarios extends javax.swing.JDialog {
 
-    private Object datos[] = new Object[4];
+    private Object datos[] = new Object[10];
     DefaultTableModel modelo;
     private ConsultaUsuarios consUsuario = new ConsultaUsuarios();
     /**
@@ -97,7 +97,7 @@ public class frm_Consulta_Usuarios extends javax.swing.JDialog {
 
             },
             new String [] {
-                "CODIGO", "USUARIO", "ROL", "ESTADO", "ID ROL"
+                "CODIGO", "USUARIO", "ROL", "ESTADO", "IdRol"
             }
         ));
         jScrollPane1.setViewportView(tbl_usuarios);
