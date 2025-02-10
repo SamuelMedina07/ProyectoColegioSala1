@@ -25,7 +25,7 @@ public class ConsultaUsuarios extends Conexion {
 
     public boolean crearUsuario(Usuario usuario) {
         Connection con = getConnection();
-        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado, id_rol) VALUES (?, ?, ?, ?, ?)";
+        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado, id_rol) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, usuario.getNombre());
@@ -33,6 +33,7 @@ public class ConsultaUsuarios extends Conexion {
             ps.setString(3, usuario.getRol());
             ps.setString(4, usuario.getEstado());
             ps.setInt(5, usuario.getIdRol());
+            ps.setInt(6, usuario.getIdEstado());
             int filasAfectadas = ps.executeUpdate(); // Usamos executeUpdate en lugar de execute
             if (filasAfectadas > 0) { // Verificamos si se insertaron filas en la base de datos
                 JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
@@ -63,7 +64,9 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
                         rs.getString("usuario_estado"),
-                        rs.getInt("id_rol")
+                        rs.getInt("id_rol"),
+                        rs.getInt("id_estado")
+                        
                 ));
             }
         } catch (SQLException ex) {

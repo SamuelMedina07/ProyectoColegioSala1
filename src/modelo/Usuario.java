@@ -16,16 +16,18 @@ public class Usuario {
     private String rol;
     private String estado;
     private int id_rol;
+    private int id_estado;
     
     
 
-    public Usuario(int codigo, String nombre, String contrasena, String rol, String estado, int id_rol) {
+    public Usuario(int codigo, String nombre, String contrasena, String rol, String estado, int id_rol, int id_estado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.rol = rol;
         this.estado = estado;
         this.id_rol = id_rol;
+        this.id_estado = id_estado;
     }
 
     public Usuario() {
@@ -78,5 +80,13 @@ public class Usuario {
     
     public void setIdRol(int id_rol){
         this.id_rol = id_rol;
+    }
+    
+    public int getIdEstado(){
+        return id_estado;
+}
+    
+    public void setIdEstado(){
+        this.id_estado = id_estado;
     }
 }
