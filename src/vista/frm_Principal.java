@@ -124,6 +124,7 @@ public class frm_Principal extends javax.swing.JFrame {
         btnConsultas = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        btnEmpleados = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         jlbLogo = new javax.swing.JLabel();
@@ -296,6 +297,20 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnSalir);
         btnSalir.setBounds(380, 310, 135, 45);
 
+        btnEmpleados.setBackground(new java.awt.Color(255, 255, 255));
+        btnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleados.png"))); // NOI18N
+        btnEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
+        btnEmpleados.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleadosOn.png"))); // NOI18N
+        btnEmpleados.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleadosOn.png"))); // NOI18N
+        btnEmpleados.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleadosOn.png"))); // NOI18N
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEmpleados);
+        btnEmpleados.setBounds(20, 310, 140, 45);
+
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 130, 90));
         jLabel5.setText("BIENVENIDO:");
@@ -397,6 +412,10 @@ public class frm_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConsultasActionPerformed
 
+    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmpleadosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -440,6 +459,7 @@ public class frm_Principal extends javax.swing.JFrame {
     public javax.swing.JButton btnAsistencias;
     public javax.swing.JButton btnCalificaciones;
     public javax.swing.JButton btnConsultas;
+    public javax.swing.JButton btnEmpleados;
     public javax.swing.JButton btnGrados;
     public javax.swing.JButton btnMaterias;
     public javax.swing.JButton btnPadres;
