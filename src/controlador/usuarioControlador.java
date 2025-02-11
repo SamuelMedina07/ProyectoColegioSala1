@@ -199,8 +199,8 @@ public class usuarioControlador implements ActionListener {
                 usuario.setContrasena(form.txtContra1.getText());
                 usuario.setRol((String) form.cbUsuarios.getSelectedItem());
                 usuario.setEstado("Activo");
-                usuario.setIdRol(form.cbUsuarios.getSelectedIndex()+1);
-                usuario.setEstado("1");
+                usuario.setIdRol(form.cbUsuarios.getSelectedIndex());
+                usuario.setIdEstado(1);
                 return true; // El usuario es válido y no existe otro con el mismo nombre
             }
         }

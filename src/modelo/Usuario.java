@@ -86,7 +86,7 @@ public class Usuario {
         return id_estado;
 }
     
-    public void setIdEstado(){
+    public void setIdEstado(int id_estado){
         this.id_estado = id_estado;
     }
 }

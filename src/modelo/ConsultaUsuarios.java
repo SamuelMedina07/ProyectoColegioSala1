@@ -25,7 +25,7 @@ public class ConsultaUsuarios extends Conexion {
 
     public boolean crearUsuario(Usuario usuario) {
         Connection con = getConnection();
-        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado, id_rol) VALUES (?, ?, ?, ?, ?, ?)";
+        sentenciaSQL = "INSERT INTO tbl_usuarios (usuario_nombre, usuario_contrasena, usuario_rol, usuario_estado, id_rol, id_estado) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, usuario.getNombre());
@@ -90,6 +90,7 @@ public class ConsultaUsuarios extends Conexion {
                 usuario.setRol(rs.getString("usuario_rol"));
                 usuario.setEstado(rs.getString("usuario_estado"));
                  usuario.setIdRol(rs.getInt("id_rol"));
+                 usuario.setIdEstado(rs.getInt("id_estado"));
                 return true;
             }
             return false;
@@ -128,11 +129,13 @@ public class ConsultaUsuarios extends Conexion {
 
     public boolean eliminarUsuario(Usuario usuario) {
         Connection con = getConnection();
-        sentenciaSQL = "UPDATE tbl_usuarios SET usuario_estado =?  WHERE usuario_codigo=? AND usuario_estado = 'Activo' ";
+        sentenciaSQL = "UPDATE tbl_usuarios SET usuario_estado =?, id_estado=?  WHERE usuario_codigo=? AND usuario_estado = 'Activo' ";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, "Inactivo");
-            ps.setInt(2, usuario.getCodigo());
+            ps.setInt(2, 2);
+            ps.setInt(3, usuario.getCodigo());
+            
             int filasAfectadas = ps.executeUpdate(); // Usamos executeUpdate en lugar de execute
             if (filasAfectadas > 0) { // Verificamos si se actualizaron filas en la base de datos
                 JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente");
@@ -223,6 +226,7 @@ public class ConsultaUsuarios extends Conexion {
                 usuario.setRol(rs.getString(4));
                 usuario.setEstado(rs.getString(5));
                  usuario.setIdRol(rs.getInt(6));
+                // usuario.setIdEstado(rs.getInt(7));
                 
                 return usuario;
             }
@@ -278,7 +282,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
                         rs.getString("usuario_estado"),
-                        rs.getInt("id_rol")
+                        rs.getInt("id_rol"),
+                        rs.getInt("id_estado")
                 );
                 listaUsuarios.add(usuario);
             }
@@ -305,7 +310,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
                         rs.getString("usuario_estado"),
-                        rs.getInt("id_rol")
+                        rs.getInt("id_rol"),
+                         rs.getInt("id_estado")
                 );
                 listaUsuarios.add(usuario);
             }
@@ -331,7 +337,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
                         rs.getString("usuario_estado"),
-                         rs.getInt("id_rol")
+                         rs.getInt("id_rol"),
+                         rs.getInt("id_estado")
                 );
                 listaUsuarios.add(usuario);
             }
@@ -357,7 +364,8 @@ public class ConsultaUsuarios extends Conexion {
                         rs.getString("usuario_contrasena"),
                         rs.getString("usuario_rol"),
                         rs.getString("usuario_estado"),
-                         rs.getInt("id_rol")
+                         rs.getInt("id_rol"),
+                         rs.getInt("id_estado")
                 );
                 listaUsuarios.add(usuario);
             }
