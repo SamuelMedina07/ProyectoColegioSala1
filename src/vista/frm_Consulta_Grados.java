@@ -127,10 +127,10 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NOMBRE", "ACTIVOS", "INACTIVOS" }));
 
         btn_buscarPor.setBackground(new java.awt.Color(0, 130, 90));
-        btn_buscarPor.setForeground(new java.awt.Color(0, 130, 90));
         btn_buscarPor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Buscar.png"))); // NOI18N
         btn_buscarPor.setBorder(null);
         btn_buscarPor.setBorderPainted(false);
+        btn_buscarPor.setContentAreaFilled(false);
         btn_buscarPor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscarPorActionPerformed(evt);
