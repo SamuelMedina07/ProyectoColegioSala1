@@ -31,6 +31,7 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         ReajsuteImagen("LogoBosquesSinFondo.png");
+        ReajusteImagen("Buscar.png");
     }
 
     /**
@@ -90,7 +91,7 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true), "GRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true), "GRADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(255, 255, 255))); // NOI18N
 
         tbl_consulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,9 +126,9 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         cbBuscarPor.setBackground(new java.awt.Color(241, 250, 255));
         cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NOMBRE", "ACTIVOS", "INACTIVOS" }));
 
-        btn_buscarPor.setBackground(new java.awt.Color(241, 250, 255));
+        btn_buscarPor.setBackground(new java.awt.Color(0, 130, 90));
         btn_buscarPor.setForeground(new java.awt.Color(0, 130, 90));
-        btn_buscarPor.setText("Buscar");
+        btn_buscarPor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Buscar.png"))); // NOI18N
         btn_buscarPor.setBorder(null);
         btn_buscarPor.setBorderPainted(false);
         btn_buscarPor.addActionListener(new java.awt.event.ActionListener() {
@@ -151,8 +152,8 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btn_buscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_buscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -161,15 +162,14 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_buscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addComponent(cbBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(cbBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -264,14 +264,20 @@ public class frm_Consulta_Grados extends javax.swing.JDialog {
     {
          ImageIcon imagen;
          Icon icono2;
-    
+         imagen = new ImageIcon("src/imagenes/"+nombreImagen);
+          icono2 = new ImageIcon(imagen.getImage().getScaledInstance( jlbLogo.getWidth(), jlbLogo.getHeight(),Image.SCALE_DEFAULT));
+          jlbLogo.setIcon(icono2);
            
-           
-        imagen = new ImageIcon("src/imagenes/"+nombreImagen);
-        icono2 = new ImageIcon(imagen.getImage().getScaledInstance( jlbLogo.getWidth(), jlbLogo.getHeight(),Image.SCALE_DEFAULT));
-        jlbLogo.setIcon(icono2); 
         
     }
+       
+       public void ReajusteImagen(String nombreImagen){
+        ImageIcon imagen3;
+         Icon icono3;
+        imagen3 = new ImageIcon("src/imagenes/"+nombreImagen);
+        icono3 = new ImageIcon(imagen3.getImage().getScaledInstance( btn_buscarPor.getWidth(), btn_buscarPor.getHeight(),Image.SCALE_DEFAULT));
+        btn_buscarPor.setIcon(icono3);
+       }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
