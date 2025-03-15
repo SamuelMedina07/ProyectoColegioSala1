@@ -137,7 +137,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 130, 90));
         jPanel2.setLayout(null);
 
-        btnMaterias.setBackground(new java.awt.Color(255, 255, 255));
         btnMaterias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMaterias.png"))); // NOI18N
         btnMaterias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnMaterias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMateriasOn.png"))); // NOI18N
@@ -151,7 +150,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnMaterias);
         btnMaterias.setBounds(200, 170, 140, 45);
 
-        btnProfesores.setBackground(new java.awt.Color(255, 255, 255));
         btnProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesores.png"))); // NOI18N
         btnProfesores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnProfesores.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesoresOn.png"))); // NOI18N
@@ -165,7 +163,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnProfesores);
         btnProfesores.setBounds(20, 170, 140, 45);
 
-        btnAsistencias.setBackground(new java.awt.Color(255, 255, 255));
         btnAsistencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAsistencias.png"))); // NOI18N
         btnAsistencias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnAsistencias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAsistenciasOn.png"))); // NOI18N
@@ -179,7 +176,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnAsistencias);
         btnAsistencias.setBounds(370, 100, 140, 45);
 
-        btnUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnUsuarios.png"))); // NOI18N
         btnUsuarios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnUsuarios.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnUsuariosOn.png"))); // NOI18N
@@ -193,7 +189,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnUsuarios);
         btnUsuarios.setBounds(200, 240, 140, 45);
 
-        btnPadres.setBackground(new java.awt.Color(255, 255, 255));
         btnPadres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadres.png"))); // NOI18N
         btnPadres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnPadres.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadresOn.png"))); // NOI18N
@@ -207,7 +202,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnPadres);
         btnPadres.setBounds(370, 240, 140, 45);
 
-        btnReportes1.setBackground(new java.awt.Color(255, 255, 255));
         btnReportes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnReportes.png"))); // NOI18N
         btnReportes1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnReportes1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnReportesOn.png"))); // NOI18N
@@ -221,7 +215,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnReportes1);
         btnReportes1.setBounds(200, 310, 140, 45);
 
-        btnGrados.setBackground(new java.awt.Color(255, 255, 255));
         btnGrados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGrados.png"))); // NOI18N
         btnGrados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnGrados.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGradosOn.png"))); // NOI18N
@@ -235,7 +228,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnGrados);
         btnGrados.setBounds(200, 100, 140, 45);
 
-        btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
         btnAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnos.png"))); // NOI18N
         btnAlumnos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnAlumnos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnosOn.png"))); // NOI18N
@@ -249,7 +241,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnAlumnos);
         btnAlumnos.setBounds(20, 100, 140, 45);
 
-        btnCalificaciones.setBackground(new java.awt.Color(255, 255, 255));
         btnCalificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificaciones.png"))); // NOI18N
         btnCalificaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnCalificaciones.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificacionesOn.png"))); // NOI18N
@@ -263,7 +254,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnCalificaciones);
         btnCalificaciones.setBounds(370, 170, 140, 45);
 
-        btnConsultas.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnConsultas.png"))); // NOI18N
         btnConsultas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnConsultas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnConsultasOn.png"))); // NOI18N
@@ -283,7 +273,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(10, 10, 540, 58);
 
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalir.png"))); // NOI18N
         btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(236, 28, 36), 3, true));
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalirOn.png"))); // NOI18N
@@ -297,7 +286,6 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnSalir);
         btnSalir.setBounds(380, 310, 135, 45);
 
-        btnEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         btnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleados.png"))); // NOI18N
         btnEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 3, true));
         btnEmpleados.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleadosOn.png"))); // NOI18N

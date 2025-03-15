@@ -58,7 +58,7 @@ public class frm_Consulta extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 130, 90));
-        jLabel3.setText("consultaS");
+        jLabel3.setText("CONSULTAS");
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
 
@@ -67,9 +67,9 @@ public class frm_Consulta extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(235, 235, 235)
+                .addContainerGap(224, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addComponent(jlbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -87,68 +87,81 @@ public class frm_Consulta extends javax.swing.JDialog {
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "CONSULTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(241, 250, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "CONSULTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(241, 250, 255))); // NOI18N
 
-        btnGrados.setBackground(new java.awt.Color(241, 250, 255));
+        btnGrados.setBackground(new java.awt.Color(0, 130, 90));
         btnGrados.setForeground(new java.awt.Color(0, 130, 90));
-        btnGrados.setText("GRADOS");
-        btnGrados.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
-        btnGrados.setBorderPainted(false);
+        btnGrados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGrados.png"))); // NOI18N
+        btnGrados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 4, true));
+        btnGrados.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGradosOn.png"))); // NOI18N
+        btnGrados.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGradosOn.png"))); // NOI18N
+        btnGrados.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnGradosOn.png"))); // NOI18N
         btnGrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGradosActionPerformed(evt);
             }
         });
 
-        btnAlumnos.setBackground(new java.awt.Color(241, 250, 255));
+        btnAlumnos.setBackground(new java.awt.Color(0, 130, 90));
         btnAlumnos.setForeground(new java.awt.Color(0, 130, 90));
-        btnAlumnos.setText("ALUMNOS");
-        btnAlumnos.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
+        btnAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnos.png"))); // NOI18N
+        btnAlumnos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 4, true));
         btnAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAlumnos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnosOn.png"))); // NOI18N
+        btnAlumnos.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnosOn.png"))); // NOI18N
+        btnAlumnos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnAlumnosOn.png"))); // NOI18N
         btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlumnosActionPerformed(evt);
             }
         });
 
-        btnCalificaciones.setBackground(new java.awt.Color(241, 250, 255));
+        btnCalificaciones.setBackground(new java.awt.Color(0, 130, 90));
         btnCalificaciones.setForeground(new java.awt.Color(0, 130, 90));
-        btnCalificaciones.setText("CALIFICAIONES");
-        btnCalificaciones.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
-        btnCalificaciones.setBorderPainted(false);
+        btnCalificaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificaciones.png"))); // NOI18N
+        btnCalificaciones.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 4, true));
+        btnCalificaciones.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificacionesOn.png"))); // NOI18N
+        btnCalificaciones.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificacionesOn.png"))); // NOI18N
+        btnCalificaciones.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnCalificacionesOn.png"))); // NOI18N
         btnCalificaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalificacionesActionPerformed(evt);
             }
         });
 
-        btnMaterias.setBackground(new java.awt.Color(241, 250, 255));
+        btnMaterias.setBackground(new java.awt.Color(0, 130, 90));
         btnMaterias.setForeground(new java.awt.Color(0, 130, 90));
-        btnMaterias.setText("MATERIAS");
-        btnMaterias.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
-        btnMaterias.setBorderPainted(false);
+        btnMaterias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMaterias.png"))); // NOI18N
+        btnMaterias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 4, true));
+        btnMaterias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMateriasOn.png"))); // NOI18N
+        btnMaterias.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMateriasOn.png"))); // NOI18N
+        btnMaterias.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnMateriasOn.png"))); // NOI18N
         btnMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMateriasActionPerformed(evt);
             }
         });
 
-        btnPadres.setBackground(new java.awt.Color(241, 250, 255));
+        btnPadres.setBackground(new java.awt.Color(0, 130, 90));
         btnPadres.setForeground(new java.awt.Color(0, 130, 90));
-        btnPadres.setText("PADRES");
-        btnPadres.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
-        btnPadres.setBorderPainted(false);
+        btnPadres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadres.png"))); // NOI18N
+        btnPadres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 4, true));
+        btnPadres.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadresOn.png"))); // NOI18N
+        btnPadres.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadresOn.png"))); // NOI18N
+        btnPadres.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnPadresOn.png"))); // NOI18N
         btnPadres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPadresActionPerformed(evt);
             }
         });
 
-        btnProfesores.setBackground(new java.awt.Color(241, 250, 255));
+        btnProfesores.setBackground(new java.awt.Color(0, 130, 90));
         btnProfesores.setForeground(new java.awt.Color(0, 130, 90));
-        btnProfesores.setText("PROFESORES");
-        btnProfesores.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
-        btnProfesores.setBorderPainted(false);
+        btnProfesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesores.png"))); // NOI18N
+        btnProfesores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 4, true));
+        btnProfesores.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesoresOn.png"))); // NOI18N
+        btnProfesores.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesoresOn.png"))); // NOI18N
+        btnProfesores.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnProfesoresOn.png"))); // NOI18N
         btnProfesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfesoresActionPerformed(evt);
@@ -170,7 +183,7 @@ public class frm_Consulta extends javax.swing.JDialog {
                     .addComponent(btnMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPadres, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
