@@ -102,7 +102,7 @@ public class frm_Grados extends javax.swing.JDialog {
         jLabel6.setForeground(new java.awt.Color(0, 130, 90));
         jLabel6.setText("NOMBRE");
         jPanel6.add(jLabel6);
-        jLabel6.setBounds(20, 110, 53, 14);
+        jLabel6.setBounds(20, 110, 54, 15);
 
         txtNombre.setBackground(new java.awt.Color(241, 250, 255));
         txtNombre.setBorder(null);
@@ -130,7 +130,7 @@ public class frm_Grados extends javax.swing.JDialog {
         jLabel9.setForeground(new java.awt.Color(0, 130, 90));
         jLabel9.setText("CODIGO");
         jPanel6.add(jLabel9);
-        jLabel9.setBounds(20, 60, 51, 14);
+        jLabel9.setBounds(20, 60, 50, 15);
 
         txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(241, 250, 255));
@@ -154,7 +154,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnAgregar);
-        btnAgregar.setBounds(550, 110, 95, 20);
+        btnAgregar.setBounds(550, 110, 95, 21);
 
         btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 130, 90));
@@ -166,14 +166,14 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnCancelar);
-        btnCancelar.setBounds(670, 150, 95, 20);
+        btnCancelar.setBounds(670, 150, 95, 21);
 
         btnModificar.setBackground(new java.awt.Color(241, 250, 255));
         btnModificar.setForeground(new java.awt.Color(0, 130, 90));
         btnModificar.setText("MODIFICAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnModificar);
-        btnModificar.setBounds(550, 190, 95, 20);
+        btnModificar.setBounds(550, 190, 95, 21);
 
         btnLeer.setBackground(new java.awt.Color(241, 250, 255));
         btnLeer.setForeground(new java.awt.Color(0, 130, 90));
@@ -187,7 +187,7 @@ public class frm_Grados extends javax.swing.JDialog {
         btnCrear.setText("CREAR");
         btnCrear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnCrear);
-        btnCrear.setBounds(550, 150, 95, 20);
+        btnCrear.setBounds(550, 150, 95, 21);
 
         btnEliminar.setBackground(new java.awt.Color(241, 250, 255));
         btnEliminar.setForeground(new java.awt.Color(0, 130, 90));
@@ -199,7 +199,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnEliminar);
-        btnEliminar.setBounds(670, 70, 95, 20);
+        btnEliminar.setBounds(670, 70, 95, 21);
 
         btnLimpiar.setBackground(new java.awt.Color(241, 250, 255));
         btnLimpiar.setForeground(new java.awt.Color(0, 130, 90));
@@ -211,7 +211,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnLimpiar);
-        btnLimpiar.setBounds(670, 110, 95, 20);
+        btnLimpiar.setBounds(670, 110, 95, 21);
 
         btnSalir.setBackground(new java.awt.Color(241, 250, 255));
         btnSalir.setForeground(new java.awt.Color(0, 130, 90));
@@ -223,7 +223,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnSalir);
-        btnSalir.setBounds(670, 190, 95, 20);
+        btnSalir.setBounds(670, 190, 95, 21);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
         jlbLogo.setText("jLabel1");

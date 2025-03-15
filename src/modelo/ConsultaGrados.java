@@ -87,11 +87,10 @@ public class ConsultaGrados extends Conexion {
 
     public boolean modificarGrado(Grado grado) {
         Connection con = getConnection();
-        sentenciaSQL = "UPDATE tbl_grados SET grados_nombre=? WHERE grados_id=? AND grados_estado = 'Activo'";
+        sentenciaSQL = "UPDATE tbl_grados SET grados_estado = 'Activo' WHERE grados_id=?";
         try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setString(1, grado.getNombre());
-            ps.setInt(2, grado.getId());
+            ps.setInt(1,grado.getId());
             int filasAfectadas = ps.executeUpdate();
             if (filasAfectadas > 0) {
                 JOptionPane.showMessageDialog(null, "Grado actualizado correctamente");
