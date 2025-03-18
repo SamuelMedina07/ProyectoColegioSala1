@@ -51,8 +51,8 @@ public class frm_Empleados extends javax.swing.JDialog {
 
     public void AsignarColorCampo(JTextField campo) {
         //Color colorResaltado = new Color(219, 52, 52);
-        Color color = Color.white;
-        campo.setBackground(color);
+       /*Color color = Color.white;
+        campo.setBackground(color);*/
     }
 
     /**
@@ -86,8 +86,6 @@ public class frm_Empleados extends javax.swing.JDialog {
         jLabel16 = new javax.swing.JLabel();
         txtApellidos = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        txtGrado = new javax.swing.JTextField();
-        btnSeleccionarGrado = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
@@ -104,6 +102,7 @@ public class frm_Empleados extends javax.swing.JDialog {
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDireccion = new javax.swing.JTextArea();
+        cbUsuarios = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ALUMNOS");
@@ -183,7 +182,7 @@ public class frm_Empleados extends javax.swing.JDialog {
         txtTelefono.setBackground(new java.awt.Color(241, 250, 255));
         txtTelefono.setBorder(null);
         try {
-            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(504)####-##-##")));
+            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(504)##-##-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -223,7 +222,7 @@ public class frm_Empleados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(DateNacimiento);
-        DateNacimiento.setBounds(100, 240, 180, 30);
+        DateNacimiento.setBounds(110, 240, 170, 30);
 
         lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel6.add(lblFoto);
@@ -255,35 +254,13 @@ public class frm_Empleados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtApellidos);
-        txtApellidos.setBounds(90, 150, 190, 29);
+        txtApellidos.setBounds(100, 150, 180, 29);
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 130, 90));
         jLabel17.setText("CARGO");
         jPanel6.add(jLabel17);
         jLabel17.setBounds(20, 60, 45, 15);
-
-        txtGrado.setEditable(false);
-        txtGrado.setBackground(new java.awt.Color(241, 250, 255));
-        txtGrado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtGradoMouseClicked(evt);
-            }
-        });
-        txtGrado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGradoActionPerformed(evt);
-            }
-        });
-        jPanel6.add(txtGrado);
-        txtGrado.setBounds(80, 50, 110, 29);
-
-        btnSeleccionarGrado.setBackground(new java.awt.Color(241, 250, 255));
-        btnSeleccionarGrado.setForeground(new java.awt.Color(0, 130, 90));
-        btnSeleccionarGrado.setText("SELECCIONAR");
-        btnSeleccionarGrado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
-        jPanel6.add(btnSeleccionarGrado);
-        btnSeleccionarGrado.setBounds(195, 55, 92, 20);
 
         btnAgregar.setBackground(new java.awt.Color(241, 250, 255));
         btnAgregar.setForeground(new java.awt.Color(0, 130, 90));
@@ -402,6 +379,7 @@ public class frm_Empleados extends javax.swing.JDialog {
 
         txtDireccion.setBackground(new java.awt.Color(241, 250, 255));
         txtDireccion.setColumns(20);
+        txtDireccion.setLineWrap(true);
         txtDireccion.setRows(5);
         txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -412,6 +390,12 @@ public class frm_Empleados extends javax.swing.JDialog {
 
         jPanel6.add(jScrollPane1);
         jScrollPane1.setBounds(20, 350, 260, 100);
+
+        cbUsuarios.setBackground(new java.awt.Color(241, 250, 255));
+        cbUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMIN", "SECRETARIO", "PROFESOR", "CONSEJERO", "DIRECTOR", "SUBDIRECTOR", "LIMPIEZA", "CONSERJE", "MANTENIMIENTO", "VIGILANCIA" }));
+        cbUsuarios.setBorder(null);
+        jPanel6.add(cbUsuarios);
+        cbUsuarios.setBounds(90, 50, 180, 30);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -438,8 +422,6 @@ public class frm_Empleados extends javax.swing.JDialog {
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jPanel6.getAccessibleContext().setAccessibleName("Empleado");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -504,14 +486,6 @@ public class frm_Empleados extends javax.swing.JDialog {
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosActionPerformed
-
-    private void txtGradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGradoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGradoMouseClicked
-
-    private void txtGradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGradoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGradoActionPerformed
 
     private void DateNacimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DateNacimientoMouseClicked
         // TODO add your handling code here:
@@ -617,8 +591,8 @@ public class frm_Empleados extends javax.swing.JDialog {
     public javax.swing.JButton btnOpciones;
     public javax.swing.JButton btnSalir;
     public javax.swing.JButton btnSeleccionarFoto;
-    public javax.swing.JButton btnSeleccionarGrado;
     public javax.swing.JComboBox<String> cbGenero;
+    public javax.swing.JComboBox<String> cbUsuarios;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -642,7 +616,6 @@ public class frm_Empleados extends javax.swing.JDialog {
     public javax.swing.JTextField txtApellidos;
     public javax.swing.JTextField txtCodigo;
     public javax.swing.JTextArea txtDireccion;
-    public javax.swing.JTextField txtGrado;
     public javax.swing.JTextField txtNombres1;
     public javax.swing.JFormattedTextField txtTelefono;
     // End of variables declaration//GEN-END:variables

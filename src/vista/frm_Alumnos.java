@@ -132,13 +132,13 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel6.setForeground(new java.awt.Color(0, 130, 90));
         jLabel6.setText("NOMBRES");
         jPanel6.add(jLabel6);
-        jLabel6.setBounds(20, 110, 61, 14);
+        jLabel6.setBounds(20, 110, 61, 15);
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 130, 90));
         jLabel7.setText("GENERO");
         jPanel6.add(jLabel7);
-        jLabel7.setBounds(20, 200, 50, 20);
+        jLabel7.setBounds(20, 200, 52, 20);
 
         cbGenero.setBackground(new java.awt.Color(241, 250, 255));
         cbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MASCULINO", "FEMENINO" }));
@@ -156,7 +156,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel12.setForeground(new java.awt.Color(0, 130, 90));
         jLabel12.setText("NACIMIENTO");
         jPanel6.add(jLabel12);
-        jLabel12.setBounds(20, 260, 79, 20);
+        jLabel12.setBounds(20, 260, 82, 20);
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 130, 90));
@@ -168,7 +168,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel9.setForeground(new java.awt.Color(0, 130, 90));
         jLabel9.setText("CODIGO");
         jPanel6.add(jLabel9);
-        jLabel9.setBounds(120, 20, 51, 14);
+        jLabel9.setBounds(120, 20, 50, 15);
 
         txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(241, 250, 255));
@@ -184,12 +184,12 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel10.setForeground(new java.awt.Color(0, 130, 90));
         jLabel10.setText("TELEFONO");
         jPanel6.add(jLabel10);
-        jLabel10.setBounds(20, 300, 65, 14);
+        jLabel10.setBounds(20, 300, 66, 15);
 
         txtTelefono.setBackground(new java.awt.Color(241, 250, 255));
         txtTelefono.setBorder(null);
         try {
-            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(504)####-##-##")));
+            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(504)##-##-##-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -235,13 +235,13 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel14.setForeground(new java.awt.Color(0, 130, 90));
         jLabel14.setText("ENCARGADO");
         jPanel6.add(jLabel14);
-        jLabel14.setBounds(290, 390, 77, 14);
+        jLabel14.setBounds(290, 390, 80, 15);
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 130, 90));
         jLabel15.setText("FECHA DE  ");
         jPanel6.add(jLabel15);
-        jLabel15.setBounds(20, 240, 65, 20);
+        jLabel15.setBounds(20, 240, 68, 20);
 
         DateNacimiento.setBackground(new java.awt.Color(241, 250, 255));
         DateNacimiento.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -267,7 +267,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel16.setForeground(new java.awt.Color(0, 130, 90));
         jLabel16.setText("APELLIDOS");
         jPanel6.add(jLabel16);
-        jLabel16.setBounds(20, 160, 67, 14);
+        jLabel16.setBounds(20, 160, 70, 15);
 
         txtApellidos.setBackground(new java.awt.Color(241, 250, 255));
         txtApellidos.setBorder(null);
@@ -288,7 +288,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
         jLabel17.setForeground(new java.awt.Color(0, 130, 90));
         jLabel17.setText("GRADO");
         jPanel6.add(jLabel17);
-        jLabel17.setBounds(20, 60, 44, 14);
+        jLabel17.setBounds(20, 60, 45, 15);
 
         txtGrado.setEditable(false);
         txtGrado.setBackground(new java.awt.Color(241, 250, 255));
@@ -424,7 +424,7 @@ public class frm_Alumnos extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnOpciones);
-        btnOpciones.setBounds(390, 10, 90, 32);
+        btnOpciones.setBounds(390, 10, 92, 32);
         jPanel6.add(jSeparator1);
         jSeparator1.setBounds(20, 130, 230, 0);
         jPanel6.add(jSeparator2);
