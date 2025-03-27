@@ -181,12 +181,12 @@ public class EmpleadoControlador implements ActionListener {
         if (e.getSource() == formularioEmpleado.btnEliminar) {
             eliminarAlumno();
         }
-        if (e.getSource() == formularioEmpleado.btnSeleccionarGrado) {
-            formularioConsultaFrados.setVisible(true);
-        }
-        if (e.getSource() == formularioEmpleado.btnSeleccionarPadre) {
-            formularioConsultaPadres.setVisible(true);
-        }
+      //  if (e.getSource() == formularioEmpleado.btnSeleccionarGrado) {
+       //     formularioConsultaFrados.setVisible(true);
+       // }
+       // if (e.getSource() == formularioEmpleado.btnSeleccionarPadre) {
+       //     formularioConsultaPadres.setVisible(true);
+        //}
         if (e.getSource() == formularioEmpleado.btnSeleccionarFoto) {
             guardarForo();
         }
