@@ -22,6 +22,7 @@ public class frm_Principal extends javax.swing.JFrame {
         initComponents();
         establecerUsuarioLabel(user);
           ReajsuteImagen("LogoBosquesSinFondo.png");
+          ReajsuteImagen2("IconoManual.png");
     }
 
     public void establecerUsuarioLabel(String usuario) {
@@ -95,11 +96,20 @@ public class frm_Principal extends javax.swing.JFrame {
          ImageIcon imagen;
          Icon icono2;
     
-           
-           
         imagen = new ImageIcon("src/imagenes/"+nombreImagen);
         icono2 = new ImageIcon(imagen.getImage().getScaledInstance( jlbLogo.getWidth(), jlbLogo.getHeight(),Image.SCALE_DEFAULT));
         jlbLogo.setIcon(icono2); 
+        
+    }
+    
+    public void ReajsuteImagen2(String nombreImagen)
+    {
+         ImageIcon imagen2;
+         Icon icono3;
+    
+        imagen2 = new ImageIcon("src/imagenes/"+nombreImagen);
+        icono3 = new ImageIcon(imagen2.getImage().getScaledInstance( jblManual.getWidth(), jblManual.getHeight(),Image.SCALE_DEFAULT));
+        jblManual.setIcon(icono3); 
         
     }
     /**
@@ -126,6 +136,8 @@ public class frm_Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnEmpleados = new javax.swing.JButton();
+        jblManual = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         jlbLogo = new javax.swing.JLabel();
@@ -268,11 +280,11 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnConsultas);
         btnConsultas.setBounds(20, 240, 140, 45);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(241, 250, 255));
         jLabel3.setText("GESTIONES CENTRO EDUCATIVO JUCUTUMA");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 10, 540, 58);
+        jLabel3.setBounds(10, 30, 600, 58);
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnSalir.png"))); // NOI18N
         btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(236, 28, 36), 3, true));
@@ -300,6 +312,16 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel2.add(btnEmpleados);
         btnEmpleados.setBounds(20, 310, 140, 45);
 
+        jblManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoManual.png"))); // NOI18N
+        jblManual.setText("jLabel1");
+        jPanel2.add(jblManual);
+        jblManual.setBounds(520, 150, 110, 70);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setText("MANUAL");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(540, 210, 70, 40);
+
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 130, 90));
         jLabel5.setText("BIENVENIDO:");
@@ -314,15 +336,16 @@ public class frm_Principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(355, 355, 355))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                        .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
                 .addComponent(jlbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 332, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -456,10 +479,12 @@ public class frm_Principal extends javax.swing.JFrame {
     public javax.swing.JButton btnReportes1;
     public javax.swing.JButton btnSalir;
     public javax.swing.JButton btnUsuarios;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    public javax.swing.JLabel jblManual;
     public javax.swing.JLabel jlbLogo;
     public javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables

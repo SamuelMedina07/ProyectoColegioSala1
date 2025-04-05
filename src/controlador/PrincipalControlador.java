@@ -6,8 +6,12 @@
 package controlador;
 
 import Reportes.frm_Reportes;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URI;
 import modelo.ConsultaProfesor;
 import modelo.ConsultaUsuarios;
 import modelo.Profesor;
@@ -94,7 +98,20 @@ public class PrincipalControlador implements ActionListener{
         formsConsultas.setLocationRelativeTo(null);
         formReportes.setLocationRelativeTo(null);
         formEmpleados.setLocationRelativeTo(null);
+        this.formPrin.jblManual.addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        try {
+            // Enlace del PowerPoint
+            String url = "C://ProyectoColegioSala1//ManualUsuario.pptx"; // Sustituir con el enlace real
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
+});
+    }
+    
     
     
 
@@ -158,8 +175,10 @@ public class PrincipalControlador implements ActionListener{
             formLogin.setVisible(true);
             formPrin.dispose();
         }
-        
+       
     }
+    
+     
     
     public Usuario obtenerUsuario(){
         Usuario user = consUsuarios.obtenerUsuarioSegunNombre(formPrin.lblUsuario.getText());
