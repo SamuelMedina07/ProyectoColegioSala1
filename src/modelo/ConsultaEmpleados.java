@@ -31,7 +31,7 @@ public class ConsultaEmpleados extends Conexion {
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, empleado.getNumEmpleado());
-            ps.setInt(2, empleado.getEmpleadoCargo());
+            ps.setString(2, empleado.getEmpleadoCargo());
             ps.setString(3, empleado.getNombreCompleto());
             ps.setString(4, empleado.getGenero());
             ps.setDate(5, new java.sql.Date(empleado.getFechaNac().getTime()));
@@ -59,14 +59,14 @@ public class ConsultaEmpleados extends Conexion {
     public ArrayList<Empleado> leerTodosAlumnos() {
         ArrayList<Empleado> listaAlumnos = new ArrayList<>();
         Connection con = getConnection();
-        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_estado = 1";
+        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_estado = Activo";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Empleado empleado = new Empleado();
                 empleado.setNumEmpleado(rs.getString("empleado_nnumEmpleado"));
-                 empleado.setEmpleadoCargo(rs.getInt("empleadoCargo"));
+                 empleado.setEmpleadoCargo(rs.getString("empleadoCargo"));
                 empleado.setNombreCompleto(rs.getString("empleado_nombreCompleto"));
                 empleado.setGenero(rs.getString("empleado_genero"));
                 empleado.setFechaNac(rs.getDate("empleado_fechaNac"));
@@ -77,7 +77,7 @@ public class ConsultaEmpleados extends Conexion {
                 listaAlumnos.add(empleado);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al leer alumnos: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al leer empleados: " + ex.getMessage());
         } finally {
             closeConnection(con);
         }
@@ -86,7 +86,7 @@ public class ConsultaEmpleados extends Conexion {
 
     public boolean buscarEmpleado(String numCuenta) {
         Connection con = getConnection();
-        sentenciaSQL = "SELECT * FROM tbl_alumnos WHERE alumno_numCuenta=? AND alumnos_estado = 'Activo'";
+        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_numEmpleado=? AND empleado_estado = 'Activo'";
         try {
             ps = con.prepareStatement(sentenciaSQL);
             ps.setString(1, numCuenta);
@@ -96,40 +96,38 @@ public class ConsultaEmpleados extends Conexion {
             }
             return false;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al buscar alumno: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al buscar empleado: " + ex.getMessage());
             return false;
         } finally {
             closeConnection(con);
         }
     }
 
-    public boolean modificarAlumno(Alumno alumno) {
+    public boolean modificarAlumno(Empleado empleado) {
         Connection con = getConnection();
-        sentenciaSQL = "UPDATE tbl_alumnos SET alumno_nombreCompleto=?, alumno_genero=?, "
-                + "alumno_fechaNac=?, alumno_direccion=?, alumno_telefono=?, alumno_foto=?, "
-                + "padres_id=?, grados_id=? WHERE alumno_numCuenta=? AND alumnos_estado = 'Activo'";
+        sentenciaSQL = "UPDATE tbl_empleados SET empleadoCargo=? ,empleado_nombreCompleto=?, empleado_genero=?, "
+                + "empledao_fechaNac=?, empleado_direccion=?, empleado_telefono=?, empleado_foto=?, WHERE empleado_numEmpleado=? AND empleado_estado = 'Activo'";
         try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setString(1, alumno.getNombreCompleto());
-            ps.setString(2, alumno.getGenero());
-            ps.setDate(3, new java.sql.Date(alumno.getFechaNac().getTime()));
-            ps.setString(4, alumno.getDireccion());
-            ps.setString(5, alumno.getTelefono());
-            ps.setString(6, alumno.getFoto());
-            ps.setInt(7, alumno.getIdPadres());
-            ps.setInt(8, alumno.getIdGrado());
-            ps.setString(9, alumno.getNumCuenta());
+            ps.setString(1, empleado.getEmpleadoCargo());
+            ps.setString(2, empleado.getNombreCompleto());
+            ps.setString(3, empleado.getGenero());
+            ps.setDate(4, new java.sql.Date(empleado.getFechaNac().getTime()));
+            ps.setString(5, empleado.getDireccion());
+            ps.setString(6, empleado.getTelefono());
+            ps.setString(7, empleado.getFoto());
+            ps.setString(9, empleado.getNumEmpleado());
 
             int filasAfectadas = ps.executeUpdate();
             if (filasAfectadas > 0) {
-                JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente");
+                JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "No se puede actualizar el alumno");
+                JOptionPane.showMessageDialog(null, "No se puede actualizar el empleado");
                 return false;
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al modificar alumno: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar empleado: " + ex.getMessage());
             return false;
         } finally {
             closeConnection(con);
@@ -213,109 +211,106 @@ public class ConsultaEmpleados extends Conexion {
         return 1;
     }
 
-    //CONSULTAS DE BUSQUEDA*******************************************************
-//    public Empleado obtenerAlumnoSegunNumCuenta(String numCuenta) {
-//        Connection con = getConnection();
-//        sentenciaSQL = "SELECT * FROM tbl_alumnos WHERE alumno_numCuenta=?";
-//
-//        try {
-//            ps = con.prepareStatement(sentenciaSQL);
-//            ps.setString(1, numCuenta);
-//            rs = ps.executeQuery();
-//
-//            if (rs.next()) {
-//                Alumno alumno = new Alumno();
-//                alumno.setNumCuenta(rs.getString("alumno_numCuenta"));
-//                alumno.setNombreCompleto(rs.getString("alumno_nombreCompleto"));
-//                alumno.setGenero(rs.getString("alumno_genero"));
-//                alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
-//                alumno.setDireccion(rs.getString("alumno_direccion"));
-//                alumno.setTelefono(rs.getString("alumno_telefono"));
-//                alumno.setFoto(rs.getString("alumno_foto"));
-//                alumno.setIdPadres(rs.getInt("padres_id"));
-//                alumno.setIdGrado(rs.getInt("grados_id"));
-//                alumno.setEstado(rs.getString("alumnos_estado"));
-//                return alumno;
-//            }
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al obtener alumno según número de cuenta: " + ex.getMessage());
-//        } finally {
-//            closeConnection(con);
-//        }
-//
-//        return null;
-//    }
+   /// CONSULTAS DE BUSQUEDA*******************************************************
+    public Empleado obtenerAlumnoSegunNumCuenta(String numCuenta) {
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_numEmpleado=?";
 
-//    public ArrayList<Empleado> buscarAlumnosPorNombre(String nombre) {
-//        ArrayList<Empleado> alumnosEncontrados = new ArrayList<>();
-//        Connection con = getConnection();
-//        sentenciaSQL = "SELECT * FROM tbl_alumnos WHERE alumno_nombreCompleto LIKE ?";
-//
-//        try {
-//            ps = con.prepareStatement(sentenciaSQL);
-//            ps.setString(1, "%" + nombre + "%");
-//            rs = ps.executeQuery();
-//
-//            while (rs.next()) {
-//                Alumno alumno = new Alumno();
-//                alumno.setNumCuenta(rs.getString("alumno_numCuenta"));
-//                alumno.setNombreCompleto(rs.getString("alumno_nombreCompleto"));
-//                alumno.setGenero(rs.getString("alumno_genero"));
-//                alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
-//                alumno.setDireccion(rs.getString("alumno_direccion"));
-//                alumno.setTelefono(rs.getString("alumno_telefono"));
-//                alumno.setFoto(rs.getString("alumno_foto"));
-//                alumno.setIdPadres(rs.getInt("padres_id"));
-//                alumno.setIdGrado(rs.getInt("grados_id"));
-//                alumno.setEstado(rs.getString("alumnos_estado"));
-//                alumnosEncontrados.add(alumno);
-//            }
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al buscar alumnos por nombre: " + ex.getMessage());
-//        } finally {
-//            closeConnection(con);
-//        }
-//
-//        return alumnosEncontrados;
-//    }
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, numCuenta);
+            rs = ps.executeQuery();
 
-//    public ArrayList<Empleado> buscarAlumnosPorGenero(String genero) {
-//        ArrayList<Empleado> alumnosEncontrados = new ArrayList<>();
-//        Connection con = getConnection();
-//        sentenciaSQL = "SELECT * FROM tbl_alumnos WHERE alumno_genero LIKE ?";
-//
-//        try {
-//            ps = con.prepareStatement(sentenciaSQL);
-//            ps.setString(1, "%" + genero + "%");
-//            rs = ps.executeQuery();
-//
-//            while (rs.next()) {
-//                Alumno alumno = new Alumno();
-//                alumno.setNumCuenta(rs.getString("alumno_numCuenta"));
-//                alumno.setNombreCompleto(rs.getString("alumno_nombreCompleto"));
-//                alumno.setGenero(rs.getString("alumno_genero"));
-//                alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
-//                alumno.setDireccion(rs.getString("alumno_direccion"));
-//                alumno.setTelefono(rs.getString("alumno_telefono"));
-//                alumno.setFoto(rs.getString("alumno_foto"));
-//                alumno.setIdPadres(rs.getInt("padres_id"));
-//                alumno.setIdGrado(rs.getInt("grados_id"));
-//                alumno.setEstado(rs.getString("alumnos_estado"));
-//                alumnosEncontrados.add(alumno);
-//            }
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al buscar alumnos por género: " + ex.getMessage());
-//        } finally {
-//            closeConnection(con);
-//        }
-//
-//        return alumnosEncontrados;
-//    }
+            if (rs.next()) {
+                Empleado empleado = new Empleado();
+                 empleado.setNumEmpleado(rs.getString("empleado_numEmpleado"));
+                empleado.setEmpleadoCargo(rs.getString("empleadoCargo"));
+                empleado.setNombreCompleto(rs.getString("empleado_NombreCompleto"));
+                empleado.setGenero(rs.getString("empleado_genero"));
+                empleado.setFechaNac(rs.getDate("empledao_fechaNac"));
+                empleado.setDireccion(rs.getString("empleado_direccion"));
+                empleado.setTelefono(rs.getString("empleado_telefono"));
+                empleado.setFoto(rs.getString("empleado_foto"));
+                empleado.setEstado(rs.getString("empleado_estado"));
+                return empleado;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener empleado según número de cuenta: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return null;
+    }
+
+    public ArrayList<Empleado> buscarAlumnosPorNombre(String nombre) {
+        ArrayList<Empleado> alumnosEncontrados = new ArrayList<>();
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_nombreCompleto LIKE ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, "%" + nombre + "%");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Empleado empleado = new Empleado();
+                 empleado.setNumEmpleado(rs.getString("empleado_numEmpleado"));
+                empleado.setEmpleadoCargo(rs.getString("empleadoCargo"));
+                empleado.setNombreCompleto(rs.getString("empleado_NombreCompleto"));
+                empleado.setGenero(rs.getString("empleado_genero"));
+                empleado.setFechaNac(rs.getDate("empledao_fechaNac"));
+                empleado.setDireccion(rs.getString("empleado_direccion"));
+                empleado.setTelefono(rs.getString("empleado_telefono"));
+                empleado.setFoto(rs.getString("empleado_foto"));
+                empleado.setEstado(rs.getString("empleado_estado"));
+                alumnosEncontrados.add(empleado);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar empleado por nombre: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return alumnosEncontrados;
+    }
+
+    public ArrayList<Empleado> buscarAlumnosPorGenero(String genero) {
+        ArrayList<Empleado> alumnosEncontrados = new ArrayList<>();
+        Connection con = getConnection();
+        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_genero LIKE ?";
+
+        try {
+            ps = con.prepareStatement(sentenciaSQL);
+            ps.setString(1, "%" + genero + "%");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Empleado empleado = new Empleado();
+                 empleado.setNumEmpleado(rs.getString("empleado_numEmpleado"));
+                empleado.setEmpleadoCargo(rs.getString("empleadoCargo"));
+                empleado.setNombreCompleto(rs.getString("empleado_NombreCompleto"));
+                empleado.setGenero(rs.getString("empleado_genero"));
+                empleado.setFechaNac(rs.getDate("empledao_fechaNac"));
+                empleado.setDireccion(rs.getString("empleado_direccion"));
+                empleado.setTelefono(rs.getString("empleado_telefono"));
+                empleado.setFoto(rs.getString("empleado_foto"));
+                empleado.setEstado(rs.getString("empleado_estado"));
+                alumnosEncontrados.add(empleado);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar empleado por género: " + ex.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+
+        return alumnosEncontrados;
+    }
 
     public ArrayList<Empleado> buscarAlumnosActivos() {
         ArrayList<Empleado> alumnosActivos = new ArrayList<>();
         Connection con = getConnection();
-        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_estado = 1";
+        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_estado = 'Activo' ";
 
         try {
             ps = con.prepareStatement(sentenciaSQL);
@@ -324,7 +319,7 @@ public class ConsultaEmpleados extends Conexion {
             while (rs.next()) {
                 Empleado empleado = new Empleado();
                 empleado.setNumEmpleado(rs.getString("empleado_numEmpleado"));
-                empleado.setEmpleadoCargo(rs.getInt("empleadoCargo"));
+                empleado.setEmpleadoCargo(rs.getString("empleadoCargo"));
                 empleado.setNombreCompleto(rs.getString("empleado_NombreCompleto"));
                 empleado.setGenero(rs.getString("empleado_genero"));
                 empleado.setFechaNac(rs.getDate("empledao_fechaNac"));
@@ -346,7 +341,7 @@ public class ConsultaEmpleados extends Conexion {
     public ArrayList<Empleado> buscarAlumnosInactivos() {
         ArrayList<Empleado> alumnosInactivos = new ArrayList<>();
         Connection con = getConnection();
-        sentenciaSQL = "SELECT * FROM tbl_empleado WHERE empleado_estado = 2";
+        sentenciaSQL = "SELECT * FROM tbl_empleados WHERE empleado_estado = 'Inactivo'" ;
 
         try {
             ps = con.prepareStatement(sentenciaSQL);
@@ -355,7 +350,7 @@ public class ConsultaEmpleados extends Conexion {
             while (rs.next()) {
                   Empleado empleado = new Empleado();
                 empleado.setNumEmpleado(rs.getString("empleado_numCuenta"));
-                empleado.setEmpleadoCargo(rs.getInt("empleado_cargo"));
+                empleado.setEmpleadoCargo(rs.getString("empleado_cargo"));
                 empleado.setNombreCompleto(rs.getString("empleado_NombreCompleto"));
                 empleado.setGenero(rs.getString("empleado_genero"));
                 empleado.setFechaNac(rs.getDate("empleado_fechaNac"));
@@ -366,7 +361,7 @@ public class ConsultaEmpleados extends Conexion {
                 alumnosInactivos.add(empleado);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al buscar alum: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al buscar empleado: " + ex.getMessage());
         } finally {
             closeConnection(con);
         }
@@ -400,30 +395,29 @@ public class ConsultaEmpleados extends Conexion {
     public Alumno obtenerAlumnoPorNombre(String nombreCompleto) {
     Connection con = getConnection();
     Alumno alumno = null;
-    String query = "SELECT * FROM tbl_alumnos WHERE alumno_nombreCompleto = ?";
+    String query = "SELECT * FROM tbl_empleados WHERE empleado_nombreCompleto = ?";
     
     try {
         ps = con.prepareStatement(query);
         ps.setString(1, nombreCompleto);
         rs = ps.executeQuery();
         if (rs.next()) {
-            alumno = new Alumno();
-            alumno.setNumCuenta(rs.getString("alumno_numCuenta"));
-            alumno.setNombreCompleto(rs.getString("alumno_nombreCompleto"));
-            alumno.setGenero(rs.getString("alumno_genero"));
-            alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
-            alumno.setDireccion(rs.getString("alumno_direccion"));
-            alumno.setTelefono(rs.getString("alumno_telefono"));
-            alumno.setFoto(rs.getString("alumno_foto"));
-            alumno.setIdPadres(rs.getInt("padres_id"));
-            alumno.setIdGrado(rs.getInt("grados_id"));
-            alumno.setEstado(rs.getString("alumnos_estado"));
+          Empleado empleado = new Empleado();
+            empleado.setNumEmpleado(rs.getString("empleado_numEmpleado"));
+                empleado.setEmpleadoCargo(rs.getString("empleadoCargo"));
+                empleado.setNombreCompleto(rs.getString("empleado_NombreCompleto"));
+                empleado.setGenero(rs.getString("empleado_genero"));
+                empleado.setFechaNac(rs.getDate("empledao_fechaNac"));
+                empleado.setDireccion(rs.getString("empleado_direccion"));
+                empleado.setTelefono(rs.getString("empleado_telefono"));
+                empleado.setFoto(rs.getString("empleado_foto"));
+                empleado.setEstado(rs.getString("empleado_estado"));
         } else {
             // lanzar una excepción o devolver null
-            throw new IllegalArgumentException("No se encontró ningún alumno con el nombre especificado");
+            throw new IllegalArgumentException("No se encontró ningún empleado con el nombre especificado");
         }
     } catch (SQLException ex) {
-        System.err.println("Error al obtener el alumno: " + ex.getMessage());
+        System.err.println("Error al obtener el aempleado: " + ex.getMessage());
     } finally {
         closeConnection(con);
     }

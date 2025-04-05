@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Empleado {
     private String numEmpleado;
-    private int empleadoCargo;
+    private String empleadoCargo;
     private String nombreCompleto;
     private String genero;
     private Date fechaNac;
@@ -35,11 +35,11 @@ public class Empleado {
         this.numEmpleado = numEmple;
     }
     
-    public int getEmpleadoCargo(){
+    public String getEmpleadoCargo(){
         return empleadoCargo;
     }
     
-    public void setEmpleadoCargo(int empleCargo){
+    public void setEmpleadoCargo(String empleCargo){
         this.empleadoCargo = empleCargo;
     }
 

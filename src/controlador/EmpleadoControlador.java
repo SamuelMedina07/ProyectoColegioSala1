@@ -28,7 +28,8 @@ public class EmpleadoControlador implements ActionListener {
     private frm_Empleados formularioEmpleado;
     private ConsultaEmpleados ConsultaEmpleados;
     private frm_Consulta_Empleados formConsEmple;
-
+     private Object datos[] = new Object[10];
+    private DefaultTableModel modelo;
  
     private String imagenSeleccionada;
 
@@ -44,6 +45,7 @@ public class EmpleadoControlador implements ActionListener {
 
     private void inicializarComponentes() {
         inicializarBotonesFormulario();
+         inicializarBotonedListener();
         habilitarBotones();
     }
 
@@ -58,6 +60,37 @@ public class EmpleadoControlador implements ActionListener {
         formularioEmpleado.btnSalir.addActionListener(this);
 
         formularioEmpleado.btnSeleccionarFoto.addActionListener(this);
+    }
+    
+    private void inicializarBotonedListener() {
+        formConsEmple.btn_buscarPor.addActionListener(this);
+        formConsEmple.tbl_consulta.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                manejarEventoTablaAlumnos();
+            }
+        });
+        
+    }
+    
+    private void manejarEventoTablaAlumnos() {
+        int filaSeleccionada = formConsEmple.tbl_consulta.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) formConsEmple.tbl_consulta.getModel();
+        if (filaSeleccionada >= 0) {
+            String numCuenta = String.valueOf(model.getValueAt(filaSeleccionada, 0));
+            Empleado seleccionado = ConsultaEmpleados.obtenerAlumnoSegunNumCuenta(numCuenta);
+
+            formularioEmpleado.txtCodigo.setText(String.valueOf(seleccionado.getNumEmpleado()));
+            formularioEmpleado.txtNombres1.setText(seleccionado.getNombre());
+            formularioEmpleado.txtApellidos.setText(seleccionado.getApellidos());
+            formularioEmpleado.cbGenero.setSelectedItem(seleccionado.getGenero());
+            formularioEmpleado.cbUsuarios.setSelectedItem(seleccionado.getEmpleadoCargo());
+            formularioEmpleado.DateNacimiento.setDate(seleccionado.getFechaNac());
+            formularioEmpleado.txtDireccion.setText(seleccionado.getDireccion());
+            formularioEmpleado.txtTelefono.setText(seleccionado.getTelefono());
+            formularioEmpleado.cargarImagen(seleccionado.getFoto());
+            imagenSeleccionada=seleccionado.getFoto();
+            formConsEmple.dispose();
+        }
     }
     
     @Override
@@ -77,12 +110,12 @@ public class EmpleadoControlador implements ActionListener {
         if (e.getSource() == formularioEmpleado.btnBuscar) {
             formConsEmple.setVisible(true);
         }
-//        if (e.getSource() == formularioEmpleado.btnModificar) {
-//            modificarAlumno();
-//        }
-//        if (e.getSource() == formularioEmpleado.btnEliminar) {
-//            eliminarAlumno();
-//        }
+        if (e.getSource() == formularioEmpleado.btnModificar) {
+            modificarAlumno();
+        }
+        if (e.getSource() == formularioEmpleado.btnEliminar) {
+            eliminarAlumno();
+        }
         if (e.getSource() == formularioEmpleado.btnSeleccionarFoto) {
             guardarForo();
         }
@@ -120,25 +153,25 @@ public class EmpleadoControlador implements ActionListener {
             }
         }
     }
+
+    public void modificarAlumno() {
+        if (validarYVerificarAlumno()) {
+            if (ConsultaEmpleados.modificarAlumno(empleado)) {
+                limpiar();
+            }
+        }
+    }
 //
-//    public void modificarAlumno() {
-//        if (validarYVerificarAlumno()) {
-//            if (consultaAlumnos.modificarAlumno(alumno)) {
-//                limpiar();
-//            }
-//        }
-//    }
-//
-//    public void eliminarAlumno() {
-//        if (!formularioEmpleado.txtCodigo.getText().isEmpty()) {
-//            String numCuenta = formularioEmpleado.txtCodigo.getText();
-//            if (consultaAlumnos.eliminarAlumno(numCuenta)) {
-//                limpiar();
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN ALUMNO.", "Información", JOptionPane.INFORMATION_MESSAGE);
-//        }
-//    }
+    public void eliminarAlumno() {
+        if (!formularioEmpleado.txtCodigo.getText().isEmpty()) {
+            String numCuenta = formularioEmpleado.txtCodigo.getText();
+            if (ConsultaEmpleados.eliminarAlumno(numCuenta)) {
+                limpiar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "DEBE SELECCIONAR UN ALUMNO.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
 
    
@@ -147,21 +180,21 @@ public class EmpleadoControlador implements ActionListener {
         if (validarCamposNoVacios()) {
             String nombreCompleto = formularioEmpleado.txtNombres1.getText() + " " + formularioEmpleado.txtApellidos.getText();
 
-//            // Verificar si ya existe un alumno con el mismo nombre completo
-//            if (consultaAlumnos.existeAlumnoConNombreCompleto(nombreCompleto, formularioEmpleado.txtCodigo.getText())) {
-//                JOptionPane.showMessageDialog(null, "Ya existe un alumno con el mismo nombre completo y número de cuenta.", "Error", JOptionPane.ERROR_MESSAGE);
-//                return false;
-//            }
+            // Verificar si ya existe un alumno con el mismo nombre completo
+            if (ConsultaEmpleados.existeAlumnoConNombreCompleto(nombreCompleto, formularioEmpleado.txtCodigo.getText())) {
+                JOptionPane.showMessageDialog(null, "Ya existe un alumno con el mismo nombre completo y número de cuenta.", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
 
             empleado.setNumEmpleado(formularioEmpleado.txtCodigo.getText());
             empleado.setNombreCompleto(nombreCompleto);
-            empleado.setEmpleadoCargo(formularioEmpleado.cbUsuarios.getSelectedIndex());
+            empleado.setEmpleadoCargo((String)formularioEmpleado.cbUsuarios.getSelectedItem());
             empleado.setGenero((String) formularioEmpleado.cbGenero.getSelectedItem());
             empleado.setFechaNac(formularioEmpleado.DateNacimiento.getDate());
             empleado.setDireccion(formularioEmpleado.txtDireccion.getText());
             empleado.setTelefono(formularioEmpleado.txtTelefono.getText());
             empleado.setFoto(imagenSeleccionada);
-            empleado.setEstado(""+1);
+            empleado.setEstado("Activo");
             return true;
         }
         return false;

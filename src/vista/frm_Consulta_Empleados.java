@@ -105,7 +105,7 @@ public class frm_Consulta_Empleados extends javax.swing.JDialog {
 
             },
             new String [] {
-                "# CUENTA", "NOMBRE COMPLETO", "GENERO", "EDAD", "DIRECCION", "TELEFONO", "ENCARGADO", "GRADO"
+                "# CUENTA", "CARGO", "NOMBRE", "GENERO", "EDAD", "DIRECCION", "TELEFONO", "ESTADO"
             }
         ));
         jScrollPane1.setViewportView(tbl_consulta);
@@ -219,17 +219,17 @@ public class frm_Consulta_Empleados extends javax.swing.JDialog {
         String valorBuscar = txtBuscar.getText();
 
     switch (campoSeleccionado) {
-//            case "NUMERO DE CUENTA":
-//                String numCuenta = valorBuscar;
-//                Empleado alumnoEncontrado = consEmpleados.obtenerAlumnoSegunNumCuenta(numCuenta);
-//                if (alumnoEncontrado != null) {
-//                    ArrayList<Empleado> listaAlumno = new ArrayList<>();
-//                    listaAlumno.add(alumnoEncontrado);
-//                    llenarTablaConsulta(listaAlumno);
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "No se encontró ninguna materia con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
-//                break;
+            case "NUMERO DE CUENTA":
+                String numCuenta = valorBuscar;
+                Empleado alumnoEncontrado = consEmpleados.obtenerAlumnoSegunNumCuenta(numCuenta);
+                if (alumnoEncontrado != null) {
+                    ArrayList<Empleado> listaAlumno = new ArrayList<>();
+                    listaAlumno.add(alumnoEncontrado);
+                    llenarTablaConsulta(listaAlumno);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró ninguna materia con el ID especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
 //            case "NOMBRE":
 //                manejarResultadoConsulta(consEmpleados.buscarAlumnosPorNombre(valorBuscar), "No se encontró ningún alumno con el nombre especificado.");
 //                break;
@@ -264,7 +264,8 @@ public class frm_Consulta_Empleados extends javax.swing.JDialog {
             datos[4] = empleado.getFechaNac();
             datos[5] = empleado.getDireccion();
             datos[6] = empleado.getTelefono();
-            modelo.addRow(datos);
+            datos[7] = empleado.getEstado();
+             modelo.addRow(datos);
         }
         tbl_consulta.setModel(modelo);
     }
