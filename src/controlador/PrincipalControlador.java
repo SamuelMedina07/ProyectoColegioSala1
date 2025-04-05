@@ -23,7 +23,7 @@ import vista.frm_Usuarios;
 import vista.frm_Padres;
 import vista.frm_Profesor;
 import vista.frm_login;
-
+import vista.frm_Empleados;
 /**
  *
  * @author ammcp
@@ -45,8 +45,10 @@ public class PrincipalControlador implements ActionListener{
     private frm_Consulta formsConsultas;
     private frm_login formLogin;
     private frm_Reportes formReportes;
+    private frm_Empleados formEmpleados;
+    
 
-    public PrincipalControlador(frm_Principal formPrin, frm_login formLogin,frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias,frm_Calificaciones formCalificaciones) {
+    public PrincipalControlador(frm_Principal formPrin, frm_login formLogin,frm_Usuarios frmUsuarios,frm_Padres formPadres,frm_Grados formGrados,frm_Materias formMaterias,frm_Alumnos formAlumnos,frm_Profesor formProfesor, frm_Asistencias formAsistencias,frm_Calificaciones formCalificaciones, frm_Empleados formEmpleados) {
         this.formPrin = formPrin;
         this.frmUsuarios = frmUsuarios;
         this.formPadres = formPadres;
@@ -57,6 +59,7 @@ public class PrincipalControlador implements ActionListener{
         this.formAsistencias=formAsistencias;
         this.formCalificaciones=formCalificaciones;
         this.formLogin=formLogin;
+        this.formEmpleados=formEmpleados;
         this.formsConsultas = new frm_Consulta(formPrin, true);
         this.formReportes = new frm_Reportes(formPrin, true);
         
@@ -73,6 +76,8 @@ public class PrincipalControlador implements ActionListener{
         this.formPrin.btnCalificaciones.addActionListener(this);
         this.formPrin.btnConsultas.addActionListener(this);
         this.formPrin.btnReportes1.addActionListener(this);
+         this.formPrin.btnEmpleados.addActionListener(this);
+        
         
     }
     
@@ -88,6 +93,7 @@ public class PrincipalControlador implements ActionListener{
         formCalificaciones.setLocationRelativeTo(null);
         formsConsultas.setLocationRelativeTo(null);
         formReportes.setLocationRelativeTo(null);
+        formEmpleados.setLocationRelativeTo(null);
     }
     
     
@@ -128,6 +134,9 @@ public class PrincipalControlador implements ActionListener{
        if(e.getSource()==formPrin.btnAsistencias){
             formAsistencias.setVisible(true);
         }
+       //EMPLEADOS
+        if(e.getSource()==formPrin.btnEmpleados){
+            formEmpleados.setVisible(true);}
        //CALIFICACIONES
        if(e.getSource()==formPrin.btnCalificaciones){
             formCalificaciones.lblUsuario.setText(formPrin.lblUsuario.getText());

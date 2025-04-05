@@ -59,6 +59,7 @@ public class frm_Principal extends javax.swing.JFrame {
         btnConsultas.setEnabled(true);
         btnReportes1.setEnabled(true);
         btnCalificaciones.setEnabled(true);
+        btnEmpleados.setEnabled(true);
     }
 
     private void habilitarBotonesSecretario() {

@@ -65,9 +65,6 @@ public class frm_Profesor extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbl_registros = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -96,7 +93,6 @@ public class frm_Profesor extends javax.swing.JDialog {
         btnLimpiar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnLeer = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -111,24 +107,6 @@ public class frm_Profesor extends javax.swing.JDialog {
         setTitle("PROFESORES");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
-
-        jPanel3.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "Resulado de Busqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(241, 250, 255))); // NOI18N
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tbl_registros.setBackground(new java.awt.Color(241, 250, 255));
-        tbl_registros.setForeground(new java.awt.Color(60, 63, 65));
-        tbl_registros.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CODIGO", "NOMBRE COMPLETO", "GENERO", "IDENTIDAD", "DIRECCION", "TELEFONO", "USUARIO"
-            }
-        ));
-        jScrollPane2.setViewportView(tbl_registros);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 510, 120));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 130, 90));
@@ -260,14 +238,14 @@ public class frm_Profesor extends javax.swing.JDialog {
 
         lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel6.add(lblFoto);
-        lblFoto.setBounds(330, 260, 120, 130);
+        lblFoto.setBounds(300, 260, 160, 190);
 
         btnSeleccionarFoto.setBackground(new java.awt.Color(241, 250, 255));
         btnSeleccionarFoto.setForeground(new java.awt.Color(0, 130, 90));
         btnSeleccionarFoto.setText("FOTO");
         btnSeleccionarFoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnSeleccionarFoto);
-        btnSeleccionarFoto.setBounds(460, 310, 50, 20);
+        btnSeleccionarFoto.setBounds(460, 340, 60, 20);
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 130, 90));
@@ -328,7 +306,7 @@ public class frm_Profesor extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnSalir);
-        btnSalir.setBounds(670, 190, 92, 20);
+        btnSalir.setBounds(610, 190, 92, 20);
 
         btnLimpiar.setBackground(new java.awt.Color(241, 250, 255));
         btnLimpiar.setForeground(new java.awt.Color(0, 130, 90));
@@ -356,24 +334,17 @@ public class frm_Profesor extends javax.swing.JDialog {
 
         btnModificar.setBackground(new java.awt.Color(241, 250, 255));
         btnModificar.setForeground(new java.awt.Color(0, 130, 90));
-        btnModificar.setText("MODIFICAR");
+        btnModificar.setText("ACTUALIZAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnModificar);
-        btnModificar.setBounds(550, 190, 92, 20);
-
-        btnLeer.setBackground(new java.awt.Color(241, 250, 255));
-        btnLeer.setForeground(new java.awt.Color(0, 130, 90));
-        btnLeer.setText("LEER");
-        btnLeer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
-        jPanel6.add(btnLeer);
-        btnLeer.setBounds(550, 70, 92, 20);
+        btnModificar.setBounds(550, 150, 92, 20);
 
         btnCrear.setBackground(new java.awt.Color(241, 250, 255));
         btnCrear.setForeground(new java.awt.Color(0, 130, 90));
         btnCrear.setText("CREAR");
         btnCrear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnCrear);
-        btnCrear.setBounds(550, 150, 92, 20);
+        btnCrear.setBounds(550, 70, 92, 20);
 
         btnAgregar.setBackground(new java.awt.Color(241, 250, 255));
         btnAgregar.setForeground(new java.awt.Color(0, 130, 90));
@@ -438,19 +409,14 @@ public class frm_Profesor extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(282, 282, 282)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,9 +426,7 @@ public class frm_Profesor extends javax.swing.JDialog {
                     .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -471,9 +435,8 @@ public class frm_Profesor extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,7 +602,6 @@ public class frm_Profesor extends javax.swing.JDialog {
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnCrear;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnLeer;
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnOpciones;
@@ -657,10 +619,8 @@ public class frm_Profesor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -668,7 +628,6 @@ public class frm_Profesor extends javax.swing.JDialog {
     public javax.swing.JLabel jlbLogo;
     public javax.swing.JLabel lblFoto;
     public javax.swing.JLabel lblUsuario;
-    public javax.swing.JTable tbl_registros;
     public javax.swing.JTextField txtApellidos;
     public javax.swing.JTextField txtCodigo;
     public javax.swing.JTextArea txtDireccion;

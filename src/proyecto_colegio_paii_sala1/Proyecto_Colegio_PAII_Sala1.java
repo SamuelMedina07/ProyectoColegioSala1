@@ -23,6 +23,7 @@ import controlador.materiaControlador;
 import controlador.padreControlador;
 import controlador.profesorControlador;
 import controlador.usuarioControlador;
+import controlador.EmpleadoControlador;
 import modelo.Alumno;
 import modelo.Asistencia;
 import modelo.Calificacion;
@@ -34,11 +35,13 @@ import modelo.ConsultaPadres;
 import modelo.ConsultaProfesor;
 import modelo.ConsultaUsuarios;
 import modelo.ConsultasAsistencia;
+import modelo.ConsultaEmpleados;
 import modelo.Grado;
 import modelo.Materia;
 import modelo.Padre;
 import modelo.Profesor;
 import modelo.Usuario;
+import modelo.Empleado;
 import vista.frm_Alumnos;
 import vista.frm_Asistencias;
 import vista.frm_Calificaciones;
@@ -57,6 +60,8 @@ import vista.frm_Principal;
 import vista.frm_Profesor;
 import vista.frm_Usuarios;
 import vista.frm_login;
+import vista.frm_Empleados;
+
 
 /**
  *
@@ -153,8 +158,13 @@ public class Proyecto_Colegio_PAII_Sala1 {
         calificaciones disenocalificacion = new calificaciones(formCalificaciones,formConsultaCalificaciones);
 
 
+        Empleado empleado = new Empleado();
+        frm_Empleados formEmpleados = new frm_Empleados(frm_pri, true, "");
+        ConsultaEmpleados ConsultaEmpleados = new ConsultaEmpleados();
+        EmpleadoControlador contEmpleado = new EmpleadoControlador(empleado,formEmpleados,ConsultaEmpleados);
+        
 //PRINCIPAL
-        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri,formLogin, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias,formCalificaciones);
+        PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri,formLogin, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias,formCalificaciones,formEmpleados);
         contPrincipal.inciar();
 
     }

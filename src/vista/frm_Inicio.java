@@ -34,7 +34,7 @@ public class frm_Inicio extends javax.swing.JFrame {
          public void run(){
              for(int i=1; i<=100; i++){
                  try {
-                     Thread.sleep(50);//milisegundos
+                     Thread.sleep(0);//milisegundos
                      lblTitulo.setText("CARGANDO...");
                      barra.setValue(i);
                      ReajsuteImagen("LogoBosquesSinFondoCorto.png");

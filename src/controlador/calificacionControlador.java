@@ -310,7 +310,6 @@ public class calificacionControlador implements ActionListener {
 
         formularioCalificaciones.btnBuscar.setEnabled(true);
         formularioCalificaciones.btnEliminar.setEnabled(true);
-        formularioCalificaciones.btnLeer.setEnabled(true);
         formularioCalificaciones.btnAgregar.setEnabled(true);
         formularioCalificaciones.btnLimpiar.setEnabled(true);
         formularioCalificaciones.btnModificar.setEnabled(true);
@@ -324,7 +323,6 @@ public class calificacionControlador implements ActionListener {
 
         formularioCalificaciones.btnBuscar.setEnabled(false);
         formularioCalificaciones.btnEliminar.setEnabled(false);
-        formularioCalificaciones.btnLeer.setEnabled(false);
         formularioCalificaciones.btnAgregar.setEnabled(false);
         formularioCalificaciones.btnLimpiar.setEnabled(false);
         formularioCalificaciones.btnModificar.setEnabled(false);

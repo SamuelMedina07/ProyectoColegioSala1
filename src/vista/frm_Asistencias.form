@@ -71,13 +71,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jcbasistencia" alignment="0" max="32767" attributes="0"/>
-                              <Component id="DateFecha" alignment="0" max="32767" attributes="0"/>
+                              <Component id="DateFecha" alignment="0" pref="255" max="32767" attributes="0"/>
                               <Component id="jtNombre" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">

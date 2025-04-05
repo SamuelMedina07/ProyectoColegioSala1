@@ -104,9 +104,7 @@ public class usuarioControlador implements ActionListener {
             guardarUsuario();
         }
         //BOTON LEER TODOS
-        if (e.getSource() == form.btnLeer) {
-            llenarTabla();
-        }
+        
 
         //BOTON CONSULTA USUARIO
         if (e.getSource() == form.btnBuscar) {
@@ -163,24 +161,8 @@ public class usuarioControlador implements ActionListener {
         }
     }
 
-    //LEER
-    public void llenarTabla() {
-        modelo = (DefaultTableModel) form.tbl_usuarios.getModel();
-        modelo.setRowCount(0);
-        ArrayList<Usuario> listaUsuarios = consUsuario.leerTodosUsuarios();
-        int registros = listaUsuarios.size();
-        for (int i = 0; i < registros; i++) {
-            Usuario usuarioTemporal = listaUsuarios.get(i);
 
-            datos[0] = usuarioTemporal.getCodigo();
-            datos[1] = usuarioTemporal.getNombre();
-            datos[2] = usuarioTemporal.getRol();
-            datos[3] = usuarioTemporal.getIdRol();
-
-            modelo.addRow(datos);
-        }
-        form.tbl_usuarios.setModel(modelo);
-    }
+ 
 
    
     
@@ -248,8 +230,6 @@ public class usuarioControlador implements ActionListener {
         form.txtContra1.setText("");
         form.txtVerificarContra.setText("");
         form.cbUsuarios.setSelectedIndex(0);
-        modelo = (DefaultTableModel) form.tbl_usuarios.getModel();
-        modelo.setRowCount(0);
     }
 
     //RESALTAR CAMPO
@@ -265,8 +245,8 @@ public class usuarioControlador implements ActionListener {
 
     //HABILITAR BOTONES
     public void habilitarBotones() {
-        form.btnCancelar.setEnabled(false);
-        form.btnCrear.setEnabled(false);
+        form.btnCancelar.setEnabled(true);
+        form.btnCrear.setEnabled(true);
 
         form.btnBuscar.setEnabled(true);
         form.btnEliminar.setEnabled(true);

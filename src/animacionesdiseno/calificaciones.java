@@ -32,7 +32,6 @@ public class calificaciones implements ActionListener{
     this.formConsultaCalificaciones = formConsultaCalificaciones; 
     formCalificaciones.btnOpciones.addActionListener(this);
     ReajsuteImagen("LogoBosquesSinFondo.png");
-     formCalificaciones.btnLeer.setVisible(false);
     }
     
     
@@ -77,7 +76,6 @@ public class calificaciones implements ActionListener{
     //Mostando botones ocultos con transicion
      AnimationClass mostrar = new AnimationClass();
          //Columna 1
-         mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formCalificaciones.btnLeer);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formCalificaciones.btnAgregar);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formCalificaciones.btnCrear);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formCalificaciones.btnModificar);
@@ -92,7 +90,6 @@ public class calificaciones implements ActionListener{
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formCalificaciones.btnLeer);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formCalificaciones.btnAgregar);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formCalificaciones.btnCrear);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formCalificaciones.btnModificar);

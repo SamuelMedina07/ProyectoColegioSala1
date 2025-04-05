@@ -73,7 +73,6 @@ public class padres implements ActionListener {
     //Mostando botones ocultos con transicion
      AnimationClass mostrar = new AnimationClass();
          //Columna 1
-         mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formPadre.btnLeer);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formPadre.btnAgregar);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formPadre.btnCrear);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formPadre.btnModificar);
@@ -89,7 +88,6 @@ public class padres implements ActionListener {
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formPadre.btnLeer);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnAgregar);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnCrear);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formPadre.btnModificar);

@@ -68,7 +68,6 @@ public class profesorControlador implements ActionListener {
         formularioProfesor.btnAgregar.addActionListener(this);
         formularioProfesor.btnCancelar.addActionListener(this);
         formularioProfesor.btnCrear.addActionListener(this);
-        formularioProfesor.btnLeer.addActionListener(this);
         formularioProfesor.btnBuscar.addActionListener(this);
         formularioProfesor.btnModificar.addActionListener(this);
         formularioProfesor.btnEliminar.addActionListener(this);
@@ -146,9 +145,6 @@ public class profesorControlador implements ActionListener {
         if (e.getSource() == formularioProfesor.btnCrear) {
             guardarProfesor();
         }
-        if (e.getSource() == formularioProfesor.btnLeer) {
-            llenarTabla();
-        }
         if (e.getSource() == formularioProfesor.btnBuscar) {
             formularioConsulta.setVisible(true);
         }
@@ -218,22 +214,6 @@ public class profesorControlador implements ActionListener {
         }
     }
 
-    public void llenarTabla() {
-        modelo = (DefaultTableModel) formularioProfesor.tbl_registros.getModel();
-        modelo.setRowCount(0);
-        ArrayList<Profesor> listaProfesores = consultaProfesor.leerTodosProfesores();
-        for (Profesor profesor : listaProfesores) {
-            datos[0] = profesor.getId();
-            datos[1] = profesor.getNombreCompleto();
-            datos[2] = profesor.getGenero();
-            datos[3] = profesor.getCedula();
-            datos[4] = profesor.getTelefono();
-            datos[5] = profesor.getDireccion();
-            datos[6] = consUsuario.obtenerUusuarioSegunIdUsuario(profesor.getCodigoUsuario()).getNombre();
-            modelo.addRow(datos);
-        }
-        formularioProfesor.tbl_registros.setModel(modelo);
-    }
 
     private boolean validarYVerificarProfesor() {
         if (validarCamposNoVacios()) {
@@ -323,9 +303,6 @@ public class profesorControlador implements ActionListener {
         formularioProfesor.cbGenero.setSelectedIndex(0);
         formularioProfesor.cargarImagen(formularioProfesor.urlImagenDefecto);
         imagenSeleccionada = formularioProfesor.urlImagenDefecto;
-        modelo = (DefaultTableModel) formularioProfesor.tbl_registros.getModel();
-        modelo.setRowCount(0);
-
     }
 
     public void resaltarCampoVacio(JTextField campo) {
@@ -345,7 +322,6 @@ public class profesorControlador implements ActionListener {
 
         formularioProfesor.btnBuscar.setEnabled(true);
         formularioProfesor.btnEliminar.setEnabled(true);
-        formularioProfesor.btnLeer.setEnabled(true);
         formularioProfesor.btnAgregar.setEnabled(true);
         formularioProfesor.btnLimpiar.setEnabled(true);
         formularioProfesor.btnModificar.setEnabled(true);
@@ -360,7 +336,6 @@ public class profesorControlador implements ActionListener {
 
         formularioProfesor.btnBuscar.setEnabled(false);
         formularioProfesor.btnEliminar.setEnabled(false);
-        formularioProfesor.btnLeer.setEnabled(false);
         formularioProfesor.btnAgregar.setEnabled(false);
         formularioProfesor.btnLimpiar.setEnabled(false);
         formularioProfesor.btnModificar.setEnabled(false);

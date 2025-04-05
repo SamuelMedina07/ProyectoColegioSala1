@@ -75,7 +75,6 @@ public class alumnos implements ActionListener {
     //Mostando botones ocultos con transicion
      AnimationClass mostrar = new AnimationClass();
          //Columna 1
-         mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formAlumnos.btnLeer);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formAlumnos.btnAgregar);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formAlumnos.btnCrear);
          mostrar.jButtonXLeft(botonesColumna1Posicionx1, botonesColumna1Posicionx2, 10, 5,formAlumnos.btnModificar);
@@ -90,7 +89,6 @@ public class alumnos implements ActionListener {
    //Ocultando botones con transicion
      AnimationClass ocultar = new AnimationClass();
          //Columna 1
-         ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 , 10, 5,formAlumnos.btnLeer);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formAlumnos.btnAgregar);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formAlumnos.btnCrear);
          ocultar.jButtonXRight( botonesColumna1Posicionx2,botonesColumna1Posicionx1 ,10, 5,formAlumnos.btnModificar);

@@ -64,7 +64,6 @@ public class alumnoControlador implements ActionListener {
         formularioAlumno.btnAgregar.addActionListener(this);
         formularioAlumno.btnCancelar.addActionListener(this);
         formularioAlumno.btnCrear.addActionListener(this);
-        formularioAlumno.btnLeer.addActionListener(this);
         formularioAlumno.btnBuscar.addActionListener(this);
         formularioAlumno.btnModificar.addActionListener(this);
         formularioAlumno.btnEliminar.addActionListener(this);
@@ -163,9 +162,6 @@ public class alumnoControlador implements ActionListener {
         if (e.getSource() == formularioAlumno.btnCrear) {
             guardarAlumno();
         }
-        if (e.getSource() == formularioAlumno.btnLeer) {
-            llenarTabla();
-        }
         if (e.getSource() == formularioAlumno.btnBuscar) {
             formularioConsulta.setVisible(true);
         }
@@ -238,24 +234,7 @@ public class alumnoControlador implements ActionListener {
         }
     }
 
-    public void llenarTabla() {
-        modelo = (DefaultTableModel) formularioAlumno.tbl_registros.getModel();
-        modelo.setRowCount(0);
-        ArrayList<Alumno> listaAlumnos = consultaAlumnos.leerTodosAlumnos();
-        for (Alumno alumno : listaAlumnos) {
-            // Ajusta el llenado de la tabla según la estructura de la misma
-            datos[0] = alumno.getNumCuenta();
-            datos[1] = alumno.getNombreCompleto();
-            datos[2] = alumno.getGenero();
-            datos[3] = alumno.obtenerEdad();
-            datos[4] = alumno.getDireccion();
-            datos[5] = alumno.getTelefono();
-            datos[6] = consPadre.obtenerPadreSegunId(alumno.getIdPadres()).getNombreCompleto();
-            datos[7] = consGrados.obtenerGradoSegunId(alumno.getIdGrado()).getNombre();
-            modelo.addRow(datos);
-        }
-        formularioAlumno.tbl_registros.setModel(modelo);
-    }
+
 
    
 
@@ -336,8 +315,6 @@ public class alumnoControlador implements ActionListener {
         formularioAlumno.cbGenero.setSelectedIndex(0);
         formularioAlumno.cargarImagen(formularioAlumno.urlImagenDefecto);
         imagenSeleccionada = formularioAlumno.urlImagenDefecto;
-        modelo = (DefaultTableModel) formularioAlumno.tbl_registros.getModel();
-        modelo.setRowCount(0);
 
     }
 
@@ -358,7 +335,6 @@ public class alumnoControlador implements ActionListener {
         
         formularioAlumno.btnBuscar.setEnabled(true);
         formularioAlumno.btnEliminar.setEnabled(true);
-        formularioAlumno.btnLeer.setEnabled(true);
         formularioAlumno.btnAgregar.setEnabled(true);
         formularioAlumno.btnLimpiar.setEnabled(true);
         formularioAlumno.btnModificar.setEnabled(true);
@@ -373,7 +349,6 @@ public class alumnoControlador implements ActionListener {
         
         formularioAlumno.btnBuscar.setEnabled(false);
         formularioAlumno.btnEliminar.setEnabled(false);
-        formularioAlumno.btnLeer.setEnabled(false);
         formularioAlumno.btnAgregar.setEnabled(false);
         formularioAlumno.btnLimpiar.setEnabled(false);
         formularioAlumno.btnModificar.setEnabled(false);

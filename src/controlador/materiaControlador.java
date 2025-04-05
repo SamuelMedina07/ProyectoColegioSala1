@@ -58,7 +58,6 @@ public class materiaControlador implements ActionListener {
         formMateria.btnAgregar.addActionListener(this);
         formMateria.btnCancelar.addActionListener(this);
         formMateria.btnCrear.addActionListener(this);
-        formMateria.btnLeer.addActionListener(this);
         formMateria.btnBuscar.addActionListener(this);
         formMateria.btnModificar.addActionListener(this);
         formMateria.btnEliminar.addActionListener(this);
@@ -101,9 +100,6 @@ public class materiaControlador implements ActionListener {
         }
         if (e.getSource() == formMateria.btnCrear) {
             guardarMateria();
-        }
-        if (e.getSource() == formMateria.btnLeer) {
-            llenarTabla();
         }
         if (e.getSource() == formMateria.btnBuscar) {
             formConsulta.setVisible(true);
@@ -150,18 +146,6 @@ public class materiaControlador implements ActionListener {
         }
     }
 
-    public void llenarTabla() {
-        modelo = (DefaultTableModel) formMateria.tbl_registros.getModel();
-        modelo.setRowCount(0);
-        ArrayList<Materia> listaMaterias = consultaMaterias.leerTodasMaterias();
-        for (Materia materia : listaMaterias) {
-            datos[0] = materia.getId();
-            datos[1] = materia.getNombre();
-            datos[2] = materia.getEstado();
-            modelo.addRow(datos);
-        }
-        formMateria.tbl_registros.setModel(modelo);
-    }
 
 
     private boolean validarYVerificarMateria() {
@@ -198,8 +182,6 @@ public class materiaControlador implements ActionListener {
     public void limpiar() {
         formMateria.txtCodigo.setText("");
         formMateria.txtNombre.setText("");
-        modelo = (DefaultTableModel) formMateria.tbl_registros.getModel();
-        modelo.setRowCount(0);
     }
 
     public void resaltarCampoVacio(JTextField campo) {
@@ -213,7 +195,6 @@ public class materiaControlador implements ActionListener {
 
         formMateria.btnBuscar.setEnabled(true);
         formMateria.btnEliminar.setEnabled(true);
-        formMateria.btnLeer.setEnabled(true);
         formMateria.btnAgregar.setEnabled(true);
         formMateria.btnLimpiar.setEnabled(true);
         formMateria.btnModificar.setEnabled(true);
@@ -227,7 +208,6 @@ public class materiaControlador implements ActionListener {
 
         formMateria.btnBuscar.setEnabled(false);
         formMateria.btnEliminar.setEnabled(false);
-        formMateria.btnLeer.setEnabled(false);
         formMateria.btnAgregar.setEnabled(false);
         formMateria.btnLimpiar.setEnabled(false);
         formMateria.btnModificar.setEnabled(false);

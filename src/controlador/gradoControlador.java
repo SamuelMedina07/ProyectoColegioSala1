@@ -54,7 +54,6 @@ public class gradoControlador implements ActionListener {
         formGrados.btnAgregar.addActionListener(this);
         formGrados.btnCancelar.addActionListener(this);
         formGrados.btnCrear.addActionListener(this);
-        formGrados.btnLeer.addActionListener(this);
         formGrados.btnBuscar.addActionListener(this);
         formGrados.btnModificar.addActionListener(this);
         formGrados.btnEliminar.addActionListener(this);
@@ -97,9 +96,6 @@ public class gradoControlador implements ActionListener {
         }
         if (e.getSource() == formGrados.btnCrear) {
             guardarGrado();
-        }
-        if (e.getSource() == formGrados.btnLeer) {
-            llenarTabla();
         }
         if (e.getSource() == formGrados.btnBuscar) {
             formConsulta.setVisible(true);
@@ -147,18 +143,7 @@ public class gradoControlador implements ActionListener {
         }
     }
 
-    public void llenarTabla() {
-        modelo = (DefaultTableModel) formGrados.tbl_registros.getModel();
-        modelo.setRowCount(0);
-        ArrayList<Grado> listaGrados = consultaGrados.leerTodosGrados();
-        for (Grado grado : listaGrados) {
-            datos[0] = grado.getId();
-            datos[1] = grado.getNombre();
-            datos[2] = grado.getEstado();
-            modelo.addRow(datos);
-        }
-        formGrados.tbl_registros.setModel(modelo);
-    }
+   
 
     
 
@@ -196,8 +181,6 @@ public class gradoControlador implements ActionListener {
     public void limpiar() {
         formGrados.txtCodigo.setText("");
         formGrados.txtNombre.setText("");
-        modelo = (DefaultTableModel) formGrados.tbl_registros.getModel();
-        modelo.setRowCount(0);
     }
 
     public void resaltarCampoVacio(JTextField campo) {
@@ -211,7 +194,6 @@ public class gradoControlador implements ActionListener {
 
         formGrados.btnBuscar.setEnabled(true);
         formGrados.btnEliminar.setEnabled(true);
-        formGrados.btnLeer.setEnabled(true);
         formGrados.btnAgregar.setEnabled(true);
         formGrados.btnLimpiar.setEnabled(true);
         formGrados.btnModificar.setEnabled(true);
@@ -225,7 +207,6 @@ public class gradoControlador implements ActionListener {
 
         formGrados.btnBuscar.setEnabled(false);
         formGrados.btnEliminar.setEnabled(false);
-        formGrados.btnLeer.setEnabled(false);
         formGrados.btnAgregar.setEnabled(false);
         formGrados.btnLimpiar.setEnabled(false);
         formGrados.btnModificar.setEnabled(false);

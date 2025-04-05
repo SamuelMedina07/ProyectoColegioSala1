@@ -50,7 +50,6 @@ public class padreControlador implements ActionListener {
         form.btnAgregar.addActionListener(this);
         form.btnCancelar.addActionListener(this);
         form.btnCrear.addActionListener(this);
-        form.btnLeer.addActionListener(this);
         form.btnBuscar.addActionListener(this);
         form.btnModificar.addActionListener(this);
         form.btnEliminar.addActionListener(this);
@@ -105,9 +104,6 @@ public class padreControlador implements ActionListener {
             guardarPadre();
         }
         //BOTON LEER TODOS
-        if (e.getSource() == form.btnLeer) {
-            llenarTabla();
-        }
 
         //BOTON CONSULTA USUARIO
         if (e.getSource() == form.btnBuscar) {
@@ -166,26 +162,7 @@ public class padreControlador implements ActionListener {
     }
 
     //LEER
-    public void llenarTabla() {
-        modelo = (DefaultTableModel) form.tbl_padres.getModel();
-        modelo.setRowCount(0);
-        ArrayList<Padre> listaPadres = consPadres.leerTodosPadres();
-        int registros = listaPadres.size();
-        for (int i = 0; i < registros; i++) {
-            Padre padreTemporal = listaPadres.get(i);
 
-            datos[0] = padreTemporal.getId();
-            datos[1] = padreTemporal.getNombreCompleto();
-            datos[2] = padreTemporal.getGenero();
-            datos[3] = padreTemporal.getCedula();
-            datos[4] = padreTemporal.getTelefono();
-            datos[5] = padreTemporal.getDireccion();
-            datos[6] = padreTemporal.getEstado();
-
-            modelo.addRow(datos);
-        }
-        form.tbl_padres.setModel(modelo);
-    }
     //VALIDACIONES **************************************************************************
     //VERIFICAR PADRE
     private boolean validarYVerificarPadre() {
@@ -262,8 +239,6 @@ public class padreControlador implements ActionListener {
         form.txtIdentidad.setText("");
         form.txtDireccion.setText("");
         form.cbGenero.setSelectedIndex(0);
-        modelo = (DefaultTableModel) form.tbl_padres.getModel();
-        modelo.setRowCount(0);
     }
 
     //RESALTAR CAMPO
@@ -290,7 +265,6 @@ public class padreControlador implements ActionListener {
 
         form.btnBuscar.setEnabled(true);
         form.btnEliminar.setEnabled(true);
-        form.btnLeer.setEnabled(true);
         form.btnAgregar.setEnabled(true);
         form.btnLimpiar.setEnabled(true);
         form.btnModificar.setEnabled(true);
@@ -305,7 +279,6 @@ public class padreControlador implements ActionListener {
 
         form.btnBuscar.setEnabled(false);
         form.btnEliminar.setEnabled(false);
-        form.btnLeer.setEnabled(false);
         form.btnAgregar.setEnabled(false);
         form.btnLimpiar.setEnabled(false);
         form.btnModificar.setEnabled(false);

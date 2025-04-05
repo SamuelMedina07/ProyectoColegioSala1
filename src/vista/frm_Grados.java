@@ -41,9 +41,6 @@ public class frm_Grados extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbl_registros = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -56,7 +53,6 @@ public class frm_Grados extends javax.swing.JDialog {
         btnAgregar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnLeer = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -68,22 +64,6 @@ public class frm_Grados extends javax.swing.JDialog {
         setTitle("GRADOS");
 
         jPanel1.setBackground(new java.awt.Color(241, 250, 255));
-
-        jPanel3.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "Resultado de Busqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(241, 250, 255))); // NOI18N
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tbl_registros.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CODIGO", "GRADO", "ESTADO"
-            }
-        ));
-        jScrollPane2.setViewportView(tbl_registros);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 490, 170));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 130, 90));
@@ -102,7 +82,7 @@ public class frm_Grados extends javax.swing.JDialog {
         jLabel6.setForeground(new java.awt.Color(0, 130, 90));
         jLabel6.setText("NOMBRE");
         jPanel6.add(jLabel6);
-        jLabel6.setBounds(20, 110, 54, 15);
+        jLabel6.setBounds(20, 140, 53, 14);
 
         txtNombre.setBackground(new java.awt.Color(241, 250, 255));
         txtNombre.setBorder(null);
@@ -117,20 +97,20 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtNombre);
-        txtNombre.setBounds(80, 100, 180, 29);
+        txtNombre.setBounds(80, 130, 200, 29);
 
         btnBuscar.setBackground(new java.awt.Color(241, 250, 255));
         btnBuscar.setForeground(new java.awt.Color(0, 130, 90));
         btnBuscar.setText("Buscar");
         btnBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnBuscar);
-        btnBuscar.setBounds(200, 50, 80, 30);
+        btnBuscar.setBounds(200, 40, 80, 30);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 130, 90));
         jLabel9.setText("CODIGO");
         jPanel6.add(jLabel9);
-        jLabel9.setBounds(20, 60, 50, 15);
+        jLabel9.setBounds(20, 50, 51, 14);
 
         txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(241, 250, 255));
@@ -140,9 +120,9 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtCodigo);
-        txtCodigo.setBounds(80, 50, 120, 29);
+        txtCodigo.setBounds(80, 40, 120, 29);
         jPanel6.add(jSeparator1);
-        jSeparator1.setBounds(20, 130, 240, 30);
+        jSeparator1.setBounds(20, 160, 240, 30);
 
         btnAgregar.setBackground(new java.awt.Color(241, 250, 255));
         btnAgregar.setForeground(new java.awt.Color(0, 130, 90));
@@ -154,7 +134,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnAgregar);
-        btnAgregar.setBounds(550, 110, 95, 21);
+        btnAgregar.setBounds(550, 110, 95, 20);
 
         btnCancelar.setBackground(new java.awt.Color(241, 250, 255));
         btnCancelar.setForeground(new java.awt.Color(0, 130, 90));
@@ -166,28 +146,21 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnCancelar);
-        btnCancelar.setBounds(670, 150, 95, 21);
+        btnCancelar.setBounds(670, 150, 95, 20);
 
         btnModificar.setBackground(new java.awt.Color(241, 250, 255));
         btnModificar.setForeground(new java.awt.Color(0, 130, 90));
-        btnModificar.setText("MODIFICAR");
+        btnModificar.setText("ACTUALIZAR");
         btnModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnModificar);
-        btnModificar.setBounds(550, 190, 95, 21);
-
-        btnLeer.setBackground(new java.awt.Color(241, 250, 255));
-        btnLeer.setForeground(new java.awt.Color(0, 130, 90));
-        btnLeer.setText("LEER");
-        btnLeer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
-        jPanel6.add(btnLeer);
-        btnLeer.setBounds(550, 70, 95, 20);
+        btnModificar.setBounds(550, 150, 95, 20);
 
         btnCrear.setBackground(new java.awt.Color(241, 250, 255));
         btnCrear.setForeground(new java.awt.Color(0, 130, 90));
         btnCrear.setText("CREAR");
         btnCrear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 130, 90), 2, true));
         jPanel6.add(btnCrear);
-        btnCrear.setBounds(550, 150, 95, 21);
+        btnCrear.setBounds(550, 70, 95, 20);
 
         btnEliminar.setBackground(new java.awt.Color(241, 250, 255));
         btnEliminar.setForeground(new java.awt.Color(0, 130, 90));
@@ -199,7 +172,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnEliminar);
-        btnEliminar.setBounds(670, 70, 95, 21);
+        btnEliminar.setBounds(670, 70, 95, 20);
 
         btnLimpiar.setBackground(new java.awt.Color(241, 250, 255));
         btnLimpiar.setForeground(new java.awt.Color(0, 130, 90));
@@ -211,7 +184,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnLimpiar);
-        btnLimpiar.setBounds(670, 110, 95, 21);
+        btnLimpiar.setBounds(670, 110, 95, 20);
 
         btnSalir.setBackground(new java.awt.Color(241, 250, 255));
         btnSalir.setForeground(new java.awt.Color(0, 130, 90));
@@ -223,7 +196,7 @@ public class frm_Grados extends javax.swing.JDialog {
             }
         });
         jPanel6.add(btnSalir);
-        btnSalir.setBounds(670, 190, 95, 21);
+        btnSalir.setBounds(610, 190, 95, 20);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LogoBosquesSinFondo.png"))); // NOI18N
         jlbLogo.setText("jLabel1");
@@ -258,15 +231,13 @@ public class frm_Grados extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,17 +247,15 @@ public class frm_Grados extends javax.swing.JDialog {
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,7 +361,6 @@ public class frm_Grados extends javax.swing.JDialog {
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnCrear;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnLeer;
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;
     public javax.swing.JButton btnOpciones;
@@ -401,13 +369,10 @@ public class frm_Grados extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     public javax.swing.JLabel jlbLogo;
     public javax.swing.JLabel lblUsuario;
-    public javax.swing.JTable tbl_registros;
     public javax.swing.JTextField txtCodigo;
     public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
