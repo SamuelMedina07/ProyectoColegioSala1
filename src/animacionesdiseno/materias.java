@@ -81,7 +81,7 @@ public class materias implements ActionListener {
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formMaterias.btnEliminar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formMaterias.btnLimpiar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formMaterias.btnCancelar);
-         mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formMaterias.btnSalir);
+         mostrar.jButtonXLeft(botonesColumna2Posicionx1 -60, botonesColumna2Posicionx2 -60, 10, 5,formMaterias.btnSalir);
          mostrar.jLabelYUp(290, 50, 10,5, formMaterias.jlbLogo);
          
          
@@ -95,7 +95,7 @@ public class materias implements ActionListener {
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnEliminar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnLimpiar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnCancelar);
-         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formMaterias.btnSalir);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2 -60 ,botonesColumna2Posicionx1 -60, 10, 5,formMaterias.btnSalir);
          ocultar.jLabelYDown(50, 290, 10,5, formMaterias.jlbLogo);
        
     }

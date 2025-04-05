@@ -81,7 +81,7 @@ public class grados implements ActionListener{
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formGrados.btnEliminar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formGrados.btnLimpiar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formGrados.btnCancelar);
-         mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formGrados.btnSalir);
+         mostrar.jButtonXLeft(botonesColumna2Posicionx1 -60, botonesColumna2Posicionx2 -60, 10, 5,formGrados.btnSalir);
          mostrar.jLabelYUp(290, 50, 10,5, formGrados.jlbLogo);
          
          
@@ -95,7 +95,7 @@ public class grados implements ActionListener{
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnEliminar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnLimpiar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnCancelar);
-         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formGrados.btnSalir);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2 -60 ,botonesColumna2Posicionx1 -60, 10, 5,formGrados.btnSalir);
          ocultar.jLabelYDown(50, 290, 10,5, formGrados.jlbLogo);
        
     }

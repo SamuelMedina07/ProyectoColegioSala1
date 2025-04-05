@@ -83,7 +83,7 @@ public class calificaciones implements ActionListener{
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formCalificaciones.btnEliminar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formCalificaciones.btnLimpiar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formCalificaciones.btnCancelar);
-         mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formCalificaciones.btnSalir);
+         mostrar.jButtonXLeft(botonesColumna2Posicionx1 -60 , botonesColumna2Posicionx2 -60, 10, 5,formCalificaciones.btnSalir);
          mostrar.jLabelYUp(290, 50, 10,5, formCalificaciones.jlbLogo);
          
          
@@ -97,7 +97,7 @@ public class calificaciones implements ActionListener{
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formCalificaciones.btnEliminar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formCalificaciones.btnLimpiar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formCalificaciones.btnCancelar);
-         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formCalificaciones.btnSalir);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2 -60,botonesColumna2Posicionx1 -60, 10, 5,formCalificaciones.btnSalir);
          ocultar.jLabelYDown(50, 290, 10,5, formCalificaciones.jlbLogo);
        
     }

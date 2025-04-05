@@ -82,7 +82,7 @@ public class alumnos implements ActionListener {
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formAlumnos.btnEliminar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formAlumnos.btnLimpiar);
          mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formAlumnos.btnCancelar);
-         mostrar.jButtonXLeft(botonesColumna2Posicionx1, botonesColumna2Posicionx2, 10, 5,formAlumnos.btnSalir);
+         mostrar.jButtonXLeft(botonesColumna2Posicionx1 -60  , botonesColumna2Posicionx2 -60, 10, 5,formAlumnos.btnSalir);
          mostrar.jLabelXLeft(290, -250, 10,5, formAlumnos.jlbLogo);
          
          
@@ -96,7 +96,7 @@ public class alumnos implements ActionListener {
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formAlumnos.btnEliminar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formAlumnos.btnLimpiar);
          ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formAlumnos.btnCancelar);
-         ocultar.jButtonXRight(botonesColumna2Posicionx2,botonesColumna2Posicionx1, 10, 5,formAlumnos.btnSalir);
+         ocultar.jButtonXRight(botonesColumna2Posicionx2 -60 ,botonesColumna2Posicionx1 -60 , 10, 5,formAlumnos.btnSalir);
          ocultar.jLabelXRight(-250, 290, 10,5, formAlumnos.jlbLogo);
        
     }

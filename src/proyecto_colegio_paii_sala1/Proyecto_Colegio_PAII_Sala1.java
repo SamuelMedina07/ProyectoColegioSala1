@@ -13,6 +13,7 @@ import animacionesdiseno.materias;
 import animacionesdiseno.padres;
 import animacionesdiseno.profesores;
 import animacionesdiseno.usuarios;
+import animacionesdiseno.empleados;
 import controlador.AsistenciaControlador;
 import controlador.LoginControlador;
 import controlador.PrincipalControlador;
@@ -157,11 +158,13 @@ public class Proyecto_Colegio_PAII_Sala1 {
         calificacionControlador contCalificaciones = new calificacionControlador(calificacion, formCalificaciones, consCalificaciones, formConsultaCalificaciones);
         calificaciones disenocalificacion = new calificaciones(formCalificaciones,formConsultaCalificaciones);
 
-
+        //EMPLEADOS
         Empleado empleado = new Empleado();
         frm_Empleados formEmpleados = new frm_Empleados(frm_pri, true, "");
         ConsultaEmpleados ConsultaEmpleados = new ConsultaEmpleados();
         EmpleadoControlador contEmpleado = new EmpleadoControlador(empleado,formEmpleados,ConsultaEmpleados);
+         //Animacion&Diseño
+        empleados disenoempleados = new empleados(formEmpleados);
         
 //PRINCIPAL
         PrincipalControlador contPrincipal = new PrincipalControlador(frm_pri,formLogin, formUsuarios, formPadre, formGrados, formMaterias, formAlumnos,formProfesor,formAsistencias,formCalificaciones,formEmpleados);
