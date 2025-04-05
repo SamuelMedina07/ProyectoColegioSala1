@@ -21,6 +21,7 @@ public class frm_Consulta extends javax.swing.JDialog {
     frm_Consulta_Materias formConsMaterias = new frm_Consulta_Materias(this, true);
     frm_Consulta_Padres formConsPadres = new frm_Consulta_Padres(this, true);
     frm_Consulta_Profesor formConsProfesor = new frm_Consulta_Profesor(this, true);
+    frm_Consulta_Empleados formConsEmple = new frm_Consulta_Empleados(this,true);
     /**
      * Creates new form frm_Consulta_Producto
      */
@@ -50,6 +51,7 @@ public class frm_Consulta extends javax.swing.JDialog {
         btnMaterias = new javax.swing.JButton();
         btnPadres = new javax.swing.JButton();
         btnProfesores = new javax.swing.JButton();
+        btnEmpleados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CONSULTAS");
@@ -87,7 +89,7 @@ public class frm_Consulta extends javax.swing.JDialog {
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 130, 90));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "CONSULTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(241, 250, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 2, true), "CONSULTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(241, 250, 255))); // NOI18N
 
         btnGrados.setBackground(new java.awt.Color(0, 130, 90));
         btnGrados.setForeground(new java.awt.Color(0, 130, 90));
@@ -168,12 +170,25 @@ public class frm_Consulta extends javax.swing.JDialog {
             }
         });
 
+        btnEmpleados.setBackground(new java.awt.Color(0, 130, 90));
+        btnEmpleados.setForeground(new java.awt.Color(0, 130, 90));
+        btnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleados.png"))); // NOI18N
+        btnEmpleados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 250, 255), 4, true));
+        btnEmpleados.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleadosOn.png"))); // NOI18N
+        btnEmpleados.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleadosOn.png"))); // NOI18N
+        btnEmpleados.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BtnEmpleadosOn.png"))); // NOI18N
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCalificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGrados, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +198,9 @@ public class frm_Consulta extends javax.swing.JDialog {
                     .addComponent(btnMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPadres, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,14 +210,16 @@ public class frm_Consulta extends javax.swing.JDialog {
                     .addComponent(btnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPadres, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGrados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGrados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCalificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,8 +239,7 @@ public class frm_Consulta extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -256,6 +274,11 @@ public class frm_Consulta extends javax.swing.JDialog {
         // TODO add your handling code here:
         formConsProfesor.setVisible(true);
     }//GEN-LAST:event_btnProfesoresActionPerformed
+
+    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+        // TODO add your handling code here:
+        formConsEmple.setVisible(true);
+    }//GEN-LAST:event_btnEmpleadosActionPerformed
 
       public void ReajsuteImagen(String nombreImagen)
     {
@@ -315,6 +338,7 @@ public class frm_Consulta extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAlumnos;
     public javax.swing.JButton btnCalificaciones;
+    public javax.swing.JButton btnEmpleados;
     public javax.swing.JButton btnGrados;
     public javax.swing.JButton btnMaterias;
     public javax.swing.JButton btnPadres;

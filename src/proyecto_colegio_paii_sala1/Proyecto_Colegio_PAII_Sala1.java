@@ -62,6 +62,7 @@ import vista.frm_Profesor;
 import vista.frm_Usuarios;
 import vista.frm_login;
 import vista.frm_Empleados;
+import vista.frm_Consulta_Empleados;
 
 
 /**
@@ -162,7 +163,8 @@ public class Proyecto_Colegio_PAII_Sala1 {
         Empleado empleado = new Empleado();
         frm_Empleados formEmpleados = new frm_Empleados(frm_pri, true, "");
         ConsultaEmpleados ConsultaEmpleados = new ConsultaEmpleados();
-        EmpleadoControlador contEmpleado = new EmpleadoControlador(empleado,formEmpleados,ConsultaEmpleados);
+        frm_Consulta_Empleados formConsEmple = new frm_Consulta_Empleados(formEmpleados, true);
+        EmpleadoControlador contEmpleado = new EmpleadoControlador(empleado,formEmpleados,ConsultaEmpleados,formConsEmple);
          //Animacion&Diseño
         empleados disenoempleados = new empleados(formEmpleados);
         

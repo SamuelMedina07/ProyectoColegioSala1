@@ -20,20 +20,23 @@ import modelo.ImageProcessor;
 import modelo.Empleado;
 import vista.frm_Empleados;
 import modelo.ConsultaEmpleados;
+import vista.frm_Consulta_Empleados;
 
 public class EmpleadoControlador implements ActionListener {
 
     private Empleado empleado;
     private frm_Empleados formularioEmpleado;
     private ConsultaEmpleados ConsultaEmpleados;
+    private frm_Consulta_Empleados formConsEmple;
 
  
     private String imagenSeleccionada;
 
-    public EmpleadoControlador(Empleado empleado,frm_Empleados formularioEmpleado, ConsultaEmpleados ConsultaEmpleados ) {
+    public EmpleadoControlador(Empleado empleado,frm_Empleados formularioEmpleado, ConsultaEmpleados ConsultaEmpleados, frm_Consulta_Empleados formConsEmple ) {
         this.empleado = empleado;
         this.formularioEmpleado = formularioEmpleado;
         this.ConsultaEmpleados = ConsultaEmpleados;
+        this.formConsEmple = formConsEmple;
         this.imagenSeleccionada = formularioEmpleado.urlImagenDefecto;
 
         inicializarComponentes();
@@ -71,9 +74,9 @@ public class EmpleadoControlador implements ActionListener {
             guardarAlumno();
             System.out.print("hola");
         }
-//       // if (e.getSource() == formularioEmpleado.btnBuscar) {
-//       //     formularioConsulta.setVisible(true);
-//       // }
+        if (e.getSource() == formularioEmpleado.btnBuscar) {
+            formConsEmple.setVisible(true);
+        }
 //        if (e.getSource() == formularioEmpleado.btnModificar) {
 //            modificarAlumno();
 //        }
