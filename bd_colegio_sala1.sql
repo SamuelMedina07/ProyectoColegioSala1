@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 05-04-2025 a las 04:47:27
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-04-2025 a las 13:37:41
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,7 +39,7 @@ CREATE TABLE `tbl_alumnos` (
   `padres_id` int(11) DEFAULT NULL,
   `grados_id` int(11) DEFAULT NULL,
   `alumnos_estado` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_alumnos`
@@ -51,7 +52,8 @@ INSERT INTO `tbl_alumnos` (`alumno_numCuenta`, `alumno_nombreCompleto`, `alumno_
 (20240004, 'Cesar Augusto Cuello Aguilar', 'MASCULINO', '2010-07-23', 'San Pedro Sula', '(504)9595-95-95', 'src/imagenes/sinPerfil.jpg', 1, 11, 'Activo'),
 (20240005, 'Samuel Ernesto Medina Ramirez', 'MASCULINO', '2000-06-06', 'Bsoques de Jucutuma', '(504)    -  -  ', 'src\\imagenes\\fotos\\20240005.jpg', 1, 6, 'Activo'),
 (20240006, 'Samuel Medina', 'MASCULINO', '2000-06-06', 'Bosques de Jucutuma', '(504)9595-31-18', 'src/imagenes/fotos/20240006.jpg', 1, 8, 'Activo'),
-(20240007, 'hola holis', 'FEMENINO', '2025-02-05', 'hola', '(504)3454-34-54', 'src/imagenes/fotos/20240007.jpg', 1, 4, 'Activo');
+(20240007, 'hola holis', 'FEMENINO', '2025-02-05', 'hola', '(504)3454-34-54', 'src/imagenes/fotos/20240007.jpg', 1, 4, 'Activo'),
+(20240008, 'Sara  Cruz', 'FEMENINO', '2001-04-03', 'Zona Norte TGU', '(504)00-00-00-00', 'src\\imagenes\\fotos\\20240008.jpg', 1, 7, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,7 @@ CREATE TABLE `tbl_asignacion_grados_materias` (
   `grados_id` int(11) DEFAULT NULL,
   `materia_id` int(11) DEFAULT NULL,
   `asignacion_estado` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_asignacion_grados_materias`
@@ -164,7 +166,7 @@ CREATE TABLE `tbl_asignacion_profesores_materias` (
   `profesor_id` int(11) DEFAULT NULL,
   `materia_id` int(11) DEFAULT NULL,
   `asignacion_estado` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_asignacion_profesores_materias`
@@ -196,7 +198,7 @@ CREATE TABLE `tbl_asistencias` (
   `alumnos_numCuenta` int(11) DEFAULT NULL,
   `asistencia_fecha` date DEFAULT NULL,
   `asistencia_estado` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_asistencias`
@@ -204,7 +206,8 @@ CREATE TABLE `tbl_asistencias` (
 
 INSERT INTO `tbl_asistencias` (`asistencia_id`, `alumnos_numCuenta`, `asistencia_fecha`, `asistencia_estado`) VALUES
 (1, 20240003, '2025-02-05', 'EXCUSADO'),
-(2, 20240001, '2025-02-12', 'EXCUSADO');
+(2, 20240001, '2025-02-12', 'EXCUSADO'),
+(3, 20240003, '2025-04-05', 'AUSENTE');
 
 -- --------------------------------------------------------
 
@@ -221,7 +224,14 @@ CREATE TABLE `tbl_calificaciones` (
   `profesor_id` int(11) DEFAULT NULL,
   `calificaciones_estado` varchar(20) DEFAULT NULL,
   `idGrado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tbl_calificaciones`
+--
+
+INSERT INTO `tbl_calificaciones` (`calificaciones_id`, `calificaciones_parcial`, `calificaciones_nota`, `materia_id`, `alumno_numCuenta`, `profesor_id`, `calificaciones_estado`, `idGrado`) VALUES
+(1, 'PRIMER PARCIAL', '90.00', 1, 20240002, 4, 'Aprobado', 1);
 
 -- --------------------------------------------------------
 
@@ -230,24 +240,23 @@ CREATE TABLE `tbl_calificaciones` (
 --
 
 CREATE TABLE `tbl_empleados` (
-  `empleado_numEmpleado` int(11) NOT NULL,
-  `empleadoCargo` int(1) NOT NULL,
-  `empleado_nombreCompleto` varchar(100) DEFAULT NULL,
-  `empleado_dni` int(13) NOT NULL,
-  `empleado_genero` varchar(10) DEFAULT NULL,
-  `empledao_fechaNac` date DEFAULT NULL,
-  `empleado_direccion` varchar(255) DEFAULT NULL,
-  `empleado_telefono` int(10) DEFAULT NULL,
-  `empleado_foto` varchar(255) DEFAULT NULL,
-  `empleado_estado` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `empleado_numEmpleado` varchar(20) NOT NULL,
+  `empleadoCargo` varchar(20) NOT NULL,
+  `empleado_nombreCompleto` varchar(100) NOT NULL,
+  `empleado_genero` varchar(20) NOT NULL,
+  `empledao_fechaNac` date NOT NULL,
+  `empleado_direccion` varchar(100) NOT NULL,
+  `empleado_telefono` varchar(20) NOT NULL,
+  `empleado_foto` varchar(255) NOT NULL,
+  `empleado_estado` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_empleados`
 --
 
-INSERT INTO `tbl_empleados` (`empleado_numEmpleado`, `empleadoCargo`, `empleado_nombreCompleto`, `empleado_dni`, `empleado_genero`, `empledao_fechaNac`, `empleado_direccion`, `empleado_telefono`, `empleado_foto`, `empleado_estado`) VALUES
-(20192001, 0, 'Samuel Ernesto Medina Ramirez', 501200005, 'MASCULINO', '2000-06-06', 'Bosques de Jucutuma I Casa A14 20', NULL, NULL, 1);
+INSERT INTO `tbl_empleados` (`empleado_numEmpleado`, `empleadoCargo`, `empleado_nombreCompleto`, `empleado_genero`, `empledao_fechaNac`, `empleado_direccion`, `empleado_telefono`, `empleado_foto`, `empleado_estado`) VALUES
+('20192002', 'DIRECTOR', 'Dora Margarita Pinto Pinto', 'FEMENINO', '2025-04-01', 'En una casa de 4 paredes', '(504)98-98-98-98', 'src\\imagenes\\fotos\\20192002.jpg', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -263,7 +272,7 @@ CREATE TABLE `tbl_empresa` (
   `empresa_telefono` varchar(20) DEFAULT NULL,
   `empresa_correo` varchar(100) DEFAULT NULL,
   `empresa_logo` blob DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_empresa`
@@ -281,7 +290,7 @@ INSERT INTO `tbl_empresa` (`empresa_id`, `empresa_nombre`, `empresa_direccion`, 
 CREATE TABLE `tbl_estados` (
   `id_estado` int(1) NOT NULL,
   `descripcion` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_estados`
@@ -301,7 +310,7 @@ CREATE TABLE `tbl_grados` (
   `grados_id` int(11) NOT NULL,
   `grados_nombre` varchar(100) NOT NULL,
   `grados_estado` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_grados`
@@ -332,7 +341,7 @@ CREATE TABLE `tbl_materias` (
   `materia_id` int(11) NOT NULL,
   `materia_nombre` varchar(100) NOT NULL,
   `materia_estado` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_materias`
@@ -369,14 +378,14 @@ CREATE TABLE `tbl_padres` (
   `padres_direccion` varchar(255) DEFAULT NULL,
   `padres_estado` varchar(20) DEFAULT NULL,
   `id_estado` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_padres`
 --
 
 INSERT INTO `tbl_padres` (`padres_id`, `padres_nombreCompleto`, `padres_genero`, `padres_cedula`, `padres_telefono`, `padres_direccion`, `padres_estado`, `id_estado`) VALUES
-(1, 'Padre ejemplo numero uno', 'MASCULINO', '1804', '(504)9595-55-55', 'ejemplo direccionm', 'Activo', 1),
+(1, 'Sebastian Armando Paz Lopez', 'MASCULINO', '0501', '(504)4567-23-41', 'Zona Sur SPS', 'Activo', 1),
 (2, 'padre ejemplo numero tres', 'FEMENINO', '18045251', '(504)9595-95-95', 'aaaa', 'Inactivo', 2);
 
 -- --------------------------------------------------------
@@ -395,7 +404,7 @@ CREATE TABLE `tbl_profesor` (
   `profesor_direccion` varchar(100) DEFAULT NULL,
   `profesor_foto` varchar(255) DEFAULT NULL,
   `profesor_estado` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_profesor`
@@ -420,7 +429,7 @@ INSERT INTO `tbl_profesor` (`profesor_id`, `profesor_nombreCompleto`, `profesor_
 CREATE TABLE `tbl_roles` (
   `id_rol` int(1) NOT NULL,
   `descripcion` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_roles`
@@ -452,7 +461,7 @@ CREATE TABLE `tbl_usuarios` (
   `usuario_estado` varchar(20) DEFAULT NULL,
   `id_rol` int(1) NOT NULL,
   `id_estado` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tbl_usuarios`
@@ -527,10 +536,7 @@ ALTER TABLE `tbl_calificaciones`
 -- Indices de la tabla `tbl_empleados`
 --
 ALTER TABLE `tbl_empleados`
-  ADD PRIMARY KEY (`empleado_numEmpleado`),
-  ADD UNIQUE KEY `dni` (`empleado_dni`),
-  ADD KEY `empleado_estado` (`empleado_estado`) USING BTREE,
-  ADD KEY `empleadoCargo` (`empleadoCargo`);
+  ADD PRIMARY KEY (`empleado_numEmpleado`);
 
 --
 -- Indices de la tabla `tbl_empresa`
@@ -592,7 +598,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT de la tabla `tbl_alumnos`
 --
 ALTER TABLE `tbl_alumnos`
-  MODIFY `alumno_numCuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20240008;
+  MODIFY `alumno_numCuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20240009;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_asignacion_grados_materias`
@@ -610,13 +616,13 @@ ALTER TABLE `tbl_asignacion_profesores_materias`
 -- AUTO_INCREMENT de la tabla `tbl_asistencias`
 --
 ALTER TABLE `tbl_asistencias`
-  MODIFY `asistencia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `asistencia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_calificaciones`
 --
 ALTER TABLE `tbl_calificaciones`
-  MODIFY `calificaciones_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `calificaciones_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_empresa`
@@ -699,13 +705,6 @@ ALTER TABLE `tbl_calificaciones`
   ADD CONSTRAINT `tbl_calificaciones_ibfk_2` FOREIGN KEY (`alumno_numCuenta`) REFERENCES `tbl_alumnos` (`alumno_numCuenta`),
   ADD CONSTRAINT `tbl_calificaciones_ibfk_3` FOREIGN KEY (`profesor_id`) REFERENCES `tbl_profesor` (`profesor_id`),
   ADD CONSTRAINT `tbl_calificaciones_ibfk_4` FOREIGN KEY (`idGrado`) REFERENCES `tbl_grados` (`grados_id`);
-
---
--- Filtros para la tabla `tbl_empleados`
---
-ALTER TABLE `tbl_empleados`
-  ADD CONSTRAINT `tbl_empleados_ibfk_1` FOREIGN KEY (`empleado_estado`) REFERENCES `tbl_estados` (`id_estado`),
-  ADD CONSTRAINT `tbl_empleados_ibfk_2` FOREIGN KEY (`empleadoCargo`) REFERENCES `tbl_roles` (`id_rol`);
 
 --
 -- Filtros para la tabla `tbl_padres`

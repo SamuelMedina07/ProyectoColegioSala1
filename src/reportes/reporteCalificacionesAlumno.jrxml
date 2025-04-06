@@ -106,7 +106,7 @@ tbl_calificaciones.`calificaciones_estado` != 'CANCELADA']]>
 			</frame>
 			<image>
 				<reportElement x="634" y="0" width="135" height="110" uuid="3407a4ff-feaf-4b11-a96e-8a15e354d4e2"/>
-				<imageExpression><![CDATA["C:\\Users\\ammcp\\Documents\\NetBeansProjects\\Proyecto_Colegio_PAII_Sala1\\src\\reportes\\LogoBosquesSinFondo.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\ProyectoColegioSala1\\src\\reportes\\LogoBosquesSinFondo.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

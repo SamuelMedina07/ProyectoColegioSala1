@@ -74,21 +74,25 @@ public class frm_Principal extends javax.swing.JFrame {
         btnAsistencias.setEnabled(true);
         btnConsultas.setEnabled(true);
         btnReportes1.setEnabled(true);
-        btnCalificaciones.setEnabled(false); // Deshabilitar el botón de Calificaciones
+        btnCalificaciones.setEnabled(false);
+        btnEmpleados.setEnabled(true);
+        // Deshabilitar el botón de Calificaciones
     }
 
     private void habilitarBotonesProfesor() {
         // Habilitar los botones permitidos para el rol de PROFESOR
         btnSalir.setEnabled(true);
-        btnPadres.setEnabled(false);
+        btnPadres.setEnabled(true);
         btnGrados.setEnabled(false);
         btnMaterias.setEnabled(false);
-        btnAlumnos.setEnabled(false);
+        btnAlumnos.setEnabled(true);
         btnProfesores.setEnabled(false);
         btnAsistencias.setEnabled(true); // Habilitar wl botón de Asistencias
-        btnConsultas.setEnabled(false);
+        btnConsultas.setEnabled(true);
         btnReportes1.setEnabled(false);
-        btnCalificaciones.setEnabled(true); // Habilitar el botón de Calificaciones
+        btnCalificaciones.setEnabled(true);
+        btnEmpleados.setEnabled(false);
+        // Habilitar el botón de Calificaciones
     }
     
     public void ReajsuteImagen(String nombreImagen)
