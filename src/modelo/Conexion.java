@@ -13,11 +13,12 @@ import java.sql.SQLException;
 public class Conexion {
     
     Connection c = null;
-   
-    private String db = "bd_colegio_sala1";
-    private String user = "root";
-    private String pass = "";
-    private String url = "jdbc:mysql://localhost:3306/"+db;
+    
+private String db = "bd_colegio_sala1";
+private String user = "crud_java";
+private String pass = "CrudJava2026";
+private String ip = "192.168.40.156";
+private String url = "jdbc:mysql://" + ip + " /" + db;
 
     public Connection getConnection(){
         try {
