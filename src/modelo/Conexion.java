@@ -17,7 +17,7 @@ public class Conexion {
 private String db = "bd_colegio_sala1";
 private String user = "crud_java";
 private String pass = "CrudJava2026";
-private String ip = "192.168.40.156";
+private String ip = "192.168.1.94";
 private String url = "jdbc:mysql://" + ip + "/" + db;
 
     public Connection getConnection(){

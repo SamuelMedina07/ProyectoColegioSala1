@@ -21,30 +21,30 @@ import java.nio.file.StandardCopyOption;
  */
 public class ImageProcessor {
 
-    public String saveImage(File selectedFile, String codigo) {
-        // Directorio donde se guardarán todas las imágenes de los estudiantes
-        String imagePath = "src/imagenes/fotos/";
+     /**
+     * Convierte una imagen seleccionada en un arreglo de bytes.
+     *
+     * @param selectedFile archivo de imagen seleccionado
+     * @return imagen convertida a byte[]
+     */
+        public byte[] getImageBytes(File selectedFile) {
 
-        // Crear el directorio si no existe
-        File directory = new File(imagePath);
-        if (!directory.exists()) {
-            directory.mkdirs();
+        if (selectedFile == null) {
+            return null;
         }
-
-        // Generar el nombre del archivo para la imagen del estudiante
-        String fileName = codigo + ".jpg"; // O cualquier extensión de archivo deseada
-
-        // Path de destino donde se guardará la imagen
-        Path destination = Paths.get(imagePath, fileName);
 
         try {
-            // Copiar la imagen seleccionada al directorio de imágenes del estudiante
-            FileHelper.copyFile(selectedFile.toPath(), destination);
-            System.out.println("Imagen guardada en: " + destination);
+
+            return Files.readAllBytes(selectedFile.toPath());
+
         } catch (IOException e) {
-            e.printStackTrace();
+
+            System.out.println(
+                "Error al leer la imagen: "
+                + e.getMessage()
+            );
+
+            return null;
         }
-        // Devolver la ruta completa donde se guardó la imagen
-        return destination.toString();
     }
-}
+    }

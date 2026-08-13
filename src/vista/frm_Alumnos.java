@@ -19,35 +19,32 @@ import javax.swing.plaf.LabelUI;
 public class frm_Alumnos extends javax.swing.JDialog {
 
     String usuario;
-    public String urlImagenDefecto = "src/imagenes/sinPerfil.jpg";
+
 
     public frm_Alumnos(java.awt.Frame parent, boolean modal, String user) {
         super(parent, modal);
         initComponents();
         lblUsuario.setText(user);
-        cargarImagen(urlImagenDefecto);
     }
 
-    public void cargarImagen(String rutaImagen) {
-        // Obtener la URL de la imagen
-        File archivoImagen = new File(rutaImagen);
-        if (archivoImagen.exists()) {
-            // Cargar la imagen en un ImageIcon
-            ImageIcon imagenIcono = new ImageIcon(rutaImagen);
+  
+  public void cargarImagenBytes(byte[] datosImagen) {
+    if (datosImagen != null && datosImagen.length > 0) {
 
-            // Escalar la imagen para que se ajuste al tamaño del JLabel
-            Image imagenEscalada = imagenIcono.getImage().getScaledInstance(
-                    lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon imagenIcono = new ImageIcon(datosImagen);
 
-            // Crear un nuevo ImageIcon con la imagen escalada
-            ImageIcon imagenEscaladaIcono = new ImageIcon(imagenEscalada);
+        Image imagenEscalada = imagenIcono.getImage().getScaledInstance(
+                lblFoto.getWidth(),
+                lblFoto.getHeight(),
+                Image.SCALE_SMOOTH
+        );
 
-            // Establecer el ImageIcon en el JLabel
-            lblFoto.setIcon(imagenEscaladaIcono);
-        } else {
-            System.err.println("Error: No se pudo encontrar la imagen en la ruta especificada: " + rutaImagen);
-        }
+        lblFoto.setIcon(new ImageIcon(imagenEscalada));
+
+    } else {
+        lblFoto.setIcon(null);
     }
+}
 
     public void AsignarColorCampo(JTextField campo) {
         //Color colorResaltado = new Color(219, 52, 52);

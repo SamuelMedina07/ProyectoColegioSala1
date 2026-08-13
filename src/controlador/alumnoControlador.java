@@ -40,14 +40,15 @@ public class alumnoControlador implements ActionListener {
     private ConsultaPadres consPadre = new ConsultaPadres();
     private ConsultaGrados consGrados = new ConsultaGrados();
     private DefaultTableModel modelo;
-    private String imagenSeleccionada;
+   // private byte[] imagenSeleccionada;
+    private File archivoImagenSeleccionado;
+    private byte[] fotoSeleccionada;
 
     public alumnoControlador(Alumno alumno, frm_Alumnos formularioAlumno, ConsultaAlumnos consultaAlumnos, frm_Consulta_Alumnos formularioConsulta) {
         this.alumno = alumno;
         this.formularioAlumno = formularioAlumno;
         this.consultaAlumnos = consultaAlumnos;
         this.formularioConsulta = formularioConsulta;
-        this.imagenSeleccionada = formularioAlumno.urlImagenDefecto;
         this.formularioConsultaFrados = new frm_Consulta_Grados(formularioAlumno, true);
         this.formularioConsultaPadres = new frm_Consulta_Padres(formularioAlumno, true);
 
@@ -111,8 +112,8 @@ public class alumnoControlador implements ActionListener {
             formularioAlumno.DateNacimiento.setDate(seleccionado.getFechaNac());
             formularioAlumno.txtDireccion.setText(seleccionado.getDireccion());
             formularioAlumno.txtTelefono.setText(seleccionado.getTelefono());
-            formularioAlumno.cargarImagen(seleccionado.getFoto());
-            imagenSeleccionada=seleccionado.getFoto();
+            formularioAlumno.cargarImagenBytes(seleccionado.getFoto());
+            fotoSeleccionada=seleccionado.getFoto();
             formularioAlumno.txtPadre.setText(consPadre.obtenerPadreSegunId(seleccionado.getIdPadres()).getNombreCompleto());
             formularioAlumno.txtGrado.setText(consGrados.obtenerGradoSegunId(seleccionado.getIdGrado()).getNombre());
             formularioConsulta.dispose();
@@ -190,21 +191,35 @@ public class alumnoControlador implements ActionListener {
     }
 
     public void guardarForo() {
-        JFileChooser chooser = new JFileChooser();
-        int resultado = chooser.showOpenDialog(formularioAlumno);
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File archivoSeleccionado = chooser.getSelectedFile();
-            imagenSeleccionada = archivoSeleccionado.getAbsolutePath();
+         JFileChooser chooser = new JFileChooser();
 
-            // Guardar la imagen en una ubicación segura (si es necesario)
-            String numeroCuentaAlumno = formularioAlumno.txtCodigo.getText(); // Obtener el nombre del alumno
-            ImageProcessor imageProcessor = new ImageProcessor();
-            imagenSeleccionada = imageProcessor.saveImage(archivoSeleccionado, numeroCuentaAlumno);
-            
-            // Llamar al método cargarImagen con la ruta de la imagen seleccionada
-            formularioAlumno.cargarImagen(imagenSeleccionada);
-        }
+    int resultado = chooser.showOpenDialog(formularioAlumno);
+
+    if (resultado == JFileChooser.APPROVE_OPTION) {
+
+        // Obtener el archivo seleccionado
+        archivoImagenSeleccionado = chooser.getSelectedFile();
+
+        // Convertir la imagen a bytes
+        ImageProcessor imageProcessor = new ImageProcessor();
+
+        byte[] datosFoto = imageProcessor.getImageBytes(
+                archivoImagenSeleccionado
+        );
+
+        // Guardar temporalmente los bytes de la foto
+        fotoSeleccionada = datosFoto;
+
+        // Mostrar la foto en el formulario
+        formularioAlumno.cargarImagenBytes(datosFoto);
+
+        System.out.println(
+                "Foto seleccionada: "
+                + datosFoto.length
+                + " bytes"
+        );
     }
+}
 
     public void guardarAlumno() {
         if (validarYVerificarAlumno()) {
@@ -256,7 +271,7 @@ public class alumnoControlador implements ActionListener {
             alumno.setTelefono(formularioAlumno.txtTelefono.getText());
             alumno.setIdPadres(consPadre.obtenerIdPadreSegunNombre(formularioAlumno.txtPadre.getText()));
             alumno.setIdGrado(consGrados.obtenerIdGradoSegunNombre(formularioAlumno.txtGrado.getText()));
-            alumno.setFoto(imagenSeleccionada);
+            alumno.setFoto(fotoSeleccionada);
             alumno.setEstado("Activo");
             return true;
         }
@@ -313,8 +328,8 @@ public class alumnoControlador implements ActionListener {
         formularioAlumno.txtGrado.setText("");
         formularioAlumno.txtDireccion.setText("");
         formularioAlumno.cbGenero.setSelectedIndex(0);
-        formularioAlumno.cargarImagen(formularioAlumno.urlImagenDefecto);
-        imagenSeleccionada = formularioAlumno.urlImagenDefecto;
+        formularioAlumno.lblFoto.setIcon(null);
+        
 
     }
 
@@ -330,9 +345,7 @@ public class alumnoControlador implements ActionListener {
 
     public void habilitarBotones() {
         formularioAlumno.btnCancelar.setEnabled(false);
-        formularioAlumno.btnCrear.setEnabled(false);
-        formularioAlumno.cargarImagen(formularioAlumno.urlImagenDefecto);
-        
+        formularioAlumno.btnCrear.setEnabled(false);       
         formularioAlumno.btnBuscar.setEnabled(true);
         formularioAlumno.btnEliminar.setEnabled(true);
         formularioAlumno.btnAgregar.setEnabled(true);
@@ -345,7 +358,6 @@ public class alumnoControlador implements ActionListener {
         formularioAlumno.btnCancelar.setEnabled(true);
         formularioAlumno.btnCrear.setEnabled(true);
         formularioAlumno.txtCodigo.setText(String.valueOf(obtenerCodigoSiguiente()));
-        formularioAlumno.cargarImagen(formularioAlumno.urlImagenDefecto);
         
         formularioAlumno.btnBuscar.setEnabled(false);
         formularioAlumno.btnEliminar.setEnabled(false);

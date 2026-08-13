@@ -36,11 +36,19 @@ public class ConsultaAlumnos extends Conexion {
             ps.setDate(4, new java.sql.Date(alumno.getFechaNac().getTime()));
             ps.setString(5, alumno.getDireccion());
             ps.setString(6, alumno.getTelefono());
-            ps.setString(7, alumno.getFoto());
+             // COMPROBAR FOTO
+        System.out.println(
+                "Foto: " +
+                (alumno.getFoto() == null
+                        ? "NULL"
+                        : alumno.getFoto().length + " bytes")
+        );
+
+        // GUARDAR FOTO EN MYSQL
+            ps.setBytes(7, alumno.getFoto());
             ps.setInt(8, alumno.getIdPadres());
             ps.setInt(9, alumno.getIdGrado());
             ps.setString(10, alumno.getEstado());
-
             int filasAfectadas = ps.executeUpdate();
             if (filasAfectadas > 0) {
                 JOptionPane.showMessageDialog(null, "Alumno creado correctamente");
@@ -72,7 +80,7 @@ public class ConsultaAlumnos extends Conexion {
                 alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
                 alumno.setDireccion(rs.getString("alumno_direccion"));
                 alumno.setTelefono(rs.getString("alumno_telefono"));
-                alumno.setFoto(rs.getString("alumno_foto"));
+                alumno.setFoto(rs.getBytes("alumno_foto"));
                 alumno.setIdPadres(rs.getInt("padres_id"));
                 alumno.setIdGrado(rs.getInt("grados_id"));
                 alumno.setEstado(rs.getString("alumnos_estado"));
@@ -117,7 +125,7 @@ public class ConsultaAlumnos extends Conexion {
             ps.setDate(3, new java.sql.Date(alumno.getFechaNac().getTime()));
             ps.setString(4, alumno.getDireccion());
             ps.setString(5, alumno.getTelefono());
-            ps.setString(6, alumno.getFoto());
+            ps.setBytes(6, alumno.getFoto());
             ps.setInt(7, alumno.getIdPadres());
             ps.setInt(8, alumno.getIdGrado());
             ps.setString(9, alumno.getNumCuenta());
@@ -233,7 +241,7 @@ public class ConsultaAlumnos extends Conexion {
                 alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
                 alumno.setDireccion(rs.getString("alumno_direccion"));
                 alumno.setTelefono(rs.getString("alumno_telefono"));
-                alumno.setFoto(rs.getString("alumno_foto"));
+                alumno.setFoto(rs.getBytes("alumno_foto"));
                 alumno.setIdPadres(rs.getInt("padres_id"));
                 alumno.setIdGrado(rs.getInt("grados_id"));
                 alumno.setEstado(rs.getString("alumnos_estado"));
@@ -266,7 +274,7 @@ public class ConsultaAlumnos extends Conexion {
                 alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
                 alumno.setDireccion(rs.getString("alumno_direccion"));
                 alumno.setTelefono(rs.getString("alumno_telefono"));
-                alumno.setFoto(rs.getString("alumno_foto"));
+                alumno.setFoto(rs.getBytes("alumno_foto"));
                 alumno.setIdPadres(rs.getInt("padres_id"));
                 alumno.setIdGrado(rs.getInt("grados_id"));
                 alumno.setEstado(rs.getString("alumnos_estado"));
@@ -299,7 +307,7 @@ public class ConsultaAlumnos extends Conexion {
                 alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
                 alumno.setDireccion(rs.getString("alumno_direccion"));
                 alumno.setTelefono(rs.getString("alumno_telefono"));
-                alumno.setFoto(rs.getString("alumno_foto"));
+                alumno.setFoto(rs.getBytes("alumno_foto"));
                 alumno.setIdPadres(rs.getInt("padres_id"));
                 alumno.setIdGrado(rs.getInt("grados_id"));
                 alumno.setEstado(rs.getString("alumnos_estado"));
@@ -331,7 +339,7 @@ public class ConsultaAlumnos extends Conexion {
                 alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
                 alumno.setDireccion(rs.getString("alumno_direccion"));
                 alumno.setTelefono(rs.getString("alumno_telefono"));
-                alumno.setFoto(rs.getString("alumno_foto"));
+                alumno.setFoto(rs.getBytes("alumno_foto"));
                 alumno.setIdPadres(rs.getInt("padres_id"));
                 alumno.setIdGrado(rs.getInt("grados_id"));
                 alumno.setEstado(rs.getString("alumnos_estado"));
@@ -363,7 +371,7 @@ public class ConsultaAlumnos extends Conexion {
                 alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
                 alumno.setDireccion(rs.getString("alumno_direccion"));
                 alumno.setTelefono(rs.getString("alumno_telefono"));
-                alumno.setFoto(rs.getString("alumno_foto"));
+                alumno.setFoto(rs.getBytes("alumno_foto"));
                 alumno.setIdPadres(rs.getInt("padres_id"));
                 alumno.setIdGrado(rs.getInt("grados_id"));
                 alumno.setEstado(rs.getString("alumnos_estado"));
@@ -418,7 +426,7 @@ public class ConsultaAlumnos extends Conexion {
             alumno.setFechaNac(rs.getDate("alumno_fechaNac"));
             alumno.setDireccion(rs.getString("alumno_direccion"));
             alumno.setTelefono(rs.getString("alumno_telefono"));
-            alumno.setFoto(rs.getString("alumno_foto"));
+            alumno.setFoto(rs.getBytes("alumno_foto"));
             alumno.setIdPadres(rs.getInt("padres_id"));
             alumno.setIdGrado(rs.getInt("grados_id"));
             alumno.setEstado(rs.getString("alumnos_estado"));

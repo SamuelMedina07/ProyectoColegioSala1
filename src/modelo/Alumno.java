@@ -18,7 +18,7 @@ public class Alumno {
     private Date fechaNac;
     private String direccion;
     private String telefono;
-    private String foto;
+    private byte[] foto;
     private int idPadres;
     private int idGrado;
     private String estado;
@@ -123,11 +123,11 @@ public class Alumno {
         this.telefono = telefono;
     }
 
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 
